@@ -15,6 +15,7 @@ namespace Framework
         public bool RegistraTicket(int cliente, string titulo, string desc, int tipo_Servicio, int id_Area, int idEstatus, string ruta)
         {
             //idestatus por defecto deber ser nuevo "1"
+            //prueba 2
             try
             {
                 var objEntity = new Entity.Entity();
