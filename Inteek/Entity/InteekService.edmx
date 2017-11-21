@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InteekServiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ExceptionLog">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="text" />
+          <Property Name="Source" Type="text" />
+          <Property Name="TargetSite" Type="text" />
+          <Property Name="StackTrace" Type="text" />
+          <Property Name="Tipo" Type="text" />
+          <Property Name="Date" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <Function Name="AsignaTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
+          <Parameter Name="id_usuario" Type="int" Mode="In" />
+          <Parameter Name="id_agente" Type="int" Mode="In" />
+          <Parameter Name="id_ticket" Type="int" Mode="In" />
+          <Parameter Name="id_estatus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RegistraDatosUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="apellidop" Type="varchar" Mode="In" />
+          <Parameter Name="apellidom" Type="varchar" Mode="In" />
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="domiciliodir" Type="varchar" Mode="In" />
+          <Parameter Name="domiciliocord" Type="varchar" Mode="In" />
+          <Parameter Name="perfil" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RegistraTicket" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
+          <Parameter Name="id_cliente" Type="int" Mode="In" />
+          <Parameter Name="titulo" Type="varchar" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="tiposervicio" Type="int" Mode="In" />
+          <Parameter Name="idarea" Type="int" Mode="In" />
+          <Parameter Name="ruta" Type="varchar" Mode="In" />
+          <Parameter Name="estatus" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ValidaLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
+          <Parameter Name="usuario" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="InteekServiceModelStoreContainer">
+          <EntitySet Name="ExceptionLog" EntityType="Self.ExceptionLog" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InteekServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InteekServiceEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="ValidaLogin" ReturnType="Collection(InteekServiceModel.ValidaLogin_Result)">
+            <Parameter Name="usuario" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RegistraDatosUsuario">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidop" Mode="In" Type="String" />
+            <Parameter Name="apellidom" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="domiciliodir" Mode="In" Type="String" />
+            <Parameter Name="domiciliocord" Mode="In" Type="String" />
+            <Parameter Name="perfil" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="ExceptionLog" EntityType="InteekServiceModel.ExceptionLog" />
+          <FunctionImport Name="RegistraTicket">
+            <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+            <Parameter Name="titulo" Mode="In" Type="String" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+            <Parameter Name="tiposervicio" Mode="In" Type="Int32" />
+            <Parameter Name="idarea" Mode="In" Type="Int32" />
+            <Parameter Name="ruta" Mode="In" Type="String" />
+            <Parameter Name="estatus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AsignaTicket">
+            <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+            <Parameter Name="id_agente" Mode="In" Type="Int32" />
+            <Parameter Name="id_ticket" Mode="In" Type="Int32" />
+            <Parameter Name="id_estatus" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ValidaLogin_Result">
+          <Property Type="Int32" Name="id_Usuario" Nullable="false" />
+          <Property Type="Int32" Name="id_Perfil" Nullable="true" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DomicilioDir" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DomicilioCor" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="Supervisa" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ExceptionLog">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TargetSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InteekServiceModelStoreContainer" CdmEntityContainer="InteekServiceEntities" >
+          <FunctionImportMapping FunctionImportName="ValidaLogin" FunctionName="InteekServiceModel.Store.ValidaLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InteekServiceModel.ValidaLogin_Result">
+                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+                <ScalarProperty Name="id_Perfil" ColumnName="id_Perfil" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="DomicilioDir" ColumnName="DomicilioDir" />
+                <ScalarProperty Name="DomicilioCor" ColumnName="DomicilioCor" />
+                <ScalarProperty Name="Supervisa" ColumnName="Supervisa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RegistraDatosUsuario" FunctionName="InteekServiceModel.Store.RegistraDatosUsuario" />
+          <EntitySetMapping Name="ExceptionLog">
+            <EntityTypeMapping TypeName="InteekServiceModel.ExceptionLog">
+              <MappingFragment StoreEntitySet="ExceptionLog">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="TargetSite" ColumnName="TargetSite" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="RegistraTicket" FunctionName="InteekServiceModel.Store.RegistraTicket" />
+          <FunctionImportMapping FunctionImportName="AsignaTicket" FunctionName="InteekServiceModel.Store.AsignaTicket" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
