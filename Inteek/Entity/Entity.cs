@@ -23,7 +23,7 @@ namespace Entity
             get { return _Error; }
         }
 
-
+        //prueba
 
         public List<ValidaLogin_Result> validaLogin(string usuario, string password)
         {
