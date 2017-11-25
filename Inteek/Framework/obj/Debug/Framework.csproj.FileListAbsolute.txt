@@ -1,0 +1,7 @@
+C:\Productos\Inteek\Framework\obj\Debug\Framework.csprojResolveAssemblyReference.cache
+C:\Productos\Inteek\Framework\bin\Debug\Framework.dll
+C:\Productos\Inteek\Framework\bin\Debug\Framework.pdb
+C:\Productos\Inteek\Framework\bin\Debug\Entity.dll
+C:\Productos\Inteek\Framework\bin\Debug\Entity.pdb
+C:\Productos\Inteek\Framework\obj\Debug\Framework.dll
+C:\Productos\Inteek\Framework\obj\Debug\Framework.pdb

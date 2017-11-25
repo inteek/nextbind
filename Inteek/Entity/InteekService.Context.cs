@@ -132,5 +132,274 @@ namespace Entity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AsignaTicket", id_usuarioParameter, id_agenteParameter, id_ticketParameter, id_estatusParameter);
         }
+    
+        public virtual ObjectResult<ConsultaTicketsPorArea_Result> ConsultaTicketsPorArea(Nullable<int> id_usuario, Nullable<int> id_area)
+        {
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            var id_areaParameter = id_area.HasValue ?
+                new ObjectParameter("id_area", id_area) :
+                new ObjectParameter("id_area", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTicketsPorArea_Result>("ConsultaTicketsPorArea", id_usuarioParameter, id_areaParameter);
+        }
+    
+        public virtual int ActualizaDatosUsuario(string nombre, string apellidop, string apellidom, string domiciliodir, string domiciliocord, Nullable<int> perfil, Nullable<int> id_usuario)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var apellidopParameter = apellidop != null ?
+                new ObjectParameter("apellidop", apellidop) :
+                new ObjectParameter("apellidop", typeof(string));
+    
+            var apellidomParameter = apellidom != null ?
+                new ObjectParameter("apellidom", apellidom) :
+                new ObjectParameter("apellidom", typeof(string));
+    
+            var domiciliodirParameter = domiciliodir != null ?
+                new ObjectParameter("domiciliodir", domiciliodir) :
+                new ObjectParameter("domiciliodir", typeof(string));
+    
+            var domiciliocordParameter = domiciliocord != null ?
+                new ObjectParameter("domiciliocord", domiciliocord) :
+                new ObjectParameter("domiciliocord", typeof(string));
+    
+            var perfilParameter = perfil.HasValue ?
+                new ObjectParameter("perfil", perfil) :
+                new ObjectParameter("perfil", typeof(int));
+    
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizaDatosUsuario", nombreParameter, apellidopParameter, apellidomParameter, domiciliodirParameter, domiciliocordParameter, perfilParameter, id_usuarioParameter);
+        }
+    
+        public virtual int ActualizaTicketAFinalizado(Nullable<int> id_usuario, Nullable<int> id_ticket, Nullable<int> id_estatus, string motivo)
+        {
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            var id_ticketParameter = id_ticket.HasValue ?
+                new ObjectParameter("id_ticket", id_ticket) :
+                new ObjectParameter("id_ticket", typeof(int));
+    
+            var id_estatusParameter = id_estatus.HasValue ?
+                new ObjectParameter("id_estatus", id_estatus) :
+                new ObjectParameter("id_estatus", typeof(int));
+    
+            var motivoParameter = motivo != null ?
+                new ObjectParameter("motivo", motivo) :
+                new ObjectParameter("motivo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizaTicketAFinalizado", id_usuarioParameter, id_ticketParameter, id_estatusParameter, motivoParameter);
+        }
+    
+        public virtual int ActualizaTicketEnProceso(Nullable<int> id_agente, Nullable<int> id_ticket, Nullable<int> id_estatus)
+        {
+            var id_agenteParameter = id_agente.HasValue ?
+                new ObjectParameter("id_agente", id_agente) :
+                new ObjectParameter("id_agente", typeof(int));
+    
+            var id_ticketParameter = id_ticket.HasValue ?
+                new ObjectParameter("id_ticket", id_ticket) :
+                new ObjectParameter("id_ticket", typeof(int));
+    
+            var id_estatusParameter = id_estatus.HasValue ?
+                new ObjectParameter("id_estatus", id_estatus) :
+                new ObjectParameter("id_estatus", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizaTicketEnProceso", id_agenteParameter, id_ticketParameter, id_estatusParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaTicketsNoAsignados_Result> ConsultaTicketsNoAsignados(Nullable<int> id_usuario)
+        {
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTicketsNoAsignados_Result>("ConsultaTicketsNoAsignados", id_usuarioParameter);
+        }
+    
+        public virtual int ActualizaTicketEnAprobacion(Nullable<int> id_usuario, Nullable<int> id_ticket, Nullable<int> id_estatus, Nullable<int> solucion)
+        {
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            var id_ticketParameter = id_ticket.HasValue ?
+                new ObjectParameter("id_ticket", id_ticket) :
+                new ObjectParameter("id_ticket", typeof(int));
+    
+            var id_estatusParameter = id_estatus.HasValue ?
+                new ObjectParameter("id_estatus", id_estatus) :
+                new ObjectParameter("id_estatus", typeof(int));
+    
+            var solucionParameter = solucion.HasValue ?
+                new ObjectParameter("Solucion", solucion) :
+                new ObjectParameter("Solucion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizaTicketEnAprobacion", id_usuarioParameter, id_ticketParameter, id_estatusParameter, solucionParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaBitacoraPorTicket_Result> ConsultaBitacoraPorTicket(Nullable<int> id_ticket)
+        {
+            var id_ticketParameter = id_ticket.HasValue ?
+                new ObjectParameter("id_ticket", id_ticket) :
+                new ObjectParameter("id_ticket", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaBitacoraPorTicket_Result>("ConsultaBitacoraPorTicket", id_ticketParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaTicketsAsignados_Result> ConsultaTicketsAsignados(Nullable<int> id_usuario)
+        {
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTicketsAsignados_Result>("ConsultaTicketsAsignados", id_usuarioParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaTicketsCreados_Result> ConsultaTicketsCreados(Nullable<int> id_usuario)
+        {
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTicketsCreados_Result>("ConsultaTicketsCreados", id_usuarioParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaUsuarios_Result> ConsultaUsuarios()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaUsuarios_Result>("ConsultaUsuarios");
+        }
+    
+        public virtual int AsignaGrupoUsuario(Nullable<int> id_area, Nullable<int> id_usuario)
+        {
+            var id_areaParameter = id_area.HasValue ?
+                new ObjectParameter("id_area", id_area) :
+                new ObjectParameter("id_area", typeof(int));
+    
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AsignaGrupoUsuario", id_areaParameter, id_usuarioParameter);
+        }
+    
+        public virtual int AsignaTipoServicioGrupo(Nullable<int> id_TipoServicio, Nullable<int> id_Grupo)
+        {
+            var id_TipoServicioParameter = id_TipoServicio.HasValue ?
+                new ObjectParameter("id_TipoServicio", id_TipoServicio) :
+                new ObjectParameter("id_TipoServicio", typeof(int));
+    
+            var id_GrupoParameter = id_Grupo.HasValue ?
+                new ObjectParameter("id_Grupo", id_Grupo) :
+                new ObjectParameter("id_Grupo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AsignaTipoServicioGrupo", id_TipoServicioParameter, id_GrupoParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaAreasPorUsuario_Result> ConsultaAreasPorUsuario(Nullable<int> id_usuario)
+        {
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaAreasPorUsuario_Result>("ConsultaAreasPorUsuario", id_usuarioParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaCausaSolucion_Result> ConsultaCausaSolucion()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaCausaSolucion_Result>("ConsultaCausaSolucion");
+        }
+    
+        public virtual ObjectResult<ConsultaTickets_Result> ConsultaTickets()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTickets_Result>("ConsultaTickets");
+        }
+    
+        public virtual ObjectResult<ConsultaTicketsSupervisor_Result> ConsultaTicketsSupervisor(Nullable<int> id_usuario)
+        {
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTicketsSupervisor_Result>("ConsultaTicketsSupervisor", id_usuarioParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaTipoServicioGrupo_Result> ConsultaTipoServicioGrupo(Nullable<int> id_Grupo)
+        {
+            var id_GrupoParameter = id_Grupo.HasValue ?
+                new ObjectParameter("id_Grupo", id_Grupo) :
+                new ObjectParameter("id_Grupo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTipoServicioGrupo_Result>("ConsultaTipoServicioGrupo", id_GrupoParameter);
+        }
+    
+        public virtual ObjectResult<ConsultaUsuarioGrupo_Result> ConsultaUsuarioGrupo(Nullable<int> id_Grupo)
+        {
+            var id_GrupoParameter = id_Grupo.HasValue ?
+                new ObjectParameter("id_Grupo", id_Grupo) :
+                new ObjectParameter("id_Grupo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaUsuarioGrupo_Result>("ConsultaUsuarioGrupo", id_GrupoParameter);
+        }
+    
+        public virtual int EliminaTipoServicioGrupo(Nullable<int> id_tiposervicio, Nullable<int> id_grupo)
+        {
+            var id_tiposervicioParameter = id_tiposervicio.HasValue ?
+                new ObjectParameter("id_tiposervicio", id_tiposervicio) :
+                new ObjectParameter("id_tiposervicio", typeof(int));
+    
+            var id_grupoParameter = id_grupo.HasValue ?
+                new ObjectParameter("id_grupo", id_grupo) :
+                new ObjectParameter("id_grupo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminaTipoServicioGrupo", id_tiposervicioParameter, id_grupoParameter);
+        }
+    
+        public virtual int EliminaUsuarioGrupo(Nullable<int> id_area, Nullable<int> id_usuario, Nullable<int> id_asociar)
+        {
+            var id_areaParameter = id_area.HasValue ?
+                new ObjectParameter("id_area", id_area) :
+                new ObjectParameter("id_area", typeof(int));
+    
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            var id_asociarParameter = id_asociar.HasValue ?
+                new ObjectParameter("id_asociar", id_asociar) :
+                new ObjectParameter("id_asociar", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EliminaUsuarioGrupo", id_areaParameter, id_usuarioParameter, id_asociarParameter);
+        }
+    
+        public virtual int AsignaSupervisorGrupo(Nullable<int> id_area, Nullable<int> id_usuario, Nullable<bool> supervisa, Nullable<int> id_asociar)
+        {
+            var id_areaParameter = id_area.HasValue ?
+                new ObjectParameter("id_area", id_area) :
+                new ObjectParameter("id_area", typeof(int));
+    
+            var id_usuarioParameter = id_usuario.HasValue ?
+                new ObjectParameter("id_usuario", id_usuario) :
+                new ObjectParameter("id_usuario", typeof(int));
+    
+            var supervisaParameter = supervisa.HasValue ?
+                new ObjectParameter("supervisa", supervisa) :
+                new ObjectParameter("supervisa", typeof(bool));
+    
+            var id_asociarParameter = id_asociar.HasValue ?
+                new ObjectParameter("id_asociar", id_asociar) :
+                new ObjectParameter("id_asociar", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AsignaSupervisorGrupo", id_areaParameter, id_usuarioParameter, supervisaParameter, id_asociarParameter);
+        }
     }
 }

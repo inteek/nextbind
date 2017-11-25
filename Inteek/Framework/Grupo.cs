@@ -1,0 +1,199 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Entity;
+
+namespace Framework
+{
+    public class Grupo
+    {
+
+        #region VARIABLES
+        Exception _Error;
+        #endregion
+
+        public Exception Error
+        {
+            get { return _Error; }
+        }
+
+        public bool AsignaGrupoUsuario(int id_Area, int id_Usuario)
+        {
+            try
+            {
+                var objEntity = new Entity.Entity();
+                objEntity.AsignaGrupoUsuario(id_Area, id_Usuario);
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+                return false;
+            }
+        }
+
+        public bool AsignaSupervisorGrupo(int id_Area, int id_Usuario, bool supervisa, int id_Asociar)
+        {
+            try
+            {
+                var objEntity = new Entity.Entity();
+                objEntity.AsignaSupervisorGrupo(id_Area, id_Usuario, supervisa, id_Asociar);
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+                return false;
+            }
+        }
+
+        public bool AsignaTipoServicioGrupo(int id_TipoServicio, int id_Grupo)
+        {
+            try
+            {
+                var objEntity = new Entity.Entity();
+                objEntity.AsignaTipoServicioGrupo(id_TipoServicio, id_Grupo);
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+                return false;
+            }
+        }
+
+        public List<Libreria.ResultTipoServicioGrupo> ConsultaTipoServicioGrupo(int id_Grupo)
+        {
+            List<Libreria.ResultTipoServicioGrupo> resultado = null;
+            try
+            {
+                var objEntity = new Entity.Entity();
+                resultado = objEntity.ConsultaTipoServicioGrupo(id_Grupo)
+                    .Select(x => new Libreria.ResultTipoServicioGrupo
+                    {
+                        id_Servicio = x.id_Servicio,
+                        Descripcion_servicio = x.Descripcion_servicio
+                    }).ToList();
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
+        }
+
+        public bool EliminaTipoServicioGrupo(int id_TipoServicio, int id_Grupo)
+        {
+            try
+            {
+                var objEntity = new Entity.Entity();
+                objEntity.EliminaTipoServicioGrupo(id_TipoServicio, id_Grupo);
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+                return false;
+            }
+        }
+
+        public List<Libreria.ResultUsuarioGrupo> ConsultaUsuarioGrupo(int id_Grupo)
+        {
+            List<Libreria.ResultUsuarioGrupo> resultado = null;
+            try
+            {
+                var objEntity = new Entity.Entity();
+                resultado = objEntity.ConsultaUsuarioGrupo(id_Grupo)
+                    .Select(x => new Libreria.ResultUsuarioGrupo
+                    {
+                        id_AsociarGU = x.id_AsociarGU,
+                        id_Usuario = x.id_Usuario,
+                        Nombre = x.Nombre,
+                        Correo = x.Correo,
+                        Grupo = x.Grupo,
+                        Supervisa = x.Supervisa,
+                        Activo = x.Activo
+                    }).ToList();
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
+        }
+
+        public bool EliminaUsuarioGrupo(int id_Area, int id_Usuario, int id_Asociar)
+        {
+            try
+            {
+                var objEntity = new Entity.Entity();
+                objEntity.EliminaUsuarioGrupo(id_Area, id_Usuario, id_Asociar);
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+                return false;
+            }
+        }
+
+        public List<Libreria.ResultCausaSolucion> ConsultaCausaSolucion()
+        {
+            List<Libreria.ResultCausaSolucion> resultado = null;
+            try
+            {
+                var objEntity = new Entity.Entity();
+                resultado = objEntity.ConsultaCausaSolucion()
+                    .Select(x => new Libreria.ResultCausaSolucion
+                    {
+                        id_CausaSolucion = x.id_CausaSolucion,
+                        Descripcion_CausaSol = x.Descripcion_CausaSol
+                    }).ToList();
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
+        }
+    }
+}

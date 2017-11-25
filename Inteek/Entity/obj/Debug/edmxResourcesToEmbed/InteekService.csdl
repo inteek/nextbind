@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InteekServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InteekServiceEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="ValidaLogin" ReturnType="Collection(InteekServiceModel.ValidaLogin_Result)">
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="RegistraDatosUsuario">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="apellidop" Mode="In" Type="String" />
+      <Parameter Name="apellidom" Mode="In" Type="String" />
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="domiciliodir" Mode="In" Type="String" />
+      <Parameter Name="domiciliocord" Mode="In" Type="String" />
+      <Parameter Name="perfil" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="ExceptionLog" EntityType="InteekServiceModel.ExceptionLog" />
+    <FunctionImport Name="RegistraTicket">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+      <Parameter Name="titulo" Mode="In" Type="String" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+      <Parameter Name="tiposervicio" Mode="In" Type="Int32" />
+      <Parameter Name="idarea" Mode="In" Type="Int32" />
+      <Parameter Name="ruta" Mode="In" Type="String" />
+      <Parameter Name="estatus" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AsignaTicket">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="id_agente" Mode="In" Type="Int32" />
+      <Parameter Name="id_ticket" Mode="In" Type="Int32" />
+      <Parameter Name="id_estatus" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaTicketsPorArea" ReturnType="Collection(InteekServiceModel.ConsultaTicketsPorArea_Result)">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="id_area" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizaDatosUsuario">
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="apellidop" Mode="In" Type="String" />
+      <Parameter Name="apellidom" Mode="In" Type="String" />
+      <Parameter Name="domiciliodir" Mode="In" Type="String" />
+      <Parameter Name="domiciliocord" Mode="In" Type="String" />
+      <Parameter Name="perfil" Mode="In" Type="Int32" />
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizaTicketAFinalizado">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="id_ticket" Mode="In" Type="Int32" />
+      <Parameter Name="id_estatus" Mode="In" Type="Int32" />
+      <Parameter Name="motivo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizaTicketEnProceso">
+      <Parameter Name="id_agente" Mode="In" Type="Int32" />
+      <Parameter Name="id_ticket" Mode="In" Type="Int32" />
+      <Parameter Name="id_estatus" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaTicketsNoAsignados" ReturnType="Collection(InteekServiceModel.ConsultaTicketsNoAsignados_Result)">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ActualizaTicketEnAprobacion">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="id_ticket" Mode="In" Type="Int32" />
+      <Parameter Name="id_estatus" Mode="In" Type="Int32" />
+      <Parameter Name="Solucion" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaBitacoraPorTicket" ReturnType="Collection(InteekServiceModel.ConsultaBitacoraPorTicket_Result)">
+      <Parameter Name="id_ticket" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaTicketsAsignados" ReturnType="Collection(InteekServiceModel.ConsultaTicketsAsignados_Result)">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaTicketsCreados" ReturnType="Collection(InteekServiceModel.ConsultaTicketsCreados_Result)">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaUsuarios" ReturnType="Collection(InteekServiceModel.ConsultaUsuarios_Result)" />
+    <FunctionImport Name="AsignaGrupoUsuario">
+      <Parameter Name="id_area" Mode="In" Type="Int32" />
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AsignaTipoServicioGrupo">
+      <Parameter Name="id_TipoServicio" Mode="In" Type="Int32" />
+      <Parameter Name="id_Grupo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaAreasPorUsuario" ReturnType="Collection(InteekServiceModel.ConsultaAreasPorUsuario_Result)">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaCausaSolucion" ReturnType="Collection(InteekServiceModel.ConsultaCausaSolucion_Result)" />
+    <FunctionImport Name="ConsultaTickets" ReturnType="Collection(InteekServiceModel.ConsultaTickets_Result)" />
+    <FunctionImport Name="ConsultaTicketsSupervisor" ReturnType="Collection(InteekServiceModel.ConsultaTicketsSupervisor_Result)">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaTipoServicioGrupo" ReturnType="Collection(InteekServiceModel.ConsultaTipoServicioGrupo_Result)">
+      <Parameter Name="id_Grupo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaUsuarioGrupo" ReturnType="Collection(InteekServiceModel.ConsultaUsuarioGrupo_Result)">
+      <Parameter Name="id_Grupo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EliminaTipoServicioGrupo">
+      <Parameter Name="id_tiposervicio" Mode="In" Type="Int32" />
+      <Parameter Name="id_grupo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EliminaUsuarioGrupo">
+      <Parameter Name="id_area" Mode="In" Type="Int32" />
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="id_asociar" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="AsignaSupervisorGrupo">
+      <Parameter Name="id_area" Mode="In" Type="Int32" />
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="supervisa" Mode="In" Type="Boolean" />
+      <Parameter Name="id_asociar" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="ValidaLogin_Result">
+    <Property Type="Int32" Name="id_Usuario" Nullable="false" />
+    <Property Type="Int32" Name="id_Perfil" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DomicilioDir" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DomicilioCor" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="Supervisa" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ExceptionLog">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TargetSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+  </EntityType>
+  <ComplexType Name="ConsultaTicketsPorArea_Result">
+    <Property Type="Int32" Name="id_Ticket" Nullable="false" />
+    <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Tipo_de_servicio" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usuario_Asignado" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="ConsultaTicketsNoAsignados_Result">
+    <Property Type="Int32" Name="id_Ticket" Nullable="false" />
+    <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Tipo_de_servicio" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usuario_Asignado" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="ConsultaBitacoraPorTicket_Result">
+    <Property Type="Int32" Name="id_Bitacora" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="51" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="String" Name="Bitacora" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+    <Property Type="Int32" Name="id_Ticket" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ConsultaTicketsAsignados_Result">
+    <Property Type="Int32" Name="id_Ticket" Nullable="false" />
+    <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Tipo_de_servicio" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usuario_Asignado" Nullable="true" MaxLength="51" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Ruta" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="ConsultaTicketsCreados_Result">
+    <Property Type="Int32" Name="id_Ticket" Nullable="false" />
+    <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Tipo_de_servicio" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usuario_Asignado" Nullable="true" MaxLength="51" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Ruta" Nullable="true" MaxLength="150" />
+  </ComplexType>
+  <ComplexType Name="ConsultaUsuarios_Result">
+    <Property Type="Int32" Name="id_Usuario" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="77" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Supervisa" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Activo" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <ComplexType Name="ConsultaAreasPorUsuario_Result">
+    <Property Type="Int32" Name="id_Grupo" Nullable="false" />
+    <Property Type="String" Name="Descripcion_grupo" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="ConsultaCausaSolucion_Result">
+    <Property Type="Int32" Name="id_CausaSolucion" Nullable="false" />
+    <Property Type="String" Name="Descripcion_CausaSol" Nullable="true" MaxLength="300" />
+  </ComplexType>
+  <ComplexType Name="ConsultaTickets_Result">
+    <Property Type="Int32" Name="id_Ticket" Nullable="false" />
+    <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Tipo_de_servicio" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usuario_Asignado" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="ConsultaTicketsSupervisor_Result">
+    <Property Type="Int32" Name="id_Ticket" Nullable="false" />
+    <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Tipo_de_servicio" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usuario_Asignado" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="ConsultaTipoServicioGrupo_Result">
+    <Property Type="Int32" Name="id_Servicio" Nullable="false" />
+    <Property Type="String" Name="Descripcion_servicio" Nullable="true" MaxLength="60" />
+  </ComplexType>
+  <ComplexType Name="ConsultaUsuarioGrupo_Result">
+    <Property Type="Int32" Name="id_AsociarGU" Nullable="false" />
+    <Property Type="Int32" Name="id_Usuario" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="77" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Supervisa" Nullable="false" MaxLength="2" />
+    <Property Type="String" Name="Activo" Nullable="false" MaxLength="2" />
+  </ComplexType>
+</Schema>

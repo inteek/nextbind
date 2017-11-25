@@ -42,6 +42,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Framework\bin\Debug\Framework.dll</HintPath>
@@ -75,6 +83,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -94,23 +103,47 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="scripts\ai.0.22.9-build00167.js" />
-    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Servicios\Wcf.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Servicios\Bitacora.svc" />
+    <Content Include="Servicios\Grupo.svc" />
+    <Content Include="Servicios\Ticket.svc" />
+    <Content Include="Servicios\Usuario.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entidades\Response.cs" />
-    <Compile Include="Entidades\ResponseError.cs" />
-    <Compile Include="Entidades\Result_ConsultaBitacora.cs" />
-    <Compile Include="Entidades\Result_ConsultaDocumentosTicket.cs" />
-    <Compile Include="Entidades\Result_ConsultaTicket.cs" />
-    <Compile Include="Entidades\Result_ConsultaTicketsPorArea.cs" />
+    <Compile Include="Entidades\AreasPorUsuario.cs" />
+    <Compile Include="Entidades\CausaSolucion.cs" />
+    <Compile Include="Entidades\ConsultaTickets.cs" />
+    <Compile Include="Entidades\ConsultaUsuarios.cs" />
+    <Compile Include="Contratos\Datos\Response.cs" />
+    <Compile Include="Contratos\Datos\ResponseError.cs" />
+    <Compile Include="Entidades\Bitacoras.cs" />
+    <Compile Include="Entidades\Ticket.cs" />
+    <Compile Include="Entidades\TicketsNoAsignados.cs" />
+    <Compile Include="Entidades\TicketsPorAgente.cs" />
+    <Compile Include="Entidades\TicketsPorArea.cs" />
+    <Compile Include="Entidades\TicketsPorCliente.cs" />
+    <Compile Include="Entidades\TicketsSupervisor.cs" />
+    <Compile Include="Entidades\TipoServicioGrupo.cs" />
+    <Compile Include="Entidades\UsuarioGrupo.cs" />
     <Compile Include="Entidades\Usuarios.cs" />
-    <Compile Include="Servicios\Wcf.svc.cs">
-      <DependentUpon>Wcf.svc</DependentUpon>
+    <Compile Include="Contratos\Operaciones\ITicket.cs" />
+    <Compile Include="Servicios\Bitacora.svc.cs">
+      <DependentUpon>Bitacora.svc</DependentUpon>
     </Compile>
-    <Compile Include="Operaciones\IWcf.cs" />
+    <Compile Include="Contratos\Operaciones\IBitacora.cs" />
+    <Compile Include="Servicios\Grupo.svc.cs">
+      <DependentUpon>Grupo.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Contratos\Operaciones\IGrupo.cs" />
+    <Compile Include="Servicios\Ticket.svc.cs">
+      <DependentUpon>Ticket.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\Usuario.svc.cs">
+      <DependentUpon>Usuario.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Contratos\Operaciones\IUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

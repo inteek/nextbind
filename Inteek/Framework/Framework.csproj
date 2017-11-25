@@ -31,10 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Entity">
       <HintPath>..\Entity\bin\Debug\Entity.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,8 +45,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bitacora.cs" />
     <Compile Include="ExceptionLog.cs" />
+    <Compile Include="Grupo.cs" />
+    <Compile Include="Libreria\ResultAreasPorUsuario.cs" />
+    <Compile Include="Libreria\ResultCausaSolucion.cs" />
+    <Compile Include="Libreria\ResultTickets.cs" />
+    <Compile Include="Libreria\ResultTicketsPorAgente.cs" />
+    <Compile Include="Libreria\ResultBitacora.cs" />
+    <Compile Include="Libreria\ResultConsultaUsuarios.cs" />
+    <Compile Include="Libreria\ResultTicketsNoAsignados.cs" />
+    <Compile Include="Libreria\ResultTicketsPorArea.cs" />
     <Compile Include="Libreria\ResultExceptionLog.cs" />
+    <Compile Include="Libreria\ResultTicketsPorCliente.cs" />
+    <Compile Include="Libreria\ResultTicketsSupervisor.cs" />
+    <Compile Include="Libreria\ResultTipoServicioGrupo.cs" />
+    <Compile Include="Libreria\ResultUsuarioGrupo.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Usuarios.cs" />
     <Compile Include="Libreria\ResultUsuarios.cs" />

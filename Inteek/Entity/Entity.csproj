@@ -52,6 +52,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultaAreasPorUsuario_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaBitacoraPorTicket_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaCausaSolucion_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaTicketsAsignados_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaTicketsCreados_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaTicketsNoAsignados_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaTicketsPorArea_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaTicketsSupervisor_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaTickets_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaTipoServicioGrupo_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaUsuarioGrupo_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaUsuarios_Result.cs">
+      <DependentUpon>InteekService.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity.cs" />
     <Compile Include="ExceptionLog.cs">
       <DependentUpon>InteekService.tt</DependentUpon>
@@ -83,7 +119,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="InteekService.edmx.diagram">
       <DependentUpon>InteekService.edmx</DependentUpon>
     </None>

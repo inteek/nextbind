@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entity;
 
 namespace Framework
 {
@@ -60,6 +61,7 @@ namespace Framework
             try
             {
                 var objEntity = new Entity.Entity();
+                objEntity.ActualizaDatosUsuario(id_Usuario, nombre, apellidoPaterno, apellidoMaterno, correo, password, domicilioDir, domicilioCor);
                 return true;
             }
             catch (Exception ex)
@@ -67,6 +69,58 @@ namespace Framework
                 _Error = ex;
                 return false;
             }
+        }
+
+        public List<ResultConsultaUsuarios> ConsultarUsuarios()
+        {
+            List<ResultConsultaUsuarios> resultado = null;
+            try
+            {
+                var objEntity = new Entity.Entity();
+                resultado = objEntity.ConsultarUsuarios()
+                    .Select(x => new ResultConsultaUsuarios
+                    {
+                      id_Usuario = x.id_Usuario,
+                      Nombre = x.Nombre,
+                      Correo = x.Correo,
+                      Grupo = x.Grupo,
+                      Supervisa = x.Supervisa,
+                      Activo = x.Activo
+                      }).ToList();
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
+        }
+
+        public List<ResultAreasPorUsuario> ConsultaAreasPorUsuario(int id_Usuario)
+        {
+            List<ResultAreasPorUsuario> resultado = null;
+            try
+            {
+                var objEntity = new Entity.Entity();
+                resultado = objEntity.ConsultaAreasPorUsuario(id_Usuario)
+                    .Select(x => new ResultAreasPorUsuario
+                    {
+                        id_Grupo = x.id_Grupo,
+                        Descripcion_grupo = x.Descripcion_grupo,
+                    }).ToList();
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                }
+            }
+            catch (Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
         }
 
         public Exception Error
