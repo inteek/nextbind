@@ -238,16 +238,16 @@ namespace WCF.Servicios
                 return result;
             }
         }
-        public Response<Entidades.TicketsNoAsignados> ConsultaTicketsNoAsignados(int id_Usuario)
+        public Response<Entidades.TicketsNoAsignados> ConsultaTicketsNoAsignados(int id_Usuario, int idGrupo)
         {
             try
             {
                 var objFramework = new Framework.Ticket();
-                List<Framework.Libreria.ResultTicketsNoAsignados> lista = objFramework.ConsultaTicketsNoAsignados(id_Usuario);
+                List<Framework.Libreria.ResultTicketsNoAsignados> lista = objFramework.ConsultaTicketsNoAsignados(id_Usuario, idGrupo);
                 if (objFramework.Error == null)
                 {
                     Response<Entidades.TicketsNoAsignados> result = new Response<Entidades.TicketsNoAsignados>();
-                    result.List = objFramework.ConsultaTicketsNoAsignados(id_Usuario).Select
+                    result.List = objFramework.ConsultaTicketsNoAsignados(id_Usuario, idGrupo).Select
                         (x => new Entidades.TicketsNoAsignados
                         {
                             id_Ticket = x.id_Ticket,

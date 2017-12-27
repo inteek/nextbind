@@ -1,21 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="InteekServiceModelStoreContainer" CdmEntityContainer="InteekServiceEntities">
-    <FunctionImportMapping FunctionImportName="ValidaLogin" FunctionName="InteekServiceModel.Store.ValidaLogin">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="InteekServiceModel.ValidaLogin_Result">
-          <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
-          <ScalarProperty Name="id_Perfil" ColumnName="id_Perfil" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
-          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
-          <ScalarProperty Name="Correo" ColumnName="Correo" />
-          <ScalarProperty Name="DomicilioDir" ColumnName="DomicilioDir" />
-          <ScalarProperty Name="DomicilioCor" ColumnName="DomicilioCor" />
-          <ScalarProperty Name="Supervisa" ColumnName="Supervisa" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="RegistraDatosUsuario" FunctionName="InteekServiceModel.Store.RegistraDatosUsuario" />
     <EntitySetMapping Name="ExceptionLog">
       <EntityTypeMapping TypeName="InteekServiceModel.ExceptionLog">
@@ -188,5 +173,200 @@
     <FunctionImportMapping FunctionImportName="EliminaTipoServicioGrupo" FunctionName="InteekServiceModel.Store.EliminaTipoServicioGrupo" />
     <FunctionImportMapping FunctionImportName="EliminaUsuarioGrupo" FunctionName="InteekServiceModel.Store.EliminaUsuarioGrupo" />
     <FunctionImportMapping FunctionImportName="AsignaSupervisorGrupo" FunctionName="InteekServiceModel.Store.AsignaSupervisorGrupo" />
+    <EntitySetMapping Name="tb_AsociarGrupoUsuario">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_AsociarGrupoUsuario">
+        <MappingFragment StoreEntitySet="tb_AsociarGrupoUsuario">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Supervisa" ColumnName="Supervisa" />
+          <ScalarProperty Name="id_Grupo" ColumnName="id_Grupo" />
+          <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+          <ScalarProperty Name="id_AsociarGU" ColumnName="id_AsociarGU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Bitacora">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Bitacora">
+        <MappingFragment StoreEntitySet="tb_Bitacora">
+          <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+          <ScalarProperty Name="id_Estatus" ColumnName="id_Estatus" />
+          <ScalarProperty Name="id_Descripcion" ColumnName="id_Descripcion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+          <ScalarProperty Name="id_Bitacora" ColumnName="id_Bitacora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CausaSolucion">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_CausaSolucion">
+        <MappingFragment StoreEntitySet="tb_CausaSolucion">
+          <ScalarProperty Name="Descripcion_CausaSol" ColumnName="Descripcion_CausaSol" />
+          <ScalarProperty Name="id_CausaSolucion" ColumnName="id_CausaSolucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_DescripcionBitacora">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_DescripcionBitacora">
+        <MappingFragment StoreEntitySet="tb_DescripcionBitacora">
+          <ScalarProperty Name="Descripcion_bitacora" ColumnName="Descripcion_bitacora" />
+          <ScalarProperty Name="id_DescBitacora" ColumnName="id_DescBitacora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Dispositivo">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Dispositivo">
+        <MappingFragment StoreEntitySet="tb_Dispositivo">
+          <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+          <ScalarProperty Name="Plataforma" ColumnName="Plataforma" />
+          <ScalarProperty Name="id_Dispositivo" ColumnName="id_Dispositivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Documento">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Documento">
+        <MappingFragment StoreEntitySet="tb_Documento">
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="id_Documento" ColumnName="id_Documento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Estatus">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Estatus">
+        <MappingFragment StoreEntitySet="tb_Estatus">
+          <ScalarProperty Name="Descripcion_estatus" ColumnName="Descripcion_estatus" />
+          <ScalarProperty Name="id_Estatus" ColumnName="id_Estatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Grupo">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Grupo">
+        <MappingFragment StoreEntitySet="tb_Grupo">
+          <ScalarProperty Name="id_GrupoSuperior" ColumnName="id_GrupoSuperior" />
+          <ScalarProperty Name="Clave_Grupo" ColumnName="Clave_Grupo" />
+          <ScalarProperty Name="Descripcion_grupo" ColumnName="Descripcion_grupo" />
+          <ScalarProperty Name="id_Grupo" ColumnName="id_Grupo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Perfil">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Perfil">
+        <MappingFragment StoreEntitySet="tb_Perfil">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="id_Perfil" ColumnName="id_Perfil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Prioridad">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Prioridad">
+        <MappingFragment StoreEntitySet="tb_Prioridad">
+          <ScalarProperty Name="Descripcion_prioridad" ColumnName="Descripcion_prioridad" />
+          <ScalarProperty Name="id_Prioridad" ColumnName="id_Prioridad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Solucion">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Solucion">
+        <MappingFragment StoreEntitySet="tb_Solucion">
+          <ScalarProperty Name="id_CausaSolucion" ColumnName="id_CausaSolucion" />
+          <ScalarProperty Name="MotivoRechazo" ColumnName="MotivoRechazo" />
+          <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+          <ScalarProperty Name="id_Estatus" ColumnName="id_Estatus" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="id_Solucion" ColumnName="id_Solucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Ticket">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Ticket">
+        <MappingFragment StoreEntitySet="tb_Ticket">
+          <ScalarProperty Name="id_Prioridad" ColumnName="id_Prioridad" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="id_Estatus" ColumnName="id_Estatus" />
+          <ScalarProperty Name="id_UsuarioAsignado" ColumnName="id_UsuarioAsignado" />
+          <ScalarProperty Name="id_Grupo" ColumnName="id_Grupo" />
+          <ScalarProperty Name="Tipo_servicio" ColumnName="Tipo_servicio" />
+          <ScalarProperty Name="Descripcion_ticket" ColumnName="Descripcion_ticket" />
+          <ScalarProperty Name="Titulo_ticket" ColumnName="Titulo_ticket" />
+          <ScalarProperty Name="id_UsuarioLevanta" ColumnName="id_UsuarioLevanta" />
+          <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TicketBitacora">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_TicketBitacora">
+        <MappingFragment StoreEntitySet="tb_TicketBitacora">
+          <ScalarProperty Name="id_Bitacora" ColumnName="id_Bitacora" />
+          <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+          <ScalarProperty Name="id_TB" ColumnName="id_TB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TicketDocumento">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_TicketDocumento">
+        <MappingFragment StoreEntitySet="tb_TicketDocumento">
+          <ScalarProperty Name="id_Documento" ColumnName="id_Documento" />
+          <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+          <ScalarProperty Name="id_TD" ColumnName="id_TD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TicketSolucion">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_TicketSolucion">
+        <MappingFragment StoreEntitySet="tb_TicketSolucion">
+          <ScalarProperty Name="id_Solucion" ColumnName="id_Solucion" />
+          <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+          <ScalarProperty Name="id_TCS" ColumnName="id_TCS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TipoServicio">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_TipoServicio">
+        <MappingFragment StoreEntitySet="tb_TipoServicio">
+          <ScalarProperty Name="id_ServicioSuperior" ColumnName="id_ServicioSuperior" />
+          <ScalarProperty Name="clave_servicio" ColumnName="clave_servicio" />
+          <ScalarProperty Name="Descripcion_servicio" ColumnName="Descripcion_servicio" />
+          <ScalarProperty Name="id_Servicio" ColumnName="id_Servicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TipoServicioGrupo">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_TipoServicioGrupo">
+        <MappingFragment StoreEntitySet="tb_TipoServicioGrupo">
+          <ScalarProperty Name="id_Grupo" ColumnName="id_Grupo" />
+          <ScalarProperty Name="id_TipoServicio" ColumnName="id_TipoServicio" />
+          <ScalarProperty Name="id_TSG" ColumnName="id_TSG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Usuario">
+      <EntityTypeMapping TypeName="InteekServiceModel.tb_Usuario">
+        <MappingFragment StoreEntitySet="tb_Usuario">
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="DomicilioCor" ColumnName="DomicilioCor" />
+          <ScalarProperty Name="DomicilioDir" ColumnName="DomicilioDir" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="id_Perfil" ColumnName="id_Perfil" />
+          <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="RegistraBitacora" FunctionName="InteekServiceModel.Store.RegistraBitacora" />
+    <FunctionImportMapping FunctionImportName="ValidaLogin" FunctionName="InteekServiceModel.Store.ValidaLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InteekServiceModel.ValidaLogin_Result">
+          <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+          <ScalarProperty Name="id_Perfil" ColumnName="id_Perfil" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+          <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="DomicilioDir" ColumnName="DomicilioDir" />
+          <ScalarProperty Name="DomicilioCor" ColumnName="DomicilioCor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

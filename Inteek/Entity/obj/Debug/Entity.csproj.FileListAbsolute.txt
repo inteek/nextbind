@@ -9,3 +9,15 @@ C:\Productos\Inteek\Entity\bin\Debug\es\EntityFramework.resources.dll
 C:\Productos\Inteek\Entity\bin\Debug\es\EntityFramework.SqlServer.resources.dll
 C:\Productos\Inteek\Entity\obj\Debug\Entity.dll
 C:\Productos\Inteek\Entity\obj\Debug\Entity.pdb
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\Entity.dll.config
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\Entity.dll
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\Entity.pdb
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\EntityFramework.dll
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\EntityFramework.xml
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\es\EntityFramework.resources.dll
+C:\Productos\nextbind\Inteek\Entity\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Productos\nextbind\Inteek\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+C:\Productos\nextbind\Inteek\Entity\obj\Debug\Entity.dll
+C:\Productos\nextbind\Inteek\Entity\obj\Debug\Entity.pdb

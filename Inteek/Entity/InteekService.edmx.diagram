@@ -6,6 +6,48 @@
     <edmx:Diagrams>
       <Diagram DiagramId="7b6c2304aac04f6aaa5625aa81619a4d" Name="Diagram1" >
         <EntityTypeShape EntityType="InteekServiceModel.ExceptionLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_AsociarGrupoUsuario" Width="1.5" PointX="5.625" PointY="12.875" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Bitacora" Width="1.5" PointX="13.875" PointY="9.625" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_CausaSolucion" Width="1.5" PointX="8.625" PointY="15.5" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_DescripcionBitacora" Width="1.5" PointX="11.625" PointY="14.5" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Dispositivo" Width="1.5" PointX="8.625" PointY="2.25" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Documento" Width="1.5" PointX="8.625" PointY="5.5" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Estatus" Width="1.5" PointX="6.375" PointY="6.375" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Grupo" Width="1.5" PointX="3.375" PointY="10" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Perfil" Width="1.5" PointX="4.125" PointY="3" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Prioridad" Width="1.5" PointX="6.375" PointY="16.125" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Solucion" Width="1.5" PointX="10.875" PointY="9.75" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Ticket" Width="1.5" PointX="8.625" PointY="8.75" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_TicketBitacora" Width="1.5" PointX="16.125" PointY="10.25" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_TicketDocumento" Width="1.5" PointX="10.875" PointY="6.25" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_TicketSolucion" Width="1.5" PointX="16.125" PointY="7.25" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_TipoServicio" Width="1.5" PointX="3.375" PointY="6.125" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_TipoServicioGrupo" Width="1.5" PointX="5.625" PointY="9.25" />
+        <EntityTypeShape EntityType="InteekServiceModel.tb_Usuario" Width="1.5" PointX="6.375" PointY="0.75" />
+        <AssociationConnector Association="InteekServiceModel.fk_asociarArea" />
+        <AssociationConnector Association="InteekServiceModel.fk_BitT" />
+        <AssociationConnector Association="InteekServiceModel.fk_Descripcionbitacora" />
+        <AssociationConnector Association="InteekServiceModel.fk_Estatusbitacora" />
+        <AssociationConnector Association="InteekServiceModel.fk_Ticketbitacora" />
+        <AssociationConnector Association="InteekServiceModel.fk_Usuarioasignadobitacora" />
+        <AssociationConnector Association="InteekServiceModel.fk_causasol" />
+        <AssociationConnector Association="InteekServiceModel.fk_Usuariodispositivo" />
+        <AssociationConnector Association="InteekServiceModel.fk_DocT" />
+        <AssociationConnector Association="InteekServiceModel.fk_Estatuscierre" />
+        <AssociationConnector Association="InteekServiceModel.fk_Estatusticket" />
+        <AssociationConnector Association="InteekServiceModel.fk_Areaticket" />
+        <AssociationConnector Association="InteekServiceModel.fk_Grupo" />
+        <AssociationConnector Association="InteekServiceModel.fk_PerfilUsuario" />
+        <AssociationConnector Association="InteekServiceModel.fk_priori" />
+        <AssociationConnector Association="InteekServiceModel.fk_Soluciont" />
+        <AssociationConnector Association="InteekServiceModel.fk_Ticketcierre" />
+        <AssociationConnector Association="InteekServiceModel.fk_Ticketb" />
+        <AssociationConnector Association="InteekServiceModel.fk_TicketCS" />
+        <AssociationConnector Association="InteekServiceModel.fk_Ticketd" />
+        <AssociationConnector Association="InteekServiceModel.fk_tiposervicio" />
+        <AssociationConnector Association="InteekServiceModel.fk_usuarioasignado" />
+        <AssociationConnector Association="InteekServiceModel.fk_usuariolevanta" />
+        <AssociationConnector Association="InteekServiceModel.fk_Servicio" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

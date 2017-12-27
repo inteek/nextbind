@@ -141,7 +141,7 @@ namespace WCF.Servicios
             }
         }
 
-        public Response<Entidades.UsuarioGrupo> ConsultaUsuarioGrupo(int id_Grupo)
+        public Response<Entidades.UsuariosGrupo> ConsultaUsuarioGrupo(int id_Grupo)
         {
             try
             {
@@ -149,9 +149,9 @@ namespace WCF.Servicios
                 List<Framework.Libreria.ResultUsuarioGrupo> lista = objFramework.ConsultaUsuarioGrupo(id_Grupo);
                 if (objFramework.Error == null)
                 {
-                    Response<Entidades.UsuarioGrupo> result = new Response<Entidades.UsuarioGrupo>();
+                    Response<Entidades.UsuariosGrupo> result = new Response<Entidades.UsuariosGrupo>();
                     result.List = objFramework.ConsultaUsuarioGrupo(id_Grupo).Select
-                        (x => new Entidades.UsuarioGrupo
+                        (x => new Entidades.UsuariosGrupo
                         {
                             id_AsociarGU = x.id_AsociarGU,
                             id_Usuario = x.id_Usuario,
@@ -166,13 +166,13 @@ namespace WCF.Servicios
                 }
                 else
                 {
-                    ResponseError<Entidades.UsuarioGrupo> result = new ResponseError<Entidades.UsuarioGrupo>(objFramework.Error);
+                    ResponseError<Entidades.UsuariosGrupo> result = new ResponseError<Entidades.UsuariosGrupo>(objFramework.Error);
                     return result;
                 }
             }
             catch (Exception ex)
             {
-                ResponseError<Entidades.UsuarioGrupo> result = new ResponseError<Entidades.UsuarioGrupo>(ex);
+                ResponseError<Entidades.UsuariosGrupo> result = new ResponseError<Entidades.UsuariosGrupo>(ex);
                 return result;
             }
         }

@@ -112,10 +112,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contratos\Operaciones\ServiceKnownTypesHelper.cs" />
     <Compile Include="Entidades\AreasPorUsuario.cs" />
     <Compile Include="Entidades\CausaSolucion.cs" />
     <Compile Include="Entidades\ConsultaTickets.cs" />
-    <Compile Include="Entidades\ConsultaUsuarios.cs" />
     <Compile Include="Contratos\Datos\Response.cs" />
     <Compile Include="Contratos\Datos\ResponseError.cs" />
     <Compile Include="Entidades\Bitacoras.cs" />
@@ -172,16 +172,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55431</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55314/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

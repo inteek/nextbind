@@ -51,7 +51,7 @@ namespace WCF.Contratos.Operaciones
 
         ////[OperationContract]
         //[OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ConsultaTicketsNoAsignados/{id_Usuario}")]
-        //Response<Entidades.TicketsNoAsignados> ConsultaTicketsNoAsignados(int id_Usuario);
+        //Response<Entidades.TicketsNoAsignados> ConsultaTicketsNoAsignados(int id_Usuario, int idGrupo);
 
         ////[OperationContract]
         //[OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ConsultaTickets")]
@@ -65,31 +65,7 @@ namespace WCF.Contratos.Operaciones
 
 
 
-
-
-    public static class ServiceKnownTypesHelper
-    {
-
-        public static IEnumerable<Type> GetKnownTypes( /*ICustomAttributeProvider*/ object provider)
-        {
-
-            List<Type> types = new List<Type>();
-            Type[] GenericArguments = (((System.Type)(provider)).GetGenericArguments());
-
-            Assembly encryptionAssembly = Assembly.Load("WCF");
-            if (GenericArguments != null && GenericArguments.Length > 0)
-            {
-                string strFullName = GenericArguments[0].FullName;
-                Type typeGeneric, typeResponse;
-
-                typeGeneric = typeof(Datos.ResponseError<>);
-                typeResponse = typeGeneric.MakeGenericType(encryptionAssembly.GetType(strFullName));
-                types.Add(typeResponse);
-            }
-
-            return types;
-        }
-    }
+    
 
 
 

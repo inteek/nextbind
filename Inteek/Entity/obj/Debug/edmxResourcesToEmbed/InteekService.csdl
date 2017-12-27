@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="InteekServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="InteekServiceEntities" annotation:LazyLoadingEnabled="true">
-    <FunctionImport Name="ValidaLogin" ReturnType="Collection(InteekServiceModel.ValidaLogin_Result)">
-      <Parameter Name="usuario" Mode="In" Type="String" />
-      <Parameter Name="password" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="RegistraDatosUsuario">
       <Parameter Name="nombre" Mode="In" Type="String" />
       <Parameter Name="apellidop" Mode="In" Type="String" />
@@ -57,6 +53,7 @@
     </FunctionImport>
     <FunctionImport Name="ConsultaTicketsNoAsignados" ReturnType="Collection(InteekServiceModel.ConsultaTicketsNoAsignados_Result)">
       <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="id_grupo" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="ActualizaTicketEnAprobacion">
       <Parameter Name="id_usuario" Mode="In" Type="Int32" />
@@ -75,8 +72,8 @@
     </FunctionImport>
     <FunctionImport Name="ConsultaUsuarios" ReturnType="Collection(InteekServiceModel.ConsultaUsuarios_Result)" />
     <FunctionImport Name="AsignaGrupoUsuario">
-      <Parameter Name="id_area" Mode="In" Type="Int32" />
       <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+      <Parameter Name="id_area" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="AsignaTipoServicioGrupo">
       <Parameter Name="id_TipoServicio" Mode="In" Type="Int32" />
@@ -111,18 +108,132 @@
       <Parameter Name="supervisa" Mode="In" Type="Boolean" />
       <Parameter Name="id_asociar" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="tb_AsociarGrupoUsuario" EntityType="InteekServiceModel.tb_AsociarGrupoUsuario" />
+    <EntitySet Name="tb_Bitacora" EntityType="InteekServiceModel.tb_Bitacora" />
+    <EntitySet Name="tb_CausaSolucion" EntityType="InteekServiceModel.tb_CausaSolucion" />
+    <EntitySet Name="tb_DescripcionBitacora" EntityType="InteekServiceModel.tb_DescripcionBitacora" />
+    <EntitySet Name="tb_Dispositivo" EntityType="InteekServiceModel.tb_Dispositivo" />
+    <EntitySet Name="tb_Documento" EntityType="InteekServiceModel.tb_Documento" />
+    <EntitySet Name="tb_Estatus" EntityType="InteekServiceModel.tb_Estatus" />
+    <EntitySet Name="tb_Grupo" EntityType="InteekServiceModel.tb_Grupo" />
+    <EntitySet Name="tb_Perfil" EntityType="InteekServiceModel.tb_Perfil" />
+    <EntitySet Name="tb_Prioridad" EntityType="InteekServiceModel.tb_Prioridad" />
+    <EntitySet Name="tb_Solucion" EntityType="InteekServiceModel.tb_Solucion" />
+    <EntitySet Name="tb_Ticket" EntityType="InteekServiceModel.tb_Ticket" />
+    <EntitySet Name="tb_TicketBitacora" EntityType="InteekServiceModel.tb_TicketBitacora" />
+    <EntitySet Name="tb_TicketDocumento" EntityType="InteekServiceModel.tb_TicketDocumento" />
+    <EntitySet Name="tb_TicketSolucion" EntityType="InteekServiceModel.tb_TicketSolucion" />
+    <EntitySet Name="tb_TipoServicio" EntityType="InteekServiceModel.tb_TipoServicio" />
+    <EntitySet Name="tb_TipoServicioGrupo" EntityType="InteekServiceModel.tb_TipoServicioGrupo" />
+    <EntitySet Name="tb_Usuario" EntityType="InteekServiceModel.tb_Usuario" />
+    <AssociationSet Name="fk_asociarArea" Association="InteekServiceModel.fk_asociarArea">
+      <End Role="tb_Grupo" EntitySet="tb_Grupo" />
+      <End Role="tb_AsociarGrupoUsuario" EntitySet="tb_AsociarGrupoUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_BitT" Association="InteekServiceModel.fk_BitT">
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+      <End Role="tb_TicketBitacora" EntitySet="tb_TicketBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Descripcionbitacora" Association="InteekServiceModel.fk_Descripcionbitacora">
+      <End Role="tb_DescripcionBitacora" EntitySet="tb_DescripcionBitacora" />
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estatusbitacora" Association="InteekServiceModel.fk_Estatusbitacora">
+      <End Role="tb_Estatus" EntitySet="tb_Estatus" />
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ticketbitacora" Association="InteekServiceModel.fk_Ticketbitacora">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Usuarioasignadobitacora" Association="InteekServiceModel.fk_Usuarioasignadobitacora">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_causasol" Association="InteekServiceModel.fk_causasol">
+      <End Role="tb_CausaSolucion" EntitySet="tb_CausaSolucion" />
+      <End Role="tb_Solucion" EntitySet="tb_Solucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Usuariodispositivo" Association="InteekServiceModel.fk_Usuariodispositivo">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Dispositivo" EntitySet="tb_Dispositivo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DocT" Association="InteekServiceModel.fk_DocT">
+      <End Role="tb_Documento" EntitySet="tb_Documento" />
+      <End Role="tb_TicketDocumento" EntitySet="tb_TicketDocumento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estatuscierre" Association="InteekServiceModel.fk_Estatuscierre">
+      <End Role="tb_Estatus" EntitySet="tb_Estatus" />
+      <End Role="tb_Solucion" EntitySet="tb_Solucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estatusticket" Association="InteekServiceModel.fk_Estatusticket">
+      <End Role="tb_Estatus" EntitySet="tb_Estatus" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Areaticket" Association="InteekServiceModel.fk_Areaticket">
+      <End Role="tb_Grupo" EntitySet="tb_Grupo" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Grupo" Association="InteekServiceModel.fk_Grupo">
+      <End Role="tb_Grupo" EntitySet="tb_Grupo" />
+      <End Role="tb_TipoServicioGrupo" EntitySet="tb_TipoServicioGrupo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PerfilUsuario" Association="InteekServiceModel.fk_PerfilUsuario">
+      <End Role="tb_Perfil" EntitySet="tb_Perfil" />
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_priori" Association="InteekServiceModel.fk_priori">
+      <End Role="tb_Prioridad" EntitySet="tb_Prioridad" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Soluciont" Association="InteekServiceModel.fk_Soluciont">
+      <End Role="tb_Solucion" EntitySet="tb_Solucion" />
+      <End Role="tb_TicketSolucion" EntitySet="tb_TicketSolucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ticketcierre" Association="InteekServiceModel.fk_Ticketcierre">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_Solucion" EntitySet="tb_Solucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ticketb" Association="InteekServiceModel.fk_Ticketb">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_TicketBitacora" EntitySet="tb_TicketBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TicketCS" Association="InteekServiceModel.fk_TicketCS">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_TicketSolucion" EntitySet="tb_TicketSolucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ticketd" Association="InteekServiceModel.fk_Ticketd">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_TicketDocumento" EntitySet="tb_TicketDocumento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tiposervicio" Association="InteekServiceModel.fk_tiposervicio">
+      <End Role="tb_TipoServicio" EntitySet="tb_TipoServicio" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuarioasignado" Association="InteekServiceModel.fk_usuarioasignado">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuariolevanta" Association="InteekServiceModel.fk_usuariolevanta">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Servicio" Association="InteekServiceModel.fk_Servicio">
+      <End Role="tb_TipoServicio" EntitySet="tb_TipoServicio" />
+      <End Role="tb_TipoServicioGrupo" EntitySet="tb_TipoServicioGrupo" />
+    </AssociationSet>
+    <FunctionImport Name="RegistraBitacora">
+      <Parameter Name="id_cliente" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="Desc" Mode="In" Type="Int32" />
+      <Parameter Name="estatus" Mode="In" Type="Int32" />
+      <Parameter Name="id_ticket" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ValidaLogin" ReturnType="Collection(InteekServiceModel.ValidaLogin_Result)">
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
-  <ComplexType Name="ValidaLogin_Result">
-    <Property Type="Int32" Name="id_Usuario" Nullable="false" />
-    <Property Type="Int32" Name="id_Perfil" Nullable="true" />
-    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="25" />
-    <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="DomicilioDir" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="DomicilioCor" Nullable="true" MaxLength="100" />
-    <Property Type="Boolean" Name="Supervisa" Nullable="true" />
-  </ComplexType>
   <EntityType Name="ExceptionLog">
     <Key>
       <PropertyRef Name="Code" />
@@ -233,5 +344,513 @@
     <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
     <Property Type="String" Name="Supervisa" Nullable="false" MaxLength="2" />
     <Property Type="String" Name="Activo" Nullable="false" MaxLength="2" />
+  </ComplexType>
+  <EntityType Name="tb_AsociarGrupoUsuario">
+    <Key>
+      <PropertyRef Name="id_AsociarGU" />
+    </Key>
+    <Property Name="id_AsociarGU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Usuario" Type="Int32" />
+    <Property Name="id_Grupo" Type="Int32" />
+    <Property Name="Supervisa" Type="Boolean" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="tb_Grupo" Relationship="InteekServiceModel.fk_asociarArea" FromRole="tb_AsociarGrupoUsuario" ToRole="tb_Grupo" />
+  </EntityType>
+  <EntityType Name="tb_Bitacora">
+    <Key>
+      <PropertyRef Name="id_Bitacora" />
+    </Key>
+    <Property Name="id_Bitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Usuario" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="id_Descripcion" Type="Int32" />
+    <Property Name="id_Estatus" Type="Int32" />
+    <Property Name="id_Ticket" Type="Int32" />
+    <NavigationProperty Name="tb_TicketBitacora" Relationship="InteekServiceModel.fk_BitT" FromRole="tb_Bitacora" ToRole="tb_TicketBitacora" />
+    <NavigationProperty Name="tb_DescripcionBitacora" Relationship="InteekServiceModel.fk_Descripcionbitacora" FromRole="tb_Bitacora" ToRole="tb_DescripcionBitacora" />
+    <NavigationProperty Name="tb_Estatus" Relationship="InteekServiceModel.fk_Estatusbitacora" FromRole="tb_Bitacora" ToRole="tb_Estatus" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_Ticketbitacora" FromRole="tb_Bitacora" ToRole="tb_Ticket" />
+    <NavigationProperty Name="tb_Usuario" Relationship="InteekServiceModel.fk_Usuarioasignadobitacora" FromRole="tb_Bitacora" ToRole="tb_Usuario" />
+  </EntityType>
+  <EntityType Name="tb_CausaSolucion">
+    <Key>
+      <PropertyRef Name="id_CausaSolucion" />
+    </Key>
+    <Property Name="id_CausaSolucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_CausaSol" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Solucion" Relationship="InteekServiceModel.fk_causasol" FromRole="tb_CausaSolucion" ToRole="tb_Solucion" />
+  </EntityType>
+  <EntityType Name="tb_DescripcionBitacora">
+    <Key>
+      <PropertyRef Name="id_DescBitacora" />
+    </Key>
+    <Property Name="id_DescBitacora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_bitacora" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Bitacora" Relationship="InteekServiceModel.fk_Descripcionbitacora" FromRole="tb_DescripcionBitacora" ToRole="tb_Bitacora" />
+  </EntityType>
+  <EntityType Name="tb_Dispositivo">
+    <Key>
+      <PropertyRef Name="id_Dispositivo" />
+    </Key>
+    <Property Name="id_Dispositivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Plataforma" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="id_Usuario" Type="Int32" />
+    <NavigationProperty Name="tb_Usuario" Relationship="InteekServiceModel.fk_Usuariodispositivo" FromRole="tb_Dispositivo" ToRole="tb_Usuario" />
+  </EntityType>
+  <EntityType Name="tb_Documento">
+    <Key>
+      <PropertyRef Name="id_Documento" />
+    </Key>
+    <Property Name="id_Documento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ruta" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_TicketDocumento" Relationship="InteekServiceModel.fk_DocT" FromRole="tb_Documento" ToRole="tb_TicketDocumento" />
+  </EntityType>
+  <EntityType Name="tb_Estatus">
+    <Key>
+      <PropertyRef Name="id_Estatus" />
+    </Key>
+    <Property Name="id_Estatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_estatus" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Bitacora" Relationship="InteekServiceModel.fk_Estatusbitacora" FromRole="tb_Estatus" ToRole="tb_Bitacora" />
+    <NavigationProperty Name="tb_Solucion" Relationship="InteekServiceModel.fk_Estatuscierre" FromRole="tb_Estatus" ToRole="tb_Solucion" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_Estatusticket" FromRole="tb_Estatus" ToRole="tb_Ticket" />
+  </EntityType>
+  <EntityType Name="tb_Grupo">
+    <Key>
+      <PropertyRef Name="id_Grupo" />
+    </Key>
+    <Property Name="id_Grupo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_grupo" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Clave_Grupo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="id_GrupoSuperior" Type="Int32" />
+    <NavigationProperty Name="tb_AsociarGrupoUsuario" Relationship="InteekServiceModel.fk_asociarArea" FromRole="tb_Grupo" ToRole="tb_AsociarGrupoUsuario" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_Areaticket" FromRole="tb_Grupo" ToRole="tb_Ticket" />
+    <NavigationProperty Name="tb_TipoServicioGrupo" Relationship="InteekServiceModel.fk_Grupo" FromRole="tb_Grupo" ToRole="tb_TipoServicioGrupo" />
+  </EntityType>
+  <EntityType Name="tb_Perfil">
+    <Key>
+      <PropertyRef Name="id_Perfil" />
+    </Key>
+    <Property Name="id_Perfil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Usuario" Relationship="InteekServiceModel.fk_PerfilUsuario" FromRole="tb_Perfil" ToRole="tb_Usuario" />
+  </EntityType>
+  <EntityType Name="tb_Prioridad">
+    <Key>
+      <PropertyRef Name="id_Prioridad" />
+    </Key>
+    <Property Name="id_Prioridad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_prioridad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_priori" FromRole="tb_Prioridad" ToRole="tb_Ticket" />
+  </EntityType>
+  <EntityType Name="tb_Solucion">
+    <Key>
+      <PropertyRef Name="id_Solucion" />
+    </Key>
+    <Property Name="id_Solucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="id_Estatus" Type="Int32" />
+    <Property Name="id_Ticket" Type="Int32" />
+    <Property Name="MotivoRechazo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="id_CausaSolucion" Type="Int32" />
+    <NavigationProperty Name="tb_CausaSolucion" Relationship="InteekServiceModel.fk_causasol" FromRole="tb_Solucion" ToRole="tb_CausaSolucion" />
+    <NavigationProperty Name="tb_Estatus" Relationship="InteekServiceModel.fk_Estatuscierre" FromRole="tb_Solucion" ToRole="tb_Estatus" />
+    <NavigationProperty Name="tb_TicketSolucion" Relationship="InteekServiceModel.fk_Soluciont" FromRole="tb_Solucion" ToRole="tb_TicketSolucion" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_Ticketcierre" FromRole="tb_Solucion" ToRole="tb_Ticket" />
+  </EntityType>
+  <EntityType Name="tb_Ticket">
+    <Key>
+      <PropertyRef Name="id_Ticket" />
+    </Key>
+    <Property Name="id_Ticket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_UsuarioLevanta" Type="Int32" />
+    <Property Name="Titulo_ticket" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion_ticket" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo_servicio" Type="Int32" />
+    <Property Name="id_Grupo" Type="Int32" />
+    <Property Name="id_UsuarioAsignado" Type="Int32" />
+    <Property Name="id_Estatus" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="id_Prioridad" Type="Int32" />
+    <NavigationProperty Name="tb_Bitacora" Relationship="InteekServiceModel.fk_Ticketbitacora" FromRole="tb_Ticket" ToRole="tb_Bitacora" />
+    <NavigationProperty Name="tb_Estatus" Relationship="InteekServiceModel.fk_Estatusticket" FromRole="tb_Ticket" ToRole="tb_Estatus" />
+    <NavigationProperty Name="tb_Grupo" Relationship="InteekServiceModel.fk_Areaticket" FromRole="tb_Ticket" ToRole="tb_Grupo" />
+    <NavigationProperty Name="tb_Prioridad" Relationship="InteekServiceModel.fk_priori" FromRole="tb_Ticket" ToRole="tb_Prioridad" />
+    <NavigationProperty Name="tb_Solucion" Relationship="InteekServiceModel.fk_Ticketcierre" FromRole="tb_Ticket" ToRole="tb_Solucion" />
+    <NavigationProperty Name="tb_TicketBitacora" Relationship="InteekServiceModel.fk_Ticketb" FromRole="tb_Ticket" ToRole="tb_TicketBitacora" />
+    <NavigationProperty Name="tb_TicketSolucion" Relationship="InteekServiceModel.fk_TicketCS" FromRole="tb_Ticket" ToRole="tb_TicketSolucion" />
+    <NavigationProperty Name="tb_TicketDocumento" Relationship="InteekServiceModel.fk_Ticketd" FromRole="tb_Ticket" ToRole="tb_TicketDocumento" />
+    <NavigationProperty Name="tb_TipoServicio" Relationship="InteekServiceModel.fk_tiposervicio" FromRole="tb_Ticket" ToRole="tb_TipoServicio" />
+    <NavigationProperty Name="tb_Usuario" Relationship="InteekServiceModel.fk_usuarioasignado" FromRole="tb_Ticket" ToRole="tb_Usuario" />
+    <NavigationProperty Name="tb_Usuario1" Relationship="InteekServiceModel.fk_usuariolevanta" FromRole="tb_Ticket" ToRole="tb_Usuario" />
+  </EntityType>
+  <EntityType Name="tb_TicketBitacora">
+    <Key>
+      <PropertyRef Name="id_TB" />
+    </Key>
+    <Property Name="id_TB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Ticket" Type="Int32" />
+    <Property Name="id_Bitacora" Type="Int32" />
+    <NavigationProperty Name="tb_Bitacora" Relationship="InteekServiceModel.fk_BitT" FromRole="tb_TicketBitacora" ToRole="tb_Bitacora" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_Ticketb" FromRole="tb_TicketBitacora" ToRole="tb_Ticket" />
+  </EntityType>
+  <EntityType Name="tb_TicketDocumento">
+    <Key>
+      <PropertyRef Name="id_TD" />
+    </Key>
+    <Property Name="id_TD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Ticket" Type="Int32" />
+    <Property Name="id_Documento" Type="Int32" />
+    <NavigationProperty Name="tb_Documento" Relationship="InteekServiceModel.fk_DocT" FromRole="tb_TicketDocumento" ToRole="tb_Documento" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_Ticketd" FromRole="tb_TicketDocumento" ToRole="tb_Ticket" />
+  </EntityType>
+  <EntityType Name="tb_TicketSolucion">
+    <Key>
+      <PropertyRef Name="id_TCS" />
+    </Key>
+    <Property Name="id_TCS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Ticket" Type="Int32" />
+    <Property Name="id_Solucion" Type="Int32" />
+    <NavigationProperty Name="tb_Solucion" Relationship="InteekServiceModel.fk_Soluciont" FromRole="tb_TicketSolucion" ToRole="tb_Solucion" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_TicketCS" FromRole="tb_TicketSolucion" ToRole="tb_Ticket" />
+  </EntityType>
+  <EntityType Name="tb_TipoServicio">
+    <Key>
+      <PropertyRef Name="id_Servicio" />
+    </Key>
+    <Property Name="id_Servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion_servicio" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="clave_servicio" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="id_ServicioSuperior" Type="Int32" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_tiposervicio" FromRole="tb_TipoServicio" ToRole="tb_Ticket" />
+    <NavigationProperty Name="tb_TipoServicioGrupo" Relationship="InteekServiceModel.fk_Servicio" FromRole="tb_TipoServicio" ToRole="tb_TipoServicioGrupo" />
+  </EntityType>
+  <EntityType Name="tb_TipoServicioGrupo">
+    <Key>
+      <PropertyRef Name="id_TSG" />
+    </Key>
+    <Property Name="id_TSG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_TipoServicio" Type="Int32" />
+    <Property Name="id_Grupo" Type="Int32" />
+    <NavigationProperty Name="tb_Grupo" Relationship="InteekServiceModel.fk_Grupo" FromRole="tb_TipoServicioGrupo" ToRole="tb_Grupo" />
+    <NavigationProperty Name="tb_TipoServicio" Relationship="InteekServiceModel.fk_Servicio" FromRole="tb_TipoServicioGrupo" ToRole="tb_TipoServicio" />
+  </EntityType>
+  <EntityType Name="tb_Usuario">
+    <Key>
+      <PropertyRef Name="id_Usuario" />
+    </Key>
+    <Property Name="id_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_Perfil" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DomicilioDir" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DomicilioCor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="tb_Bitacora" Relationship="InteekServiceModel.fk_Usuarioasignadobitacora" FromRole="tb_Usuario" ToRole="tb_Bitacora" />
+    <NavigationProperty Name="tb_Dispositivo" Relationship="InteekServiceModel.fk_Usuariodispositivo" FromRole="tb_Usuario" ToRole="tb_Dispositivo" />
+    <NavigationProperty Name="tb_Perfil" Relationship="InteekServiceModel.fk_PerfilUsuario" FromRole="tb_Usuario" ToRole="tb_Perfil" />
+    <NavigationProperty Name="tb_Ticket" Relationship="InteekServiceModel.fk_usuarioasignado" FromRole="tb_Usuario" ToRole="tb_Ticket" />
+    <NavigationProperty Name="tb_Ticket1" Relationship="InteekServiceModel.fk_usuariolevanta" FromRole="tb_Usuario" ToRole="tb_Ticket" />
+  </EntityType>
+  <Association Name="fk_asociarArea">
+    <End Type="InteekServiceModel.tb_Grupo" Role="tb_Grupo" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_AsociarGrupoUsuario" Role="tb_AsociarGrupoUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Grupo">
+        <PropertyRef Name="id_Grupo" />
+      </Principal>
+      <Dependent Role="tb_AsociarGrupoUsuario">
+        <PropertyRef Name="id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_BitT">
+    <End Type="InteekServiceModel.tb_Bitacora" Role="tb_Bitacora" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_TicketBitacora" Role="tb_TicketBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Bitacora">
+        <PropertyRef Name="id_Bitacora" />
+      </Principal>
+      <Dependent Role="tb_TicketBitacora">
+        <PropertyRef Name="id_Bitacora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Descripcionbitacora">
+    <End Type="InteekServiceModel.tb_DescripcionBitacora" Role="tb_DescripcionBitacora" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Bitacora" Role="tb_Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DescripcionBitacora">
+        <PropertyRef Name="id_DescBitacora" />
+      </Principal>
+      <Dependent Role="tb_Bitacora">
+        <PropertyRef Name="id_Descripcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estatusbitacora">
+    <End Type="InteekServiceModel.tb_Estatus" Role="tb_Estatus" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Bitacora" Role="tb_Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Estatus">
+        <PropertyRef Name="id_Estatus" />
+      </Principal>
+      <Dependent Role="tb_Bitacora">
+        <PropertyRef Name="id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ticketbitacora">
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Bitacora" Role="tb_Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_Bitacora">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Usuarioasignadobitacora">
+    <End Type="InteekServiceModel.tb_Usuario" Role="tb_Usuario" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Bitacora" Role="tb_Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="tb_Bitacora">
+        <PropertyRef Name="id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_causasol">
+    <End Type="InteekServiceModel.tb_CausaSolucion" Role="tb_CausaSolucion" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Solucion" Role="tb_Solucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CausaSolucion">
+        <PropertyRef Name="id_CausaSolucion" />
+      </Principal>
+      <Dependent Role="tb_Solucion">
+        <PropertyRef Name="id_CausaSolucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Usuariodispositivo">
+    <End Type="InteekServiceModel.tb_Usuario" Role="tb_Usuario" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Dispositivo" Role="tb_Dispositivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="tb_Dispositivo">
+        <PropertyRef Name="id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DocT">
+    <End Type="InteekServiceModel.tb_Documento" Role="tb_Documento" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_TicketDocumento" Role="tb_TicketDocumento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Documento">
+        <PropertyRef Name="id_Documento" />
+      </Principal>
+      <Dependent Role="tb_TicketDocumento">
+        <PropertyRef Name="id_Documento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estatuscierre">
+    <End Type="InteekServiceModel.tb_Estatus" Role="tb_Estatus" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Solucion" Role="tb_Solucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Estatus">
+        <PropertyRef Name="id_Estatus" />
+      </Principal>
+      <Dependent Role="tb_Solucion">
+        <PropertyRef Name="id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estatusticket">
+    <End Type="InteekServiceModel.tb_Estatus" Role="tb_Estatus" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Estatus">
+        <PropertyRef Name="id_Estatus" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Areaticket">
+    <End Type="InteekServiceModel.tb_Grupo" Role="tb_Grupo" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Grupo">
+        <PropertyRef Name="id_Grupo" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Grupo">
+    <End Type="InteekServiceModel.tb_Grupo" Role="tb_Grupo" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_TipoServicioGrupo" Role="tb_TipoServicioGrupo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Grupo">
+        <PropertyRef Name="id_Grupo" />
+      </Principal>
+      <Dependent Role="tb_TipoServicioGrupo">
+        <PropertyRef Name="id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PerfilUsuario">
+    <End Type="InteekServiceModel.tb_Perfil" Role="tb_Perfil" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Usuario" Role="tb_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Perfil">
+        <PropertyRef Name="id_Perfil" />
+      </Principal>
+      <Dependent Role="tb_Usuario">
+        <PropertyRef Name="id_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_priori">
+    <End Type="InteekServiceModel.tb_Prioridad" Role="tb_Prioridad" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Prioridad">
+        <PropertyRef Name="id_Prioridad" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_Prioridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Soluciont">
+    <End Type="InteekServiceModel.tb_Solucion" Role="tb_Solucion" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_TicketSolucion" Role="tb_TicketSolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Solucion">
+        <PropertyRef Name="id_Solucion" />
+      </Principal>
+      <Dependent Role="tb_TicketSolucion">
+        <PropertyRef Name="id_Solucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ticketcierre">
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Solucion" Role="tb_Solucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_Solucion">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ticketb">
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_TicketBitacora" Role="tb_TicketBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_TicketBitacora">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TicketCS">
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_TicketSolucion" Role="tb_TicketSolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_TicketSolucion">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ticketd">
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_TicketDocumento" Role="tb_TicketDocumento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_TicketDocumento">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tiposervicio">
+    <End Type="InteekServiceModel.tb_TipoServicio" Role="tb_TipoServicio" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoServicio">
+        <PropertyRef Name="id_Servicio" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="Tipo_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuarioasignado">
+    <End Type="InteekServiceModel.tb_Usuario" Role="tb_Usuario" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_UsuarioAsignado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuariolevanta">
+    <End Type="InteekServiceModel.tb_Usuario" Role="tb_Usuario" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_Ticket" Role="tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_UsuarioLevanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Servicio">
+    <End Type="InteekServiceModel.tb_TipoServicio" Role="tb_TipoServicio" Multiplicity="0..1" />
+    <End Type="InteekServiceModel.tb_TipoServicioGrupo" Role="tb_TipoServicioGrupo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoServicio">
+        <PropertyRef Name="id_Servicio" />
+      </Principal>
+      <Dependent Role="tb_TipoServicioGrupo">
+        <PropertyRef Name="id_TipoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ValidaLogin_Result">
+    <Property Type="Int32" Name="id_Usuario" Nullable="false" />
+    <Property Type="Int32" Name="id_Perfil" Nullable="true" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="ApellidoPaterno" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="ApellidoMaterno" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DomicilioDir" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DomicilioCor" Nullable="true" MaxLength="100" />
   </ComplexType>
 </Schema>

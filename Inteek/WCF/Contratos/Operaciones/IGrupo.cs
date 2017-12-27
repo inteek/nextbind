@@ -35,7 +35,7 @@ namespace WCF.Contratos.Operaciones
 
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ConsultaUsuarioGrupo/{id_Grupo}")]
-        Response<Entidades.UsuarioGrupo> ConsultaUsuarioGrupo(int id_Grupo);
+        Response<Entidades.UsuariosGrupo> ConsultaUsuarioGrupo(int id_Grupo);
 
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/EliminaUsuarioGrupo/{id_Area}/{id_Usuario}/{id_Asociar}")]

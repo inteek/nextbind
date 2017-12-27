@@ -24,26 +24,26 @@ namespace Entity
         }
         #endregion
 
-        //VALIDA LOGIN
-        public List<ValidaLogin_Result> validaLogin(string usuario, string password)
-        {
-            try
-            {
-                List<ValidaLogin_Result> resultado = null;
-                using (var db = new InteekServiceEntities())
-                {
-                    resultado = db.ValidaLogin(usuario, password).ToList();
-                }
-                return resultado;
-            }
-            catch (Exception ex)
-            {
-                _Error = new Exception();
-                _Error = ex;
-                List<ValidaLogin_Result> resultado = null;
-                return resultado;
-            }
-        }
+        ////VALIDA LOGIN
+        //public List<ValidaLogin_Result> validaLogin(string usuario, string password)
+        //{
+        //    try
+        //    {
+        //        List<ValidaLogin_Result> resultado = null;
+        //        using (var db = new InteekServiceEntities())
+        //        {
+        //            resultado = db.ValidaLogin(usuario, password).ToList();
+        //        }
+        //        return resultado;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _Error = new Exception();
+        //        _Error = ex;
+        //        List<ValidaLogin_Result> resultado = null;
+        //        return resultado;
+        //    }
+        //}
 
         //REGISTRA USUARIOS
         public bool RegistraDatosUsuario(int id_Perfil, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string password, string domicilioDir,
@@ -250,14 +250,14 @@ namespace Entity
         }
 
         //CONSULTA TICKETS NO ASIGNADOS
-        public List<ConsultaTicketsNoAsignados_Result> ConsultaTicketsNoAsignados(int idusuario)
+        public List<ConsultaTicketsNoAsignados_Result> ConsultaTicketsNoAsignados(int idusuario, int idGrupo)
         {
             try
             {
                 List<ConsultaTicketsNoAsignados_Result> resultado = null;
                 using (var db = new InteekServiceEntities())
                 {
-                    resultado = db.ConsultaTicketsNoAsignados(idusuario).ToList();
+                    resultado = db.ConsultaTicketsNoAsignados(idusuario, idGrupo).ToList();
                 }
                 return resultado;
             }

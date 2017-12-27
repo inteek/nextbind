@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WCF.Entidades
 {
-    public class Usuarios
+    public class Usuario
     {
         public int id_Usuario { get; set; }
 
@@ -26,6 +26,5 @@ namespace WCF.Entidades
 
         public string DomicilioCor { get; set; }
 
-        public bool supervisa { get; set; }
     }
 }

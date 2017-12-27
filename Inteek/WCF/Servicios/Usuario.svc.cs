@@ -13,10 +13,10 @@ namespace WCF
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código, en svc y en el archivo de configuración.
     // NOTE: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
-    public class Usuario : IUsuario
+    public class Usuario : IUsuario<Entidades.Usuario, Entidades.UsuariosGrupo, Entidades.GruposPorUsuario>
     {
         
-        public Response<Entidades.Usuarios> validaLogin(string usuario, string password)
+        public Response<Entidades.Usuario> validaLogin(string usuario, string password)
         {
             try
             {
@@ -26,9 +26,9 @@ namespace WCF
 
                 if (objFramework.Error == null)
                 {
-                    Response<Entidades.Usuarios> result = new Response<Entidades.Usuarios>();
+                    Response<Entidades.Usuario> result = new Response<Entidades.Usuario>();
                     result.List = objFramework.ValidaLogin(usuario, password).Select
-                        (x => new Entidades.Usuarios
+                        (x => new Entidades.Usuario
                         {
                             id_Usuario = x.id_Usuario,
                             id_Perfil = x.id_Perfil,
@@ -37,22 +37,21 @@ namespace WCF
                             ApellidoMaterno = x.ApellidoMaterno,
                             Correo = x.Correo,
                             DomicilioDir = x.DomicilioDir,
-                            DomicilioCor = x.DomicilioCor,
-                            supervisa = x.supervisa
+                            DomicilioCor = x.DomicilioCor
                         }).ToList();
 
                     return result;
                 }
                 else
                 {
-                    ResponseError<Entidades.Usuarios> result = new ResponseError<Entidades.Usuarios>(objFramework.Error);
+                    ResponseError<Entidades.Usuario> result = new ResponseError<Entidades.Usuario>(objFramework.Error);
                     return result;
                 }
 
             }
             catch (Exception ex)
             {
-                ResponseError<Entidades.Usuarios> result = new ResponseError<Entidades.Usuarios>(ex);
+                ResponseError<Entidades.Usuario> result = new ResponseError<Entidades.Usuario>(ex);
                 return result;
             }
         }
@@ -127,7 +126,7 @@ namespace WCF
             }
         }
 
-        public Response<Entidades.ConsultaUsuarios> ConsultarUsuarios()
+        public Response<Entidades.UsuariosGrupo> ConsultarUsuariosPorGrupo(int idGrupo)
         {
             try
             {
@@ -135,9 +134,9 @@ namespace WCF
                 List<Framework.Libreria.ResultConsultaUsuarios> lista = objFramework.ConsultarUsuarios();
                 if (objFramework.Error == null)
                 {
-                    Response<Entidades.ConsultaUsuarios> result = new Response<Entidades.ConsultaUsuarios>();
+                    Response<Entidades.UsuariosGrupo> result = new Response<Entidades.UsuariosGrupo>();
                     result.List = objFramework.ConsultarUsuarios().Select
-                        (x => new Entidades.ConsultaUsuarios
+                        (x => new Entidades.UsuariosGrupo
                         {
                             id_Usuario = x.id_Usuario,
                             Nombre = x.Nombre,
@@ -151,19 +150,19 @@ namespace WCF
                 }
                 else
                 {
-                    ResponseError<Entidades.ConsultaUsuarios> result = new ResponseError<Entidades.ConsultaUsuarios>(objFramework.Error);
+                    ResponseError<Entidades.UsuariosGrupo> result = new ResponseError<Entidades.UsuariosGrupo>(objFramework.Error);
                     return result;
                 }
 
             }
             catch (Exception ex)
             {
-                ResponseError<Entidades.ConsultaUsuarios> result = new ResponseError<Entidades.ConsultaUsuarios>(ex);
+                ResponseError<Entidades.UsuariosGrupo> result = new ResponseError<Entidades.UsuariosGrupo>(ex);
                 return result;
             }
         }
 
-        public Response<Entidades.AreasPorUsuario> ConsultaAreasPorUsuario(int id_Usuario)
+        public Response<Entidades.GruposPorUsuario> ConsultaGruposPorUsuario(int id_Usuario)
         {
             try
             {
@@ -171,9 +170,9 @@ namespace WCF
                 List<Framework.Libreria.ResultAreasPorUsuario> lista = objFramework.ConsultaAreasPorUsuario(id_Usuario);
                 if (objFramework.Error == null)
                 {
-                    Response<Entidades.AreasPorUsuario> result = new Response<Entidades.AreasPorUsuario>();
+                    Response<Entidades.GruposPorUsuario> result = new Response<Entidades.GruposPorUsuario>();
                     result.List = objFramework.ConsultaAreasPorUsuario(id_Usuario).Select
-                        (x => new Entidades.AreasPorUsuario
+                        (x => new Entidades.GruposPorUsuario
                         {
                             id_Grupo = x.id_Grupo,
                             Descripcion_grupo = x.Descripcion_grupo
@@ -183,16 +182,17 @@ namespace WCF
                 }
                 else
                 {
-                    ResponseError<Entidades.AreasPorUsuario> result = new ResponseError<Entidades.AreasPorUsuario>(objFramework.Error);
+                    ResponseError<Entidades.GruposPorUsuario> result = new ResponseError<Entidades.GruposPorUsuario>(objFramework.Error);
                     return result;
                 }
             }
             catch (Exception ex)
             {
-                ResponseError<Entidades.AreasPorUsuario> result = new ResponseError<Entidades.AreasPorUsuario>(ex);
+                ResponseError<Entidades.GruposPorUsuario> result = new ResponseError<Entidades.GruposPorUsuario>(ex);
                 return result;
             }
         }
+
 
 
         //PENDIENTE ConsultaDispositivosPorUsuario

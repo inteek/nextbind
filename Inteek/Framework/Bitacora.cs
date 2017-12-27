@@ -25,10 +25,10 @@ namespace Framework
                     {
                         id_Bitacora = x.id_Bitacora,
                         Nombre = x.Nombre,
-                        Fecha = x.Fecha,
+                        Fecha = (DateTime)x.Fecha,
                         Bitacora = x.Bitacora,
                         Estatus = x.Estatus,
-                        id_Ticket = x.id_Ticket}).ToList();
+                        id_Ticket = (int)x.id_Ticket}).ToList();
                 if (objEntity.Error != null)
                 {
                     _Error = objEntity.Error;

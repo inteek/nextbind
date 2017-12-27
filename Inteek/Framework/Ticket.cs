@@ -85,7 +85,7 @@ namespace Framework
             return resultado;
         }
 
-        public List<ResultTicketsNoAsignados> ConsultaTicketsNoAsignados(int idusuario)
+        public List<ResultTicketsNoAsignados> ConsultaTicketsNoAsignados(int idusuario, int idGrupo)
         {
             List<ResultTicketsNoAsignados> resultado = null;
             try
@@ -93,7 +93,7 @@ namespace Framework
 
                 using (var db = new Entity.InteekServiceEntities())
                 {
-                    resultado = (from x in db.ConsultaTicketsNoAsignados(idusuario)
+                    resultado = (from x in db.ConsultaTicketsNoAsignados(idusuario, idGrupo)
                                  select new ResultTicketsNoAsignados
                                  {
                                      id_Ticket = x.id_Ticket,
@@ -131,7 +131,7 @@ namespace Framework
                                      Tipo_de_servicio = x.Tipo_de_servicio,
                                      Grupo = x.Grupo,
                                      Usuario_Asignado = x.Usuario_Asignado,
-                                     Fecha = x.Fecha,
+                                     Fecha = (DateTime)x.Fecha,
                                      Estatus = x.Estatus,
                                      Ruta = x.Ruta
                                  }).ToList();
@@ -161,7 +161,7 @@ namespace Framework
                                      Tipo_de_servicio = x.Tipo_de_servicio,
                                      Grupo = x.Grupo,
                                      Usuario_Asignado = x.Usuario_Asignado,
-                                     Fecha = x.Fecha,
+                                     Fecha = (DateTime)x.Fecha,
                                      Estatus = x.Estatus,
                                      Ruta = x.Ruta
                                  }).ToList();

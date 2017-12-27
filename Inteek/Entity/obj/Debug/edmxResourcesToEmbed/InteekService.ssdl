@@ -12,6 +12,456 @@
     <Property Name="Tipo" Type="text" />
     <Property Name="Date" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
   </EntityType>
+  <EntityType Name="tb_AsociarGrupoUsuario">
+    <Key>
+      <PropertyRef Name="id_AsociarGU" />
+    </Key>
+    <Property Name="id_AsociarGU" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Usuario" Type="int" />
+    <Property Name="id_Grupo" Type="int" />
+    <Property Name="Supervisa" Type="bit" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <EntityType Name="tb_Bitacora">
+    <Key>
+      <PropertyRef Name="id_Bitacora" />
+    </Key>
+    <Property Name="id_Bitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Usuario" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="id_Descripcion" Type="int" />
+    <Property Name="id_Estatus" Type="int" />
+    <Property Name="id_Ticket" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_CausaSolucion">
+    <Key>
+      <PropertyRef Name="id_CausaSolucion" />
+    </Key>
+    <Property Name="id_CausaSolucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_CausaSol" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="tb_DescripcionBitacora">
+    <Key>
+      <PropertyRef Name="id_DescBitacora" />
+    </Key>
+    <Property Name="id_DescBitacora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_bitacora" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="tb_Dispositivo">
+    <Key>
+      <PropertyRef Name="id_Dispositivo" />
+    </Key>
+    <Property Name="id_Dispositivo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Plataforma" Type="varchar" MaxLength="15" />
+    <Property Name="id_Usuario" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_Documento">
+    <Key>
+      <PropertyRef Name="id_Documento" />
+    </Key>
+    <Property Name="id_Documento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ruta" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="tb_Estatus">
+    <Key>
+      <PropertyRef Name="id_Estatus" />
+    </Key>
+    <Property Name="id_Estatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_estatus" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="tb_Grupo">
+    <Key>
+      <PropertyRef Name="id_Grupo" />
+    </Key>
+    <Property Name="id_Grupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_grupo" Type="varchar" MaxLength="60" />
+    <Property Name="Clave_Grupo" Type="varchar" MaxLength="6" />
+    <Property Name="id_GrupoSuperior" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_Perfil">
+    <Key>
+      <PropertyRef Name="id_Perfil" />
+    </Key>
+    <Property Name="id_Perfil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tb_Prioridad">
+    <Key>
+      <PropertyRef Name="id_Prioridad" />
+    </Key>
+    <Property Name="id_Prioridad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_prioridad" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="tb_Solucion">
+    <Key>
+      <PropertyRef Name="id_Solucion" />
+    </Key>
+    <Property Name="id_Solucion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="id_Estatus" Type="int" />
+    <Property Name="id_Ticket" Type="int" />
+    <Property Name="MotivoRechazo" Type="varchar" MaxLength="250" />
+    <Property Name="id_CausaSolucion" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_Ticket">
+    <Key>
+      <PropertyRef Name="id_Ticket" />
+    </Key>
+    <Property Name="id_Ticket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_UsuarioLevanta" Type="int" />
+    <Property Name="Titulo_ticket" Type="varchar" MaxLength="30" />
+    <Property Name="Descripcion_ticket" Type="varchar" MaxLength="250" />
+    <Property Name="Tipo_servicio" Type="int" />
+    <Property Name="id_Grupo" Type="int" />
+    <Property Name="id_UsuarioAsignado" Type="int" />
+    <Property Name="id_Estatus" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="id_Prioridad" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_TicketBitacora">
+    <Key>
+      <PropertyRef Name="id_TB" />
+    </Key>
+    <Property Name="id_TB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Ticket" Type="int" />
+    <Property Name="id_Bitacora" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_TicketDocumento">
+    <Key>
+      <PropertyRef Name="id_TD" />
+    </Key>
+    <Property Name="id_TD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Ticket" Type="int" />
+    <Property Name="id_Documento" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_TicketSolucion">
+    <Key>
+      <PropertyRef Name="id_TCS" />
+    </Key>
+    <Property Name="id_TCS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Ticket" Type="int" />
+    <Property Name="id_Solucion" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_TipoServicio">
+    <Key>
+      <PropertyRef Name="id_Servicio" />
+    </Key>
+    <Property Name="id_Servicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_servicio" Type="varchar" MaxLength="60" />
+    <Property Name="clave_servicio" Type="varchar" MaxLength="6" />
+    <Property Name="id_ServicioSuperior" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_TipoServicioGrupo">
+    <Key>
+      <PropertyRef Name="id_TSG" />
+    </Key>
+    <Property Name="id_TSG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_TipoServicio" Type="int" />
+    <Property Name="id_Grupo" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_Usuario">
+    <Key>
+      <PropertyRef Name="id_Usuario" />
+    </Key>
+    <Property Name="id_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Perfil" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="25" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="25" />
+    <Property Name="Correo" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="100" />
+    <Property Name="DomicilioDir" Type="varchar" MaxLength="100" />
+    <Property Name="DomicilioCor" Type="varchar" MaxLength="100" />
+    <Property Name="Activo" Type="bit" />
+  </EntityType>
+  <Association Name="fk_Areaticket">
+    <End Role="tb_Grupo" Type="Self.tb_Grupo" Multiplicity="0..1" />
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Grupo">
+        <PropertyRef Name="id_Grupo" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_asociarArea">
+    <End Role="tb_Grupo" Type="Self.tb_Grupo" Multiplicity="0..1" />
+    <End Role="tb_AsociarGrupoUsuario" Type="Self.tb_AsociarGrupoUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Grupo">
+        <PropertyRef Name="id_Grupo" />
+      </Principal>
+      <Dependent Role="tb_AsociarGrupoUsuario">
+        <PropertyRef Name="id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_BitT">
+    <End Role="tb_Bitacora" Type="Self.tb_Bitacora" Multiplicity="0..1" />
+    <End Role="tb_TicketBitacora" Type="Self.tb_TicketBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Bitacora">
+        <PropertyRef Name="id_Bitacora" />
+      </Principal>
+      <Dependent Role="tb_TicketBitacora">
+        <PropertyRef Name="id_Bitacora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_causasol">
+    <End Role="tb_CausaSolucion" Type="Self.tb_CausaSolucion" Multiplicity="0..1" />
+    <End Role="tb_Solucion" Type="Self.tb_Solucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CausaSolucion">
+        <PropertyRef Name="id_CausaSolucion" />
+      </Principal>
+      <Dependent Role="tb_Solucion">
+        <PropertyRef Name="id_CausaSolucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Descripcionbitacora">
+    <End Role="tb_DescripcionBitacora" Type="Self.tb_DescripcionBitacora" Multiplicity="0..1" />
+    <End Role="tb_Bitacora" Type="Self.tb_Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_DescripcionBitacora">
+        <PropertyRef Name="id_DescBitacora" />
+      </Principal>
+      <Dependent Role="tb_Bitacora">
+        <PropertyRef Name="id_Descripcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DocT">
+    <End Role="tb_Documento" Type="Self.tb_Documento" Multiplicity="0..1" />
+    <End Role="tb_TicketDocumento" Type="Self.tb_TicketDocumento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Documento">
+        <PropertyRef Name="id_Documento" />
+      </Principal>
+      <Dependent Role="tb_TicketDocumento">
+        <PropertyRef Name="id_Documento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estatusbitacora">
+    <End Role="tb_Estatus" Type="Self.tb_Estatus" Multiplicity="0..1" />
+    <End Role="tb_Bitacora" Type="Self.tb_Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Estatus">
+        <PropertyRef Name="id_Estatus" />
+      </Principal>
+      <Dependent Role="tb_Bitacora">
+        <PropertyRef Name="id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estatuscierre">
+    <End Role="tb_Estatus" Type="Self.tb_Estatus" Multiplicity="0..1" />
+    <End Role="tb_Solucion" Type="Self.tb_Solucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Estatus">
+        <PropertyRef Name="id_Estatus" />
+      </Principal>
+      <Dependent Role="tb_Solucion">
+        <PropertyRef Name="id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Estatusticket">
+    <End Role="tb_Estatus" Type="Self.tb_Estatus" Multiplicity="0..1" />
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Estatus">
+        <PropertyRef Name="id_Estatus" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_Estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Grupo">
+    <End Role="tb_Grupo" Type="Self.tb_Grupo" Multiplicity="0..1" />
+    <End Role="tb_TipoServicioGrupo" Type="Self.tb_TipoServicioGrupo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Grupo">
+        <PropertyRef Name="id_Grupo" />
+      </Principal>
+      <Dependent Role="tb_TipoServicioGrupo">
+        <PropertyRef Name="id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PerfilUsuario">
+    <End Role="tb_Perfil" Type="Self.tb_Perfil" Multiplicity="0..1" />
+    <End Role="tb_Usuario" Type="Self.tb_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Perfil">
+        <PropertyRef Name="id_Perfil" />
+      </Principal>
+      <Dependent Role="tb_Usuario">
+        <PropertyRef Name="id_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_priori">
+    <End Role="tb_Prioridad" Type="Self.tb_Prioridad" Multiplicity="0..1" />
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Prioridad">
+        <PropertyRef Name="id_Prioridad" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_Prioridad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Servicio">
+    <End Role="tb_TipoServicio" Type="Self.tb_TipoServicio" Multiplicity="0..1" />
+    <End Role="tb_TipoServicioGrupo" Type="Self.tb_TipoServicioGrupo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoServicio">
+        <PropertyRef Name="id_Servicio" />
+      </Principal>
+      <Dependent Role="tb_TipoServicioGrupo">
+        <PropertyRef Name="id_TipoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Soluciont">
+    <End Role="tb_Solucion" Type="Self.tb_Solucion" Multiplicity="0..1" />
+    <End Role="tb_TicketSolucion" Type="Self.tb_TicketSolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Solucion">
+        <PropertyRef Name="id_Solucion" />
+      </Principal>
+      <Dependent Role="tb_TicketSolucion">
+        <PropertyRef Name="id_Solucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ticketb">
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="0..1" />
+    <End Role="tb_TicketBitacora" Type="Self.tb_TicketBitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_TicketBitacora">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ticketbitacora">
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="0..1" />
+    <End Role="tb_Bitacora" Type="Self.tb_Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_Bitacora">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ticketcierre">
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="0..1" />
+    <End Role="tb_Solucion" Type="Self.tb_Solucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_Solucion">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_TicketCS">
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="0..1" />
+    <End Role="tb_TicketSolucion" Type="Self.tb_TicketSolucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_TicketSolucion">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Ticketd">
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="0..1" />
+    <End Role="tb_TicketDocumento" Type="Self.tb_TicketDocumento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ticket">
+        <PropertyRef Name="id_Ticket" />
+      </Principal>
+      <Dependent Role="tb_TicketDocumento">
+        <PropertyRef Name="id_Ticket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_tiposervicio">
+    <End Role="tb_TipoServicio" Type="Self.tb_TipoServicio" Multiplicity="0..1" />
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoServicio">
+        <PropertyRef Name="id_Servicio" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="Tipo_servicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuarioasignado">
+    <End Role="tb_Usuario" Type="Self.tb_Usuario" Multiplicity="0..1" />
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_UsuarioAsignado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Usuarioasignadobitacora">
+    <End Role="tb_Usuario" Type="Self.tb_Usuario" Multiplicity="0..1" />
+    <End Role="tb_Bitacora" Type="Self.tb_Bitacora" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="tb_Bitacora">
+        <PropertyRef Name="id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Usuariodispositivo">
+    <End Role="tb_Usuario" Type="Self.tb_Usuario" Multiplicity="0..1" />
+    <End Role="tb_Dispositivo" Type="Self.tb_Dispositivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="tb_Dispositivo">
+        <PropertyRef Name="id_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuariolevanta">
+    <End Role="tb_Usuario" Type="Self.tb_Usuario" Multiplicity="0..1" />
+    <End Role="tb_Ticket" Type="Self.tb_Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="tb_Ticket">
+        <PropertyRef Name="id_UsuarioLevanta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Function Name="ActualizaDatosUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
     <Parameter Name="nombre" Type="varchar" Mode="In" />
     <Parameter Name="apellidop" Type="varchar" Mode="In" />
@@ -39,8 +489,8 @@
     <Parameter Name="id_estatus" Type="int" Mode="In" />
   </Function>
   <Function Name="AsignaGrupoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
-    <Parameter Name="id_area" Type="int" Mode="In" />
     <Parameter Name="id_usuario" Type="int" Mode="In" />
+    <Parameter Name="id_area" Type="int" Mode="In" />
   </Function>
   <Function Name="AsignaSupervisorGrupo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
     <Parameter Name="id_area" Type="int" Mode="In" />
@@ -74,6 +524,7 @@
   </Function>
   <Function Name="ConsultaTicketsNoAsignados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
     <Parameter Name="id_usuario" Type="int" Mode="In" />
+    <Parameter Name="id_grupo" Type="int" Mode="In" />
   </Function>
   <Function Name="ConsultaTicketsPorArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
     <Parameter Name="id_usuario" Type="int" Mode="In" />
@@ -97,6 +548,13 @@
     <Parameter Name="id_area" Type="int" Mode="In" />
     <Parameter Name="id_usuario" Type="int" Mode="In" />
     <Parameter Name="id_asociar" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RegistraBitacora" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
+    <Parameter Name="id_cliente" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="date" Mode="In" />
+    <Parameter Name="Desc" Type="int" Mode="In" />
+    <Parameter Name="estatus" Type="int" Mode="In" />
+    <Parameter Name="id_ticket" Type="int" Mode="In" />
   </Function>
   <Function Name="RegistraDatosUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">
     <Parameter Name="nombre" Type="varchar" Mode="In" />
@@ -123,5 +581,119 @@
   </Function>
   <EntityContainer Name="InteekServiceModelStoreContainer">
     <EntitySet Name="ExceptionLog" EntityType="Self.ExceptionLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_AsociarGrupoUsuario" EntityType="Self.tb_AsociarGrupoUsuario" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Bitacora" EntityType="Self.tb_Bitacora" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_CausaSolucion" EntityType="Self.tb_CausaSolucion" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_DescripcionBitacora" EntityType="Self.tb_DescripcionBitacora" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Dispositivo" EntityType="Self.tb_Dispositivo" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Documento" EntityType="Self.tb_Documento" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Estatus" EntityType="Self.tb_Estatus" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Grupo" EntityType="Self.tb_Grupo" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Perfil" EntityType="Self.tb_Perfil" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Prioridad" EntityType="Self.tb_Prioridad" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Solucion" EntityType="Self.tb_Solucion" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Ticket" EntityType="Self.tb_Ticket" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_TicketBitacora" EntityType="Self.tb_TicketBitacora" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_TicketDocumento" EntityType="Self.tb_TicketDocumento" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_TicketSolucion" EntityType="Self.tb_TicketSolucion" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_TipoServicio" EntityType="Self.tb_TipoServicio" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_TipoServicioGrupo" EntityType="Self.tb_TipoServicioGrupo" Schema="inteekdev" store:Type="Tables" />
+    <EntitySet Name="tb_Usuario" EntityType="Self.tb_Usuario" Schema="inteekdev" store:Type="Tables" />
+    <AssociationSet Name="fk_Areaticket" Association="Self.fk_Areaticket">
+      <End Role="tb_Grupo" EntitySet="tb_Grupo" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_asociarArea" Association="Self.fk_asociarArea">
+      <End Role="tb_Grupo" EntitySet="tb_Grupo" />
+      <End Role="tb_AsociarGrupoUsuario" EntitySet="tb_AsociarGrupoUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_BitT" Association="Self.fk_BitT">
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+      <End Role="tb_TicketBitacora" EntitySet="tb_TicketBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_causasol" Association="Self.fk_causasol">
+      <End Role="tb_CausaSolucion" EntitySet="tb_CausaSolucion" />
+      <End Role="tb_Solucion" EntitySet="tb_Solucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Descripcionbitacora" Association="Self.fk_Descripcionbitacora">
+      <End Role="tb_DescripcionBitacora" EntitySet="tb_DescripcionBitacora" />
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DocT" Association="Self.fk_DocT">
+      <End Role="tb_Documento" EntitySet="tb_Documento" />
+      <End Role="tb_TicketDocumento" EntitySet="tb_TicketDocumento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estatusbitacora" Association="Self.fk_Estatusbitacora">
+      <End Role="tb_Estatus" EntitySet="tb_Estatus" />
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estatuscierre" Association="Self.fk_Estatuscierre">
+      <End Role="tb_Estatus" EntitySet="tb_Estatus" />
+      <End Role="tb_Solucion" EntitySet="tb_Solucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Estatusticket" Association="Self.fk_Estatusticket">
+      <End Role="tb_Estatus" EntitySet="tb_Estatus" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Grupo" Association="Self.fk_Grupo">
+      <End Role="tb_Grupo" EntitySet="tb_Grupo" />
+      <End Role="tb_TipoServicioGrupo" EntitySet="tb_TipoServicioGrupo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PerfilUsuario" Association="Self.fk_PerfilUsuario">
+      <End Role="tb_Perfil" EntitySet="tb_Perfil" />
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_priori" Association="Self.fk_priori">
+      <End Role="tb_Prioridad" EntitySet="tb_Prioridad" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Servicio" Association="Self.fk_Servicio">
+      <End Role="tb_TipoServicio" EntitySet="tb_TipoServicio" />
+      <End Role="tb_TipoServicioGrupo" EntitySet="tb_TipoServicioGrupo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Soluciont" Association="Self.fk_Soluciont">
+      <End Role="tb_Solucion" EntitySet="tb_Solucion" />
+      <End Role="tb_TicketSolucion" EntitySet="tb_TicketSolucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ticketb" Association="Self.fk_Ticketb">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_TicketBitacora" EntitySet="tb_TicketBitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ticketbitacora" Association="Self.fk_Ticketbitacora">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ticketcierre" Association="Self.fk_Ticketcierre">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_Solucion" EntitySet="tb_Solucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_TicketCS" Association="Self.fk_TicketCS">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_TicketSolucion" EntitySet="tb_TicketSolucion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Ticketd" Association="Self.fk_Ticketd">
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+      <End Role="tb_TicketDocumento" EntitySet="tb_TicketDocumento" />
+    </AssociationSet>
+    <AssociationSet Name="fk_tiposervicio" Association="Self.fk_tiposervicio">
+      <End Role="tb_TipoServicio" EntitySet="tb_TipoServicio" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuarioasignado" Association="Self.fk_usuarioasignado">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Usuarioasignadobitacora" Association="Self.fk_Usuarioasignadobitacora">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Bitacora" EntitySet="tb_Bitacora" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Usuariodispositivo" Association="Self.fk_Usuariodispositivo">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Dispositivo" EntitySet="tb_Dispositivo" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuariolevanta" Association="Self.fk_usuariolevanta">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_Ticket" EntitySet="tb_Ticket" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

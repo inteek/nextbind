@@ -25,8 +25,6 @@ namespace WCF.Contratos.Datos
         [DataMember(Order = 2)]
         public List<T> List { get; set; }
 
-        [DataMember(Order = 3)]
-        public string Comentarios { get; set; }
 
 
 

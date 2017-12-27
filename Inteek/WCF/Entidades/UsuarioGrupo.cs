@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WCF.Entidades
 {
-    public class UsuarioGrupo
+    public class UsuariosGrupo
     {
         public int id_AsociarGU { get; set; }
         public int id_Usuario { get; set; }

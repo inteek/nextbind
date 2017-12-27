@@ -21,7 +21,11 @@ namespace Framework
             try
             {
                 var objEntity = new Entity.Entity();
-                resultado = objEntity.validaLogin(usuario, password).Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor, supervisa = x.Supervisa }).ToList();
+                using (var db = new InteekServiceEntities())
+                {
+                    resultado = db.ValidaLogin(usuario, password).Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = (int)x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor }).ToList();
+                }
+                   
                 if(objEntity.Error != null)
                 {
                     _Error = objEntity.Error;
