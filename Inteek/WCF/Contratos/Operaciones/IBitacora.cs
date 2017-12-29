@@ -12,10 +12,11 @@ namespace WCF.Contratos.Operaciones
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IBitacora" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
-    public interface IBitacora
+    [ServiceKnownType("GetKnownTypes", typeof(ServiceKnownTypesHelper))]
+    public interface IBitacora<T>
     {
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ConsultaBitacoraPorTicket/{id_Ticket}")]
-        Response<Entidades.Bitacoras> ConsultaBitacoraPorTicket(int id_Ticket);
+        Response<T> ConsultaBitacoraPorTicket(int id_Ticket);
     }
 }

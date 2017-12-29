@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Runtime.Serialization;
 using System.Web;
+using System.IO;
 
 namespace WCF.Contratos.Datos
 {
@@ -50,26 +51,27 @@ namespace WCF.Contratos.Datos
                 this.Cadena = ex.StackTrace;
                 this.Tipo = ex.GetType().ToString();
 
-                objFramework.RegistraError(this.Mensaje, this.TargetSite, this.Metodo, this.Cadena, this.Tipo);
+               objFramework.RegistraError(this.Mensaje, this.TargetSite, this.Metodo, this.Cadena, this.Tipo);
                 //if (objFramework.Error != null)
                 //{
-                //    EnvioCorreo();
+                //    EnvioCorreo(objFramework.Error);
                 //}
+                EnvioCorreo(objFramework.Error);
             }
             catch (Exception e)
             {
-                EnvioCorreo();
+                EnvioCorreo(e);
             }
         }
 
-        public static void EnvioCorreo()
+        public static void EnvioCorreo(Exception ex)
         {
 
-            string correo_electronico = ConfigurationManager.AppSettings["PathFiles"];
+            string correo_electronico = ConfigurationManager.AppSettings["correoError"];
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("inteekdev.com");
 
-            mail.From = new MailAddress("agalindo@inteek.mx");
+            mail.From = new MailAddress("aalmanza@inteek.com.mx");
             //mail.To.Add("juan_amec@hotmail.com");
             mail.To.Add(correo_electronico);
             mail.Subject = string.Format("Error en la aplicación");
@@ -89,22 +91,24 @@ namespace WCF.Contratos.Datos
             body += "<body>";
             body += "<div style='width:100%;' style='margin-left: 30px; margin-top: 20px;'>";
             body += "<div style='height:180px; width:621px;'>";
-            body += "<div>Hola</div></br>";
-            body += "<p>000. Ocurrio un error en la aplicación, favor de revisar.</p>";
+            body += "<div>ERROR</div></br>";
+            body += "<p>000. Ocurrio un error en la aplicación, favor de revisar.</p></br>";
+            body += "<p>Mensaje: "+ex.Message+"</p>";
+            body += "<p>TargetSide: " + ex.TargetSite.Name + "</p>";
+            body += "<p>Metodo: " + ex.Source + "</p>";
+            body += "<p>Cadena: " + ex.StackTrace + "</p>";
+            body += "<p>Tipo: " + ex.GetType().ToString() + "</p>";
             body += "</div>";
             body += "</div>";
             body += "</body>";
             body += "<html>";
 
-
-            mail.Body = body;
-
-
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("agalindo@inteekdev.com", "DeveloperNet.2016");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("aalmanza@inteek.com.mx", "Inteek2017");
             //SmtpServer.EnableSsl = true;
 
 
+            mail.Body = body;
             SmtpServer.Send(mail);
         }
 

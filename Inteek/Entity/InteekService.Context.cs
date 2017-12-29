@@ -207,48 +207,6 @@ public partial class InteekServiceEntities : DbContext
     }
 
 
-    public virtual int ActualizaDatosUsuario(string nombre, string apellidop, string apellidom, string domiciliodir, string domiciliocord, Nullable<int> perfil, Nullable<int> id_usuario)
-    {
-
-        var nombreParameter = nombre != null ?
-            new ObjectParameter("nombre", nombre) :
-            new ObjectParameter("nombre", typeof(string));
-
-
-        var apellidopParameter = apellidop != null ?
-            new ObjectParameter("apellidop", apellidop) :
-            new ObjectParameter("apellidop", typeof(string));
-
-
-        var apellidomParameter = apellidom != null ?
-            new ObjectParameter("apellidom", apellidom) :
-            new ObjectParameter("apellidom", typeof(string));
-
-
-        var domiciliodirParameter = domiciliodir != null ?
-            new ObjectParameter("domiciliodir", domiciliodir) :
-            new ObjectParameter("domiciliodir", typeof(string));
-
-
-        var domiciliocordParameter = domiciliocord != null ?
-            new ObjectParameter("domiciliocord", domiciliocord) :
-            new ObjectParameter("domiciliocord", typeof(string));
-
-
-        var perfilParameter = perfil.HasValue ?
-            new ObjectParameter("perfil", perfil) :
-            new ObjectParameter("perfil", typeof(int));
-
-
-        var id_usuarioParameter = id_usuario.HasValue ?
-            new ObjectParameter("id_usuario", id_usuario) :
-            new ObjectParameter("id_usuario", typeof(int));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizaDatosUsuario", nombreParameter, apellidopParameter, apellidomParameter, domiciliodirParameter, domiciliocordParameter, perfilParameter, id_usuarioParameter);
-    }
-
-
     public virtual int ActualizaTicketAFinalizado(Nullable<int> id_usuario, Nullable<int> id_ticket, Nullable<int> id_estatus, string motivo)
     {
 
@@ -593,6 +551,53 @@ public partial class InteekServiceEntities : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidaLogin_Result>("ValidaLogin", usuarioParameter, passwordParameter);
+    }
+
+
+    public virtual int ActualizaDatosUsuario(string nombre, string apellidop, string apellidom, string domiciliodir, string domiciliocord, Nullable<int> perfil, string correo, Nullable<int> id_usuario)
+    {
+
+        var nombreParameter = nombre != null ?
+            new ObjectParameter("nombre", nombre) :
+            new ObjectParameter("nombre", typeof(string));
+
+
+        var apellidopParameter = apellidop != null ?
+            new ObjectParameter("apellidop", apellidop) :
+            new ObjectParameter("apellidop", typeof(string));
+
+
+        var apellidomParameter = apellidom != null ?
+            new ObjectParameter("apellidom", apellidom) :
+            new ObjectParameter("apellidom", typeof(string));
+
+
+        var domiciliodirParameter = domiciliodir != null ?
+            new ObjectParameter("domiciliodir", domiciliodir) :
+            new ObjectParameter("domiciliodir", typeof(string));
+
+
+        var domiciliocordParameter = domiciliocord != null ?
+            new ObjectParameter("domiciliocord", domiciliocord) :
+            new ObjectParameter("domiciliocord", typeof(string));
+
+
+        var perfilParameter = perfil.HasValue ?
+            new ObjectParameter("perfil", perfil) :
+            new ObjectParameter("perfil", typeof(int));
+
+
+        var correoParameter = correo != null ?
+            new ObjectParameter("correo", correo) :
+            new ObjectParameter("correo", typeof(string));
+
+
+        var id_usuarioParameter = id_usuario.HasValue ?
+            new ObjectParameter("id_usuario", id_usuario) :
+            new ObjectParameter("id_usuario", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizaDatosUsuario", nombreParameter, apellidopParameter, apellidomParameter, domiciliodirParameter, domiciliocordParameter, perfilParameter, correoParameter, id_usuarioParameter);
     }
 
 }

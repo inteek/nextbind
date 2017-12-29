@@ -23,12 +23,16 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.AsignaGrupoUsuario(id_Area, id_Usuario);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.AsignaGrupoUsuario(id_Area, id_Usuario);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.AsignaGrupoUsuario(id_Usuario, id_Area);
                 }
                 return true;
             }
@@ -43,12 +47,16 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.AsignaSupervisorGrupo(id_Area, id_Usuario, supervisa, id_Asociar);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.AsignaSupervisorGrupo(id_Area, id_Usuario, supervisa, id_Asociar);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.AsignaSupervisorGrupo(id_Area, id_Usuario, supervisa, id_Asociar);
                 }
                 return true;
             }
@@ -63,12 +71,16 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.AsignaTipoServicioGrupo(id_TipoServicio, id_Grupo);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.AsignaTipoServicioGrupo(id_TipoServicio, id_Grupo);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.AsignaTipoServicioGrupo(id_TipoServicio, id_Grupo);
                 }
                 return true;
             }
@@ -84,17 +96,20 @@ namespace Framework
             List<Libreria.ResultTipoServicioGrupo> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                resultado = objEntity.ConsultaTipoServicioGrupo(id_Grupo)
-                    .Select(x => new Libreria.ResultTipoServicioGrupo
-                    {
-                        id_Servicio = x.id_Servicio,
-                        Descripcion_servicio = x.Descripcion_servicio
-                    }).ToList();
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
+                    resultado = db.ConsultaTipoServicioGrupo(id_Grupo)
+                        .Select(x => new Libreria.ResultTipoServicioGrupo
+                        {
+                            id_Servicio = x.id_Servicio,
+                            Descripcion_servicio = x.Descripcion_servicio
+                        }).ToList();
                 }
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
             }
             catch (Exception ex)
             {
@@ -107,12 +122,16 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.EliminaTipoServicioGrupo(id_TipoServicio, id_Grupo);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.EliminaTipoServicioGrupo(id_TipoServicio, id_Grupo);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.EliminaTipoServicioGrupo(id_TipoServicio, id_Grupo);
                 }
                 return true;
             }
@@ -128,22 +147,25 @@ namespace Framework
             List<Libreria.ResultUsuarioGrupo> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                resultado = objEntity.ConsultaUsuarioGrupo(id_Grupo)
-                    .Select(x => new Libreria.ResultUsuarioGrupo
-                    {
-                        id_AsociarGU = x.id_AsociarGU,
-                        id_Usuario = x.id_Usuario,
-                        Nombre = x.Nombre,
-                        Correo = x.Correo,
-                        Grupo = x.Grupo,
-                        Supervisa = x.Supervisa,
-                        Activo = x.Activo
-                    }).ToList();
-                if (objEntity.Error != null)
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
+                    //var objEntity = new Entity.Entity();
+                    resultado = db.ConsultaUsuarioGrupo(id_Grupo)
+                        .Select(x => new Libreria.ResultUsuarioGrupo
+                        {
+                            id_AsociarGU = x.id_AsociarGU,
+                            id_Usuario = x.id_Usuario,
+                            Nombre = x.Nombre,
+                            Correo = x.Correo,
+                            Grupo = x.Grupo,
+                            Supervisa = x.Supervisa,
+                            Activo = x.Activo
+                        }).ToList();
                 }
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
             }
             catch (Exception ex)
             {
@@ -156,12 +178,16 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.EliminaUsuarioGrupo(id_Area, id_Usuario, id_Asociar);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.EliminaUsuarioGrupo(id_Area, id_Usuario, id_Asociar);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.EliminaUsuarioGrupo(id_Area, id_Usuario, id_Asociar);
                 }
                 return true;
             }
@@ -177,17 +203,20 @@ namespace Framework
             List<Libreria.ResultCausaSolucion> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                resultado = objEntity.ConsultaCausaSolucion()
-                    .Select(x => new Libreria.ResultCausaSolucion
-                    {
-                        id_CausaSolucion = x.id_CausaSolucion,
-                        Descripcion_CausaSol = x.Descripcion_CausaSol
-                    }).ToList();
-                if (objEntity.Error != null)
+               // var objEntity = new Entity.Entity();
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
+                    resultado = db.ConsultaCausaSolucion()
+                        .Select(x => new Libreria.ResultCausaSolucion
+                        {
+                            id_CausaSolucion = x.id_CausaSolucion,
+                            Descripcion_CausaSol = x.Descripcion_CausaSol
+                        }).ToList();
                 }
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
             }
             catch (Exception ex)
             {

@@ -20,16 +20,19 @@ namespace Framework
             List<ResultUsuarios> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                using (var db = new InteekServiceEntities())
-                {
-                    resultado = db.ValidaLogin(usuario, password).Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = (int)x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor }).ToList();
-                }
+                //var objEntity = new Entity.Entity();
+                //using (var db = new InteekServiceEntities())
+                //{
+                //    resultado = db.ValidaLogin(usuario, password).Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = (int)x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor }).ToList();
+                //}
                    
-                if(objEntity.Error != null)
-                {
-                    _Error = objEntity.Error;
-                }
+                //if(objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
+
+                int m=0, y;
+                y = 2 / m;
             }
             catch(Exception ex)
             {
@@ -43,12 +46,16 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.RegistraDatosUsuario(id_Perfil, nombre, apellidoPaterno, apellidoMaterno, correo, password, domicilioDir, domicilioCor);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.RegistraDatosUsuario(id_Perfil, nombre, apellidoPaterno, apellidoMaterno, correo, password, domicilioDir, domicilioCor);
+                //if (objEntity.Error != null)
+                //{
+                //   _Error = objEntity.Error;
+                //return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.RegistraDatosUsuario(nombre, apellidoPaterno, apellidoMaterno, correo, password, domicilioDir, domicilioCor, id_Perfil);
                 }
                 return true;
             }
@@ -64,8 +71,12 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.ActualizaDatosUsuario(id_Usuario, nombre, apellidoPaterno, apellidoMaterno, correo, password, domicilioDir, domicilioCor);
+                //var objEntity = new Entity.Entity();
+                //objEntity.ActualizaDatosUsuario(id_Usuario, nombre, apellidoPaterno, apellidoMaterno, correo, password, domicilioDir, domicilioCor);
+                using (var db = new InteekServiceEntities())
+                {
+                    db.ActualizaDatosUsuario(nombre, apellidoPaterno, apellidoMaterno, domicilioDir, domicilioCor, 1, correo, id_Usuario);
+                }
                 return true;
             }
             catch (Exception ex)
@@ -80,23 +91,51 @@ namespace Framework
             List<ResultConsultaUsuarios> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                resultado = objEntity.ConsultarUsuarios()
+                //var objEntity = new Entity.Entity();
+                using (var db = new InteekServiceEntities())
+                {
+                    resultado = db.ConsultaUsuarios()
                     .Select(x => new ResultConsultaUsuarios
                     {
-                      id_Usuario = x.id_Usuario,
-                      Nombre = x.Nombre,
-                      Correo = x.Correo,
-                      Grupo = x.Grupo,
-                      Supervisa = x.Supervisa,
-                      Activo = x.Activo
-                      }).ToList();
-                if (objEntity.Error != null)
-                {
-                    _Error = objEntity.Error;
+                        id_Usuario = x.id_Usuario,
+                        Nombre = x.Nombre,
+                        Correo = x.Correo,
+                        Grupo = x.Grupo,
+                        Supervisa = x.Supervisa,
+                        Activo = x.Activo
+                    }).ToList();
                 }
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
             }
             catch (Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
+        }
+
+        public List<ResultConsultaUsuarios> ConsultarUsuariosPorGrupo(int idGrupo)
+        {
+            List<ResultConsultaUsuarios> resultado = null;
+            try
+            {
+                using (var db = new InteekServiceEntities())
+                {
+                    resultado = db.ConsultaUsuarioGrupo(idGrupo).Select(x => new ResultConsultaUsuarios
+                    {
+                        id_Usuario = x.id_Usuario,
+                        Nombre = x.Nombre,
+                        Correo = x.Correo,
+                        Grupo = x.Grupo,
+                        Supervisa = x.Supervisa,
+                        Activo = x.Activo
+                    }).ToList();
+                }
+            }
+            catch(Exception ex)
             {
                 _Error = ex;
             }
@@ -108,17 +147,21 @@ namespace Framework
             List<ResultAreasPorUsuario> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                resultado = objEntity.ConsultaAreasPorUsuario(id_Usuario)
-                    .Select(x => new ResultAreasPorUsuario
-                    {
-                        id_Grupo = x.id_Grupo,
-                        Descripcion_grupo = x.Descripcion_grupo,
-                    }).ToList();
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
+                    resultado = db.ConsultaAreasPorUsuario(id_Usuario)
+                        .Select(x => new ResultAreasPorUsuario
+                        {
+                            id_Grupo = x.id_Grupo,
+                            Descripcion_grupo = x.Descripcion_grupo,
+                        }).ToList();
                 }
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
             }
             catch (Exception ex)
             {

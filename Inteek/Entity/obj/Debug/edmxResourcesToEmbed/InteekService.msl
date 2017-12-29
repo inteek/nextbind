@@ -31,7 +31,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ActualizaDatosUsuario" FunctionName="InteekServiceModel.Store.ActualizaDatosUsuario" />
     <FunctionImportMapping FunctionImportName="ActualizaTicketAFinalizado" FunctionName="InteekServiceModel.Store.ActualizaTicketAFinalizado" />
     <FunctionImportMapping FunctionImportName="ActualizaTicketEnProceso" FunctionName="InteekServiceModel.Store.ActualizaTicketEnProceso" />
     <FunctionImportMapping FunctionImportName="ConsultaTicketsNoAsignados" FunctionName="InteekServiceModel.Store.ConsultaTicketsNoAsignados">
@@ -368,5 +367,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ActualizaDatosUsuario" FunctionName="InteekServiceModel.Store.ActualizaDatosUsuario" />
   </EntityContainerMapping>
 </Mapping>

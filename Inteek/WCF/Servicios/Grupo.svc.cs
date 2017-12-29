@@ -12,7 +12,7 @@ namespace WCF.Servicios
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Grupo" en el código, en svc y en el archivo de configuración a la vez.
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Grupo.svc o Grupo.svc.cs en el Explorador de soluciones e inicie la depuración.
-    public class Grupo : IGrupo
+    public class Grupo : IGrupo<Entidades.TipoServicioGrupo, Entidades.UsuariosGrupo, Entidades.CausaSolucion>
     {
        public Response<string> AsignaGrupoUsuario(int id_Area, int id_Usuario)
         {
@@ -37,6 +37,7 @@ namespace WCF.Servicios
                 return result;
             }
         }
+
 
         public Response<string> AsignaSupervisorGrupo(int id_Area, int id_Usuario, bool supervisa, int id_Asociar)
         {

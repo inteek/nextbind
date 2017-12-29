@@ -11,7 +11,8 @@ namespace WCF.Contratos.Operaciones
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IGrupo" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
-    public interface IGrupo
+    [ServiceKnownType("GetKnownTypes", typeof(ServiceKnownTypesHelper))]
+    public interface IGrupo<T,M,K>
     {
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/AsignaGrupoUsuario/{id_Ticket}/{id_Usuario}")]
@@ -27,7 +28,7 @@ namespace WCF.Contratos.Operaciones
 
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ConsultaTipoServicioGrupo/{id_Grupo}")]
-        Response<Entidades.TipoServicioGrupo> ConsultaTipoServicioGrupo(int id_Grupo);
+        Response<T> ConsultaTipoServicioGrupo(int id_Grupo);
 
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/EliminaTipoServicioGrupo/{id_TipoServicio}/{id_Grupo}")]
@@ -35,7 +36,7 @@ namespace WCF.Contratos.Operaciones
 
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ConsultaUsuarioGrupo/{id_Grupo}")]
-        Response<Entidades.UsuariosGrupo> ConsultaUsuarioGrupo(int id_Grupo);
+        Response<M> ConsultaUsuarioGrupo(int id_Grupo);
 
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/EliminaUsuarioGrupo/{id_Area}/{id_Usuario}/{id_Asociar}")]
@@ -43,6 +44,6 @@ namespace WCF.Contratos.Operaciones
 
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ConsultaCausaSolucion")]
-        Response<Entidades.CausaSolucion> ConsultaCausaSolucion();
+        Response<K> ConsultaCausaSolucion();
     }
 }

@@ -469,6 +469,7 @@
     <Parameter Name="domiciliodir" Type="varchar" Mode="In" />
     <Parameter Name="domiciliocord" Type="varchar" Mode="In" />
     <Parameter Name="perfil" Type="int" Mode="In" />
+    <Parameter Name="correo" Type="varchar" Mode="In" />
     <Parameter Name="id_usuario" Type="int" Mode="In" />
   </Function>
   <Function Name="ActualizaTicketAFinalizado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="inteekdev">

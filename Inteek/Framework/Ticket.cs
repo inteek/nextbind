@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entity;
 
 namespace Framework
 {//Prueba
@@ -20,12 +21,16 @@ namespace Framework
             //prueba 2
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.RegistraTicket(cliente, titulo, desc, tipo_Servicio, id_Area, idEstatus, ruta);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.RegistraTicket(cliente, titulo, desc, tipo_Servicio, id_Area, idEstatus, ruta);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.RegistraTicket(cliente, titulo, desc, tipo_Servicio, id_Area, ruta, idEstatus);
                 }
                 return true;
             }
@@ -41,14 +46,19 @@ namespace Framework
             //idestatus por defecto debera recibir el de Asignado
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.AsignaTicket(id_Usuario, id_Ticket, idAgente, idEstatus);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.AsignaTicket(id_Usuario, id_Ticket, idAgente, idEstatus);
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.AsignaTicket(id_Usuario, id_Ticket, idAgente, idEstatus);
                 }
-                return true;
+
+                    //if (objEntity.Error != null)
+                    //{
+                    //    _Error = objEntity.Error;
+                    //    return false;
+                    //}
+               return true;
             }
             catch (Exception ex)
             {
@@ -178,14 +188,18 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.ActualizaTicketEnProceso(id_Ticket, idEstatus, id_Usuario);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.ActualizaTicketEnProceso(id_Ticket, idEstatus, id_Usuario);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.ActualizaTicketEnProceso(id_Ticket, idEstatus, id_Usuario);
                 }
-                return true;
+                    return true;
             }
             catch (Exception ex)
             {
@@ -198,12 +212,16 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.ActualizaTickedEnAprobacion(id_Ticket, idEstatus, id_Usuario, solucion);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.ActualizaTickedEnAprobacion(id_Ticket, idEstatus, id_Usuario, solucion);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.ActualizaTicketEnAprobacion(id_Ticket, idEstatus, id_Usuario, solucion);
                 }
                 return true;
             }
@@ -218,12 +236,16 @@ namespace Framework
         {
             try
             {
-                var objEntity = new Entity.Entity();
-                objEntity.ActualizaTickedAFinalizado(id_Ticket, idEstatus, id_Usuario, motivorechazo);
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                //objEntity.ActualizaTickedAFinalizado(id_Ticket, idEstatus, id_Usuario, motivorechazo);
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //    return false;
+                //}
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
-                    return false;
+                    db.ActualizaTicketAFinalizado(id_Ticket, idEstatus, id_Usuario, motivorechazo);
                 }
                 return true;
             }
@@ -239,23 +261,26 @@ namespace Framework
             List<ResultTickets> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                resultado = objEntity.ConsultaTickets().Select(
-                    x => new ResultTickets
-                    {
-                        id_Ticket = x.id_Ticket,
-                        Titulo_ticket = x.Titulo_ticket,
-                        Descripcion_ticket = x.Descripcion_ticket,
-                        Usuario = x.Usuario,
-                        Tipo_de_servicio = x.Tipo_de_servicio,
-                        Grupo = x.Grupo,
-                        Usuario_Asignado = x.Usuario_Asignado,
-                        Estatus = x.Estatus,
-                    }).ToList();
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
+                    resultado = db.ConsultaTickets().Select(
+                        x => new ResultTickets
+                        {
+                            id_Ticket = x.id_Ticket,
+                            Titulo_ticket = x.Titulo_ticket,
+                            Descripcion_ticket = x.Descripcion_ticket,
+                            Usuario = x.Usuario,
+                            Tipo_de_servicio = x.Tipo_de_servicio,
+                            Grupo = x.Grupo,
+                            Usuario_Asignado = x.Usuario_Asignado,
+                            Estatus = x.Estatus,
+                        }).ToList();
                 }
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
             }
             catch (Exception ex)
             {
@@ -269,23 +294,27 @@ namespace Framework
             List<ResultTicketsSupervisor> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                resultado = objEntity.ConsultaTicketsSupervisor(id_Usuario).Select(
-                    x => new ResultTicketsSupervisor
-                    {
-                        id_Ticket = x.id_Ticket,
-                        Titulo_ticket = x.Titulo_ticket,
-                        Descripcion_ticket = x.Descripcion_ticket,
-                        Usuario = x.Usuario,
-                        Tipo_de_servicio = x.Tipo_de_servicio,
-                        Grupo = x.Grupo,
-                        Usuario_Asignado = x.Usuario_Asignado,
-                        Estatus = x.Estatus,
-                    }).ToList();
-                if (objEntity.Error != null)
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
+
+                    //var objEntity = new Entity.Entity();
+                    resultado = db.ConsultaTicketsSupervisor(id_Usuario).Select(
+                        x => new ResultTicketsSupervisor
+                        {
+                            id_Ticket = x.id_Ticket,
+                            Titulo_ticket = x.Titulo_ticket,
+                            Descripcion_ticket = x.Descripcion_ticket,
+                            Usuario = x.Usuario,
+                            Tipo_de_servicio = x.Tipo_de_servicio,
+                            Grupo = x.Grupo,
+                            Usuario_Asignado = x.Usuario_Asignado,
+                            Estatus = x.Estatus,
+                        }).ToList();
                 }
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
             }
             catch (Exception ex)
             {

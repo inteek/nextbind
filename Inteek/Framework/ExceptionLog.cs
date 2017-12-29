@@ -12,7 +12,7 @@ namespace Framework
     {
 
         #region VARIABLES
-        Exception _Error;
+        Exception _Error = null;
         #endregion
 
 
@@ -22,24 +22,29 @@ namespace Framework
 
         public bool RegistraError(string message, string targetSite, string source, string stackTrace, string tipo)
         {
-            var objEntity = new Entity.Entity();
             try
             {
-                objEntity.RegistraError(message, targetSite, source, stackTrace, tipo);
-                if (objEntity.Error != null)
+                Entity.ExceptionLog err = new Entity.ExceptionLog()
                 {
-                    _Error = objEntity.Error;
-                    IdError = objEntity.IdError;
-                    ErrorMessage = objEntity.ErrorMessage;
-                    return false;
+                    Message = message,
+                    Source = source,
+                    TargetSite = targetSite,
+                    StackTrace = stackTrace,
+                    Tipo = tipo
+                };
+                using (var db = new InteekServiceEntities())
+                {
+                    db.ExceptionLog.Add(err);
+                    db.SaveChanges();
+
+                    IdError = err.Code;
+                    ErrorMessage = err.Message;
                 }
                 return true;
             }
             catch (Exception ex)
             {
                 _Error = ex;
-                IdError = objEntity.IdError;
-                ErrorMessage = objEntity.ErrorMessage;
                 return false;
             }
         }

@@ -126,7 +126,7 @@ namespace WCF.Servicios
             }
         }
 
-        public Response<Entidades.UsuariosGrupo> ConsultarUsuariosPorGrupo(int idGrupo)
+        public Response<Entidades.UsuariosGrupo> ConsultarUsuarios()
         {
             try
             {
@@ -136,6 +136,42 @@ namespace WCF.Servicios
                 {
                     Response<Entidades.UsuariosGrupo> result = new Response<Entidades.UsuariosGrupo>();
                     result.List = objFramework.ConsultarUsuarios().Select
+                        (x => new Entidades.UsuariosGrupo
+                        {
+                            id_Usuario = x.id_Usuario,
+                            Nombre = x.Nombre,
+                            Correo = x.Correo,
+                            Grupo = x.Grupo,
+                            Supervisa = x.Supervisa,
+                            Activo = x.Activo
+                        }).ToList();
+
+                    return result;
+                }
+                else
+                {
+                    ResponseError<Entidades.UsuariosGrupo> result = new ResponseError<Entidades.UsuariosGrupo>(objFramework.Error);
+                    return result;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ResponseError<Entidades.UsuariosGrupo> result = new ResponseError<Entidades.UsuariosGrupo>(ex);
+                return result;
+            }
+        }
+
+        public Response<Entidades.UsuariosGrupo> ConsultarUsuariosPorGrupo(int idGrupo)
+        {
+            try
+            {
+                var objFramework = new Framework.Usuarios();
+                List<Framework.Libreria.ResultConsultaUsuarios> lista = objFramework.ConsultarUsuariosPorGrupo(idGrupo);
+                if (objFramework.Error == null)
+                {
+                    Response<Entidades.UsuariosGrupo> result = new Response<Entidades.UsuariosGrupo>();
+                    result.List = objFramework.ConsultarUsuariosPorGrupo(idGrupo).Select
                         (x => new Entidades.UsuariosGrupo
                         {
                             id_Usuario = x.id_Usuario,
@@ -192,8 +228,6 @@ namespace WCF.Servicios
                 return result;
             }
         }
-
-
 
         //PENDIENTE ConsultaDispositivosPorUsuario
     }

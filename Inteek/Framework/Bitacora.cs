@@ -19,20 +19,24 @@ namespace Framework
             List<ResultBitacora> resultado = null;
             try
             {
-                var objEntity = new Entity.Entity();
-                resultado = objEntity.ConsultaBitacoraPorTicket(id_Ticket)
-                    .Select(x => new ResultBitacora
-                    {
-                        id_Bitacora = x.id_Bitacora,
-                        Nombre = x.Nombre,
-                        Fecha = (DateTime)x.Fecha,
-                        Bitacora = x.Bitacora,
-                        Estatus = x.Estatus,
-                        id_Ticket = (int)x.id_Ticket}).ToList();
-                if (objEntity.Error != null)
+                //var objEntity = new Entity.Entity();
+                using (var db = new InteekServiceEntities())
                 {
-                    _Error = objEntity.Error;
+                    resultado = db.ConsultaBitacoraPorTicket(id_Ticket)
+                        .Select(x => new ResultBitacora
+                        {
+                            id_Bitacora = x.id_Bitacora,
+                            Nombre = x.Nombre,
+                            Fecha = (DateTime)x.Fecha,
+                            Bitacora = x.Bitacora,
+                            Estatus = x.Estatus,
+                            id_Ticket = (int)x.id_Ticket
+                        }).ToList();
                 }
+                //if (objEntity.Error != null)
+                //{
+                //    _Error = objEntity.Error;
+                //}
             }
             catch (Exception ex)
             {
