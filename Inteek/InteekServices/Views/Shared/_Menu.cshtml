@@ -1,0 +1,250 @@
+﻿
+
+
+<aside class="nav-wrap" id="site-nav" data-perfect-scrollbar  itemid="@Url.Content("~/scripts")" >
+    <div class="nav-head">
+        <!-- site logo -->
+        <a href="@Url.Action("Index", "Home")" class="site-logo text-uppercase">
+            <i class="ion ion-disc"></i>
+            <span class="text">Inteek</span>
+        </a>
+    </div>
+
+    <!-- Site nav (vertical) -->
+
+    <nav class="site-nav clearfix" rol110e="navigation">
+        <div class="profile clearfix mb15">
+            <img src="@Url.Content("~/images/admin.jpg")" alt="admin">
+            <div class="group">
+                <h5 class="name">Robert Smith</h5>
+                <small class="desig text-uppercase">UX Designer</small>
+            </div>
+        </div>
+
+        <!-- navigation -->
+        <ul class="list-unstyled clearfix nav-list mb15" id="ulMenu">
+     
+
+            <li class="SubMenu">
+                <a onclick="JavaScript: openClosed(this);">
+                    <i class="ion ion-printer"></i>
+                    <span class="text">Notificación Push</span>
+                    <i class="arrow ion-chevron-left"></i>
+                </a>
+                <ul class="inner-drop list-unstyled">
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("EnviarNotificacion", "Notificaciones")">Enviar Notificación</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("EnviarSolicitud", "Notificaciones")">Enviar Solicitud</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("EnviarNotificacion", "Notificaciones")">Enviados</a></li>
+                </ul>
+                <br />
+            </li>
+
+
+            <li class="active">
+                <a onclick="Javascript:menu(this)" itemid="@Url.Action("Dashboard", "Home")">
+                    <i class="ion ion-monitor"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+     
+            <li>
+                <a onclick="Javascript:menu(this)" itemid="@Url.Action("Index", "Email")">
+                    <i class="ion ion-email"></i>
+                    <span class="text">Email</span>
+                    </a>
+</li>
+
+            <li>
+                <a onclick="Javascript:menu(this)" itemid="@Url.Action("Index", "Calendar")">
+                    <i class="ion ion-calendar"></i>
+                    <span class="text">Calendar</span>
+                    <span class="badge badge-xs badge-danger">hot</span>
+                </a>
+            </li>
+     
+
+
+
+
+            <li>
+                <a onclick="Javascript:menu(this)" itemid="@Url.Action("Index", "Material")">
+                    <i class="ion ion-icecream"></i>
+                    <span class="text">Material</span>
+                    <span class="badge badge-xs badge-success">new</span>
+                </a>
+            </li>
+
+            
+            <li class="SubMenu" >
+                <a  onclick="JavaScript:openClosed(this);">
+                    <i class="ion ion-android-options"></i>
+                    <span class="text">UI Kit</span>
+                    <i class="arrow ion-chevron-left"></i>
+                    <span class="badge badge-xs badge-info">10</span>
+                </a>
+                <ul class="inner-drop list-unstyled">
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Buttons", "UIKIT")">Buttons</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Typography", "UIKIT")">Typography</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Grids", "UIKIT")">Grids</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Panels", "UIKIT")">Panels</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Notifications", "UIKIT")">Notifications</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("TabsAccordion", "UIKIT")">Tabs &amp; Accordion</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("ProgressBars", "UIKIT")">Progress Bars</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Extras", "UIKIT")" ">Extras</a></li>
+                </ul>
+            </li>
+
+            <li class="SubMenu" ">
+                <a onclick="JavaScript: openClosed(this);">
+                    <i class="ion ion-asterisk"></i>
+                    <span class="text">Icons</span>
+                    <i class="arrow ion-chevron-left"></i>
+                    <span class="badge badge-xs badge-primary">2</span>
+                </a>
+                <ul class="inner-drop nested list-unstyled">
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("FontAwesome", "Icons")">Font Awesome</a></li>
+                </ul>
+            </li>
+
+
+            <li class="SubMenu">
+                <a onclick="JavaScript: openClosed(this);">
+                    <i class="ion ion-stats-bars"></i>
+                    <span class="text">Charts</span>
+                    <i class="arrow ion-chevron-left"></i>
+                </a>
+                <ul class="inner-drop list-unstyled">
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("C3", "Charts")">C3</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Sparklines", "Charts")">Sparklines</a></li>
+                </ul>
+            </li>
+        
+            <li class="SubMenu">
+                <a onclick="JavaScript: openClosed(this);">
+                    <i class="ion ion-document-text"></i>
+                    <span class="text">Forms</span>
+                    <i class="arrow ion-chevron-left"></i>
+                </a>
+                <ul class="inner-drop list-unstyled">
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Elements", "Forms")">Elements</a></li>
+                </ul>
+            </li>
+        
+        
+            <li>
+                <a onclick="Javascript:menu(this)" itemid="@Url.Action("Index", "Maps")">
+                    <i class="ion ion-map"></i>
+                    <span class="text">Maps</span>
+                </a>
+            </li>
+        
+            <li>
+                <a onclick="Javascript:menu(this)" itemid="@Url.Action("Index", "Tables")">
+                    <i class="ion ion-clipboard"></i>
+                    <span class="text">Tables</span>
+                </a>
+            </li>
+        
+        
+            <li class="SubMenu">
+                <a onclick="JavaScript: openClosed(this);">
+                    <i class="ion ion-printer"></i>
+                    <span class="text">Pages</span>
+                    <i class="arrow ion-chevron-left"></i>
+                </a>
+                <ul class="inner-drop list-unstyled">
+                    <li><a href="@Url.Action("SignIn", "Login")">Sign In</a></li>
+                    <li><a href="@Url.Action("SignUp", "Login")">Sign Up</a></li>
+                    <li><a href="@Url.Action("ForgetPass", "Login")">Forget Pass</a></li>
+                    <li><a href="@Url.Action("PageNotFound", "Login")">404</a></li>
+                    <li><a href="@Url.Action("LockScreen", "Login")">Lock Screen</a></li>
+                    <li><a onclick ="Javascript:menu(this)" itemid="@Url.Action("Timeline", "Pages")">Timeline</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Search", "Pages")">Search</a></li>
+                    <li><a onclick="Javascript:menu(this)" itemid="@Url.Action("Invoice", "Pages")">Invoice</a></li>
+                </ul>
+                <br />
+            </li>
+
+
+        </ul> <!-- #end navigation -->
+    </nav>
+
+    <!-- nav-foot -->
+    <footer class="nav-foot">
+        <p>2016 &copy; <span>inteek</span></p>
+    </footer>
+
+</aside>
+
+
+
+
+
+<script type="text/javascript">
+
+    function menu(obj) {
+
+        $("#ulMenu li").removeClass("active");
+        $(obj).parent("li").addClass("active");
+
+        var ulr = $(obj).attr("itemid");
+
+        var JSApp = "<script  src='" + $("#site-nav").attr("itemid") + "/app.js' </" + "script>"
+
+
+
+        var load = false;
+        for (var z = 1; z <= 9; z++) {
+            setTimeout(function () {
+                if (load == false) {
+                    document.querySelector('.pace').classList.remove('pace-inactive');
+                    document.querySelector('.pace').classList.add('pace-active');
+
+                    document.querySelector('.pace-progress').setAttribute('data-progress-text', (z * 10) + '%');
+                    document.querySelector('.pace-progress').setAttribute('style', '-webkit-transform: translate3d(' + (z * 10) + '%, 0px, 0px)');
+                } {
+                    return false;
+                }
+            }, 500);
+        }
+
+
+
+        $('#content').load(ulr, function () {
+            $('#content').append(JSApp);
+
+            document.querySelector('.pace-progress').setAttribute('data-progress-text', '100%');
+            document.querySelector('.pace-progress').setAttribute('style', '-webkit-transform: translate3d(100%, 0px, 0px)');
+
+            setTimeout(function () {
+                document.querySelector('.pace').classList.remove('pace-active');
+                document.querySelector('.pace').classList.add('pace-inactive');
+                load = true;
+            }, 500)
+
+        });
+
+        
+
+
+
+
+
+
+    };
+
+     
+    function openClosed(obj)
+    {
+        //alert($(obj).parent().hasClass("open"));
+        //if ($(obj).parent().hasClass("open") == false)
+        //{
+        //    $(obj).parent().addClass("open");
+        //}
+        //else {
+        //    $(obj).parent().removeClass("open");
+        //}
+
+    }
+
+</script>

@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "LockScreen";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Materia - Admin Template">
+    <meta name="keywords" content="materia, webapp, admin, dashboard, template, ui">
+    <meta name="author" content="solutionportal">
+    <!-- <base href="/"> -->
+
+    <title>Materia - Admin Template</title>
+
+    <!-- Icons -->
+    @Styles.Render("~/fonts/ionicons/css/ionicons.min.css")
+
+
+    <!-- Fonts -->
+    @Styles.Render("~/fonts/font-awesome/css/font-awesome.min.css")
+
+
+    <!-- Plugins -->
+    @Styles.Render("~/styles/plugins")
+
+
+    <!-- Css/Less Stylesheets -->
+    @Styles.Render("~/styles/bootstrap.min.css")
+    @Styles.Render("~/styles/main.min.css")
+
+
+
+    <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'> -->
+    <!-- Match Media polyfill for IE9 -->
+    <!--[if IE 9]> @Scripts.Render("~/scripts/ie/matchMedia.js") <![endif]-->
+
+
+</head>
+<body id="app" class="app off-canvas body-full">
+
+
+
+    <!-- main-container -->
+    <div class="main-container clearfix">
+
+
+
+        <!-- content-here -->
+        <div class="content-container" id="content">
+
+            <div class="page page-auth clearfix">
+
+                <div class="auth-container lock-screen">
+
+
+
+                    <div class="form-container">
+                        <div class="profile clearfix mb30" style="border: 1px solid transparent">
+                            <img src="@Url.Content("~/images/admin.jpg")" alt="admin">
+                            <h4 class="name">Robert Smith</h4>
+                            <p>Administrator</p>
+                        </div>
+                        <form class="form-horizontal" action="@Url.Action("Index", "Home")">
+                            <div class="md-input-container md-float-label">
+                                <input type="password" class="md-input">
+                                <label>Password</label>
+                            </div>
+                            <button class="btn btn-success btn-block">Unlock</button>
+                        </form>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- #end content-container -->
+
+    </div> <!-- #end main-container -->
+    <!-- Dev only -->
+    <!-- Vendors -->
+    @Scripts.Render("~/scripts/vendors.js")
+
+
+
+</body>
+</html>

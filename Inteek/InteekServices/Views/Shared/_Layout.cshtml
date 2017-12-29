@@ -1,45 +1,203 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <meta name="viewport" content="width=device-width" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    @*<title>@ViewBag.Title</title>*@
+    <title>innovation & technology</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Materia - Admin Template">
+    <meta name="keywords" content="materia, webapp, admin, dashboard, template, ui">
+    <meta name="author" content="solutionportal">
+
+
+
+
+    <title>Materia - Admin Template</title>
+
+    <!-- Icons -->
+    @Styles.Render("~/fonts/ionicons/css/ionicons.min.css")
+
+
+    <!-- Fonts -->
+    @Styles.Render("~/fonts/font-awesome/css/font-awesome.min.css")
+
+
+    <!-- Plugins -->
+    @*@Styles.Render("~/styles/plugins")*@
+    @Styles.Render("~/styles/plugins/c3.css")
+    @Styles.Render("~/styles/plugins/waves.css")
+    @Styles.Render("~/styles/plugins/perfect-scrollbar.css")
+    @Styles.Render("~/styles/plugins/fullcalendar.css")
+
+
+    <!-- Css/Less Stylesheets -->
+    @Styles.Render("~/styles/bootstrap.min.css")
+    @Styles.Render("~/styles/main.min.css")
+
+
+
+
+
+    <style type="text/css">
+        .pace {
+            -webkit-pointer-events: none;
+            pointer-events: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .pace-inactive {
+            display: none;
+        }
+
+        .pace .pace-progress {
+            background: #fff;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 100%;
+            width: 100%;
+            height: 2px;
+        }
+    </style>
+
+
+
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Match Media polyfill for IE9 -->
+    <!--[if IE 9]> @Scripts.Render("~/scripts/ie/matchMedia.js") <![endif]-->
+
+
+</head>
+<body id="app" class="app off-canvas">
+
+    <!-- header -->
+    @Html.Partial("_Header")
+<!-- #end header -->
+
+    <!-- main-cont
+    ainer -->
+    <div
+    class="main-container clearfix">
+    <div class="main-container clearfix">
+
+        <!-- main-navigation -->
+        @Html.Partial("_Menu")
+        <!-- #end main-navigation -->
+        <!-- content-here -->
+        <div class="content-container" id="content">
+            @RenderBody()
+        </div>
+
+
+
+
+    </div> <!-- #end main-container -->
+    <!-- theme settings -->
+    <div class="site-settings clearfix hidden-xs">
+        <div class="settings clearfix">
+            <div class="trigger ion ion-settings left"></div>
+            <div class="wrapper left">
+                <ul class="list-unstyled other-settings">
+                    <li class="clearfix mb10">
+                        <div class="left small">Nav Horizontal</div>
+                        <div class="md-switch right">
+                            <label>
+                                <input type="checkbox" id="navHorizontal">
+                                <span>&nbsp;</span>
+                            </label>
+                        </div>
+
+
+                    </li>
+                    <li class="clearfix mb10">
+                        <div class="left small">Fixed Header</div>
+                        <div class="md-switch right">
+                            <label>
+                                <input type="checkbox" id="fixedHeader">
+                                <span>&nbsp;</span>
+                            </label>
+                        </div>
+                    </li>
+                    <li class="clearfix mb10">
+                        <div class="left small">Nav Full</div>
+                        <div class="md-switch right">
+                            <label>
+                                <input type="checkbox" id="navFull">
+                                <span>&nbsp;</span>
+                            </label>
+                        </div>
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                <hr />
+                <ul class="themes list-unstyled" id="themeColor">
+                    <li data-theme="theme-zero" class="active"></li>
+                    <li data-theme="theme-one"></li>
+                    <li data-theme="theme-two"></li>
+                    <li data-theme="theme-three"></li>
+                    <li data-theme="theme-four"></li>
+                    <li data-theme="theme-five"></li>
+                    <li data-theme="theme-six"></li>
+                    <li data-theme="theme-seven"></li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
+    <!-- #end theme settings -->
+    <!-- Dev only -->
+    <!-- Vendors -->
+    @Scripts.Render("~/scripts/vendors.js")
+    @Scripts.Render("~/scripts/plugins/pace.min.js")
+    @Scripts.Render("~/scripts/plugins/d3.min.js")
+    @Scripts.Render("~/scripts/plugins/c3.min.js")
+    @Scripts.Render("~/scripts/plugins/screenfull.js")
+    @Scripts.Render("~/scripts/plugins/perfect-scrollbar.min.js")
+    @Scripts.Render("~/scripts/plugins/waves.min.js")
+    @Scripts.Render("~/scripts/plugins/jquery.sparkline.min.js")
+    @Scripts.Render("~/scripts/plugins/jquery.easypiechart.min.js")
+    @Scripts.Render("~/scripts/plugins/bootstrap-rating.min.js")
+    @Scripts.Render("~/scripts/plugins/select2.min.js")
+    @Scripts.Render("~/scripts/connectAsy.js")
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/scripts/app.js")
+    @Scripts.Render("~/scripts/index.init.js")
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh0Nllw6DKLOzvBGdDJsJqgl7XuKQ03rs&signed_in=false"></script>
+
+
+    <script>
+    paceOptions = {
+      elements: true
+    };
+
+
+    Pace.on('hide', function () {
+        console.log('done');
+    });
+
+
+    </script>
+
 </body>
 </html>

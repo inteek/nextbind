@@ -32,7 +32,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55431</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/nextbind</IISUrl>
+          <IISUrl>http://localhost/NextBindWCF</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
