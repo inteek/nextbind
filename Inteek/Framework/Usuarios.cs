@@ -20,19 +20,16 @@ namespace Framework
             List<ResultUsuarios> resultado = null;
             try
             {
-                //var objEntity = new Entity.Entity();
-                //using (var db = new InteekServiceEntities())
-                //{
-                //    resultado = db.ValidaLogin(usuario, password).Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = (int)x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor }).ToList();
-                //}
-                   
-                //if(objEntity.Error != null)
-                //{
-                //    _Error = objEntity.Error;
-                //}
+                var objEntity = new Entity.Entity();
+                using (var db = new InteekServiceEntities())
+                {
+                    resultado = db.ValidaLogin(usuario, password).Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = (int)x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor }).ToList();
+                }
 
-                int m=0, y;
-                y = 2 / m;
+                if (objEntity.Error != null)
+                {
+                    _Error = objEntity.Error;
+                }
             }
             catch(Exception ex)
             {
@@ -168,6 +165,47 @@ namespace Framework
                 _Error = ex;
             }
             return resultado;
+        }
+
+        public List<ResultUsuarios> VerficarCorreo(string correo)
+        {
+            List<ResultUsuarios> result = null;
+
+            try
+            {
+                using (var db = new InteekServiceEntities())
+                {
+                    result = db.tb_Usuario.Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = (int)x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor }).Where(x => x.Correo == correo).ToList();
+                }
+            }
+            catch(Exception ex)
+            {
+                _Error = ex;
+            }
+            return result;
+        }
+
+        public bool CambiarEstatus(string correo)
+        {
+            try
+            {
+                using (var db = new InteekServiceEntities())
+                {
+                    var user = db.tb_Usuario.Where(x => x.Correo == correo).FirstOrDefault();
+                    if(user!=null)
+                    {
+                        user.Activo = true;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                _Error = ex;
+                return false;
+            }
         }
 
         public Exception Error

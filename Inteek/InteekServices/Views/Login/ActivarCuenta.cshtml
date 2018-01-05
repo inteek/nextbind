@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "LockScreen";
+    ViewBag.Title = "ActivarCuenta";
 }
 
 <!DOCTYPE html>
@@ -12,27 +12,15 @@
     <meta name="keywords" content="materia, webapp, admin, dashboard, template, ui">
     <meta name="author" content="solutionportal">
     <!-- <base href="/"> -->
-
-    <title>Materia - Admin Template</title>
-
     <!-- Icons -->
     @Styles.Render("~/fonts/ionicons/css/ionicons.min.css")
-
-
     <!-- Fonts -->
     @Styles.Render("~/fonts/font-awesome/css/font-awesome.min.css")
-
-
     <!-- Plugins -->
     @Styles.Render("~/styles/plugins")
-
-
     <!-- Css/Less Stylesheets -->
     @Styles.Render("~/styles/bootstrap.min.css")
     @Styles.Render("~/styles/main.min.css")
-
-
-
     <!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'> -->
     <!-- Match Media polyfill for IE9 -->
     <!--[if IE 9]> @Scripts.Render("~/scripts/ie/matchMedia.js") <![endif]-->
@@ -40,46 +28,33 @@
 
 </head>
 <body id="app" class="app off-canvas body-full">
-
-
-
     <!-- main-container -->
     <div class="main-container clearfix">
 
-
-
         <!-- content-here -->
         <div class="content-container" id="content">
+            <div class="page page-auth">
 
-            <div class="page page-auth clearfix">
+                <div class="auth-container">
 
-                <div class="auth-container lock-screen">
-
-
-
-                    <div class="form-container">
-                        <div class="profile clearfix mb30" style="border: 1px solid transparent">
-                            <img src="@Url.Content("~/images/admin.jpg")" alt="admin">
-                            <h4 class="name">Robert Smith</h4>
-                            <p>Administrator</p>
-                        </div>
-                        <form class="form-horizontal" action="@Url.Action("Index", "Home")">
-                            <div class="md-input-container md-float-label">
-                                <input type="password" class="md-input">
-                                <label>Password</label>
-                            </div>
-                            <button class="btn btn-success btn-block">Unlock</button>
-                        </form>
-                        <div class="clearfix mb15" style="padding-top:5px;">
-                            <a class ="text-success small" href="@Url.Action("SignIn", "Login")">Iniciar sesion con una cuenta diferente</a>
-                        </div>
+                    <div class="form-head mb20">
+                        <h1 class="site-logo h2 mb5 mt5 text-center text-uppercase text-bold"><strong>@Request.QueryString["user"],</strong>TU CUENTA HA SIDO ACTIVADA</h1>
                     </div>
 
+                    <div class="form-container">
+                        <form class="form-horizontal" action="javascript:;">
+                            <p class="small text-center mb20">Haz quedado registrado con el siguiente correo: @Request.QueryString["email"]</p>
+                            <a href="@Url.Action("SignIn","Login")">
+                                <input type="button" class="btn btn-primary btn-block text-uppercase btn-lg" value="Sign in">
+                            </a>
+                        </form>
+                    </div>
 
-
-                </div>
-
+                </div> <!-- #end signin-container -->
             </div>
+
+
+
         </div>
         <!-- #end content-container -->
 
@@ -87,8 +62,7 @@
     <!-- Dev only -->
     <!-- Vendors -->
     @Scripts.Render("~/scripts/vendors.js")
-
-
-
+    <!--Scripts.Render("~/scripts/connectAsy.js")-->
+    <!--Scripts.Render("~/scripts/view/ActivarCuenta.init.js")-->
 </body>
 </html>

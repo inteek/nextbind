@@ -229,6 +229,67 @@ namespace WCF.Servicios
             }
         }
 
+        public Response<Entidades.Usuario> VerificarCorreo(string correo)
+        {
+            try
+            {
+                var objFramework = new Framework.Usuarios();
+                List<Framework.Libreria.ResultUsuarios> lista = objFramework.VerficarCorreo(correo);
+                if(objFramework.Error==null)
+                {
+                    Response<Entidades.Usuario> result = new Response<Entidades.Usuario>();
+                    result.List = objFramework.VerficarCorreo(correo).Select
+                        (x => new Entidades.Usuario
+                        {
+                            id_Usuario = x.id_Usuario,
+                            id_Perfil = x.id_Perfil,
+                            Nombre = x.Nombre,
+                            ApellidoPaterno = x.ApellidoPaterno,
+                            ApellidoMaterno = x.ApellidoMaterno,
+                            Correo = x.Correo,
+                            DomicilioDir = x.DomicilioDir,
+                            DomicilioCor = x.DomicilioCor
+                        }).Where(x=> x.Correo == correo).ToList();
+
+                    return result;
+                }
+                else
+                {
+                    ResponseError<Entidades.Usuario> result = new ResponseError<Entidades.Usuario>(objFramework.Error);
+                    return result;
+                }
+            }
+            catch(Exception ex)
+            {
+                ResponseError<Entidades.Usuario> result = new ResponseError<Entidades.Usuario>(ex);
+                return result;
+            }
+        }
+
+        public Response<string> CambiarEstatus(string correo)
+        {
+            try
+            {
+                var objFramework = new Framework.Usuarios();
+                objFramework.CambiarEstatus(correo);
+                if(objFramework.Error == null)
+                {
+                    Response<String> result = new Response<String>();
+                    return result;
+                }
+                else
+                {
+                    ResponseError<String> result = new ResponseError<String>(objFramework.Error);
+                    return result;
+                }
+            }
+            catch(Exception ex)
+            {
+                ResponseError<String> result = new ResponseError<String>(ex);
+                return result;
+            }
+        }
+
         //PENDIENTE ConsultaDispositivosPorUsuario
     }
 }

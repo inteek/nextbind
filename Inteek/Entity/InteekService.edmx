@@ -707,16 +707,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="InteekServiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="InteekServiceEntities" annotation:LazyLoadingEnabled="true" >
-          <FunctionImport Name="RegistraDatosUsuario">
-            <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="apellidop" Mode="In" Type="String" />
-            <Parameter Name="apellidom" Mode="In" Type="String" />
-            <Parameter Name="correo" Mode="In" Type="String" />
-            <Parameter Name="password" Mode="In" Type="String" />
-            <Parameter Name="domiciliodir" Mode="In" Type="String" />
-            <Parameter Name="domiciliocord" Mode="In" Type="String" />
-            <Parameter Name="perfil" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="ExceptionLog" EntityType="InteekServiceModel.ExceptionLog" />
           <FunctionImport Name="RegistraTicket">
             <Parameter Name="id_cliente" Mode="In" Type="Int32" />
@@ -939,6 +929,16 @@
             <Parameter Name="perfil" Mode="In" Type="Int32" />
             <Parameter Name="correo" Mode="In" Type="String" />
             <Parameter Name="id_usuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RegistraDatosUsuario">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidop" Mode="In" Type="String" />
+            <Parameter Name="apellidom" Mode="In" Type="String" />
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="domiciliodir" Mode="In" Type="String" />
+            <Parameter Name="domiciliocord" Mode="In" Type="String" />
+            <Parameter Name="perfil" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ExceptionLog">
@@ -1566,7 +1566,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="InteekServiceModelStoreContainer" CdmEntityContainer="InteekServiceEntities" >
-          <FunctionImportMapping FunctionImportName="RegistraDatosUsuario" FunctionName="InteekServiceModel.Store.RegistraDatosUsuario" />
           <EntitySetMapping Name="ExceptionLog">
             <EntityTypeMapping TypeName="InteekServiceModel.ExceptionLog">
               <MappingFragment StoreEntitySet="ExceptionLog">
@@ -1933,6 +1932,7 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ActualizaDatosUsuario" FunctionName="InteekServiceModel.Store.ActualizaDatosUsuario" />
+          <FunctionImportMapping FunctionImportName="RegistraDatosUsuario" FunctionName="InteekServiceModel.Store.RegistraDatosUsuario" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

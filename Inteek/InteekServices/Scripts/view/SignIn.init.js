@@ -12,8 +12,40 @@
         }
 
 
+        $(document).ready(function () {
+            debugger
+            var variable = getUrlVar()["exit"];
+            var data;
+            if (typeof variable == "undefined")
+                data = { exit: 0 };
+            else
+                data = { exit: 1 };
+            conectarAsy("Login/AutenticacionAutomatica", data, function (result) {
+                debugger
+                if (result != null)
+                    if (result.error == false) {
+                        if (result.noError == 1)
+                            location.href = result.page;
+                        else {
+                            $("#txtUser").val(result.userName);
+                        }
+                    }
+            });
+        });
+
+        function getUrlVar() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
 
         $("#btnSignIn").on("click", function () {
+            debugger
 
             var user = $("#txtUser").val();
             var pass = $("#txtPass").val();

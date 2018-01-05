@@ -33,3 +33,15 @@ C:\Users\fredy\Desktop\nextbind\Inteek\Entity\bin\Debug\es\EntityFramework.SqlSe
 C:\Users\fredy\Desktop\nextbind\Inteek\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 C:\Users\fredy\Desktop\nextbind\Inteek\Entity\obj\Debug\Entity.dll
 C:\Users\fredy\Desktop\nextbind\Inteek\Entity\obj\Debug\Entity.pdb
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\Entity.dll.config
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\Entity.dll
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\Entity.pdb
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\EntityFramework.dll
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\EntityFramework.xml
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\obj\Debug\Entity.dll
+C:\Users\fredy\Desktop\Nextbind2\Inteek\Entity\obj\Debug\Entity.pdb

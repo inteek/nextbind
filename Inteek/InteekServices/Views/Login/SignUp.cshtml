@@ -61,32 +61,40 @@
                     <div class="form-container">
                         <form class="form-horizontal" action="javascript:;">
                             <div class="md-input-container md-float-label">
-                                <input type="text" class="md-input">
-                                <label>Full Name</label>
+                                <input type="text" id="txtName" class="md-input">
+                                <label>Name</label>
                             </div>
                             <div class="md-input-container md-float-label">
-                                <input type="email" class="md-input">
+                                <input type="text" id="txtFirstName" class="md-input">
+                                <label>First Name</label>
+                            </div>
+                            <div class="md-input-container md-float-label">
+                                <input type="text" id="txtLastName" class="md-input">
+                                <label>Last Name</label>
+                            </div>
+                            <div class="md-input-container md-float-label">
+                                <input type="email" id="txtEmail" class="md-input">
                                 <label>Email Id</label>
                             </div>
                             <div class="md-input-container md-float-label">
-                                <input type="password" class="md-input">
+                                <input type="password" id="txtPassword" class="md-input">
                                 <label>Password</label>
                             </div>
                             <div class="md-input-container md-float-label">
-                                <input type="password" class="md-input">
+                                <input type="password" id="txtRePassword" class="md-input">
                                 <label>Retype Password</label>
                             </div>
-
+                            <div id="mensaje1" class="errores" style="display:none; color:red;">&nbsp;</div>
                             <div class="clearfix mt10">
                                 <div class="ui-checkbox ui-checkbox-primary">
                                     <label>
-                                        <input type="checkbox">
+                                        <input type="checkbox" id="chkTerms">
                                         <span>I agree to the terms and conditions for use.</span>
                                     </label>
                                 </div>
                             </div>
                             <div class="clearfix">
-                                <button type="submit" class="btn btn-primary right">Sign Up</button>
+                                <button id="btnSignUp" type="submit" class="btn btn-primary right">Sign Up</button>
                             </div>
 
                         </form>
@@ -105,6 +113,8 @@
     <!-- Dev only -->
     <!-- Vendors -->    
     @Scripts.Render("~/scripts/vendors.js")
+    @Scripts.Render("~/scripts/connectAsy.js")
+    @Scripts.Render("~/scripts/view/SignUp.init.js")
 
 
 </body>

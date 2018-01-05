@@ -74,53 +74,6 @@ public partial class InteekServiceEntities : DbContext
     public virtual DbSet<tb_Usuario> tb_Usuario { get; set; }
 
 
-    public virtual int RegistraDatosUsuario(string nombre, string apellidop, string apellidom, string correo, string password, string domiciliodir, string domiciliocord, Nullable<int> perfil)
-    {
-
-        var nombreParameter = nombre != null ?
-            new ObjectParameter("nombre", nombre) :
-            new ObjectParameter("nombre", typeof(string));
-
-
-        var apellidopParameter = apellidop != null ?
-            new ObjectParameter("apellidop", apellidop) :
-            new ObjectParameter("apellidop", typeof(string));
-
-
-        var apellidomParameter = apellidom != null ?
-            new ObjectParameter("apellidom", apellidom) :
-            new ObjectParameter("apellidom", typeof(string));
-
-
-        var correoParameter = correo != null ?
-            new ObjectParameter("correo", correo) :
-            new ObjectParameter("correo", typeof(string));
-
-
-        var passwordParameter = password != null ?
-            new ObjectParameter("password", password) :
-            new ObjectParameter("password", typeof(string));
-
-
-        var domiciliodirParameter = domiciliodir != null ?
-            new ObjectParameter("domiciliodir", domiciliodir) :
-            new ObjectParameter("domiciliodir", typeof(string));
-
-
-        var domiciliocordParameter = domiciliocord != null ?
-            new ObjectParameter("domiciliocord", domiciliocord) :
-            new ObjectParameter("domiciliocord", typeof(string));
-
-
-        var perfilParameter = perfil.HasValue ?
-            new ObjectParameter("perfil", perfil) :
-            new ObjectParameter("perfil", typeof(int));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistraDatosUsuario", nombreParameter, apellidopParameter, apellidomParameter, correoParameter, passwordParameter, domiciliodirParameter, domiciliocordParameter, perfilParameter);
-    }
-
-
     public virtual int RegistraTicket(Nullable<int> id_cliente, string titulo, string descripcion, Nullable<int> tiposervicio, Nullable<int> idarea, string ruta, Nullable<int> estatus)
     {
 
@@ -598,6 +551,53 @@ public partial class InteekServiceEntities : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ActualizaDatosUsuario", nombreParameter, apellidopParameter, apellidomParameter, domiciliodirParameter, domiciliocordParameter, perfilParameter, correoParameter, id_usuarioParameter);
+    }
+
+
+    public virtual int RegistraDatosUsuario(string nombre, string apellidop, string apellidom, string correo, string password, string domiciliodir, string domiciliocord, Nullable<int> perfil)
+    {
+
+        var nombreParameter = nombre != null ?
+            new ObjectParameter("nombre", nombre) :
+            new ObjectParameter("nombre", typeof(string));
+
+
+        var apellidopParameter = apellidop != null ?
+            new ObjectParameter("apellidop", apellidop) :
+            new ObjectParameter("apellidop", typeof(string));
+
+
+        var apellidomParameter = apellidom != null ?
+            new ObjectParameter("apellidom", apellidom) :
+            new ObjectParameter("apellidom", typeof(string));
+
+
+        var correoParameter = correo != null ?
+            new ObjectParameter("correo", correo) :
+            new ObjectParameter("correo", typeof(string));
+
+
+        var passwordParameter = password != null ?
+            new ObjectParameter("password", password) :
+            new ObjectParameter("password", typeof(string));
+
+
+        var domiciliodirParameter = domiciliodir != null ?
+            new ObjectParameter("domiciliodir", domiciliodir) :
+            new ObjectParameter("domiciliodir", typeof(string));
+
+
+        var domiciliocordParameter = domiciliocord != null ?
+            new ObjectParameter("domiciliocord", domiciliocord) :
+            new ObjectParameter("domiciliocord", typeof(string));
+
+
+        var perfilParameter = perfil.HasValue ?
+            new ObjectParameter("perfil", perfil) :
+            new ObjectParameter("perfil", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistraDatosUsuario", nombreParameter, apellidopParameter, apellidomParameter, correoParameter, passwordParameter, domiciliodirParameter, domiciliocordParameter, perfilParameter);
     }
 
 }
