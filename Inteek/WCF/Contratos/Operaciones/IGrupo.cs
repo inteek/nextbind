@@ -12,7 +12,7 @@ namespace WCF.Contratos.Operaciones
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IGrupo" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
     [ServiceKnownType("GetKnownTypes", typeof(ServiceKnownTypesHelper))]
-    public interface IGrupo<T,M,K>
+    public interface IGrupo<T,M,K,Z>
     {
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/AsignaGrupoUsuario/{id_Ticket}/{id_Usuario}")]
@@ -45,5 +45,8 @@ namespace WCF.Contratos.Operaciones
         //[OperationContract]
         [OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ConsultaCausaSolucion")]
         Response<K> ConsultaCausaSolucion();
+
+        [OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/ObtenerGrupos/{padre}/{id}")]
+        Response<Z> ObtenerGrupos(string padre, string id);
     }
 }

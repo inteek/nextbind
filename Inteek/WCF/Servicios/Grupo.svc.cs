@@ -12,7 +12,7 @@ namespace WCF.Servicios
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Grupo" en el código, en svc y en el archivo de configuración a la vez.
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Grupo.svc o Grupo.svc.cs en el Explorador de soluciones e inicie la depuración.
-    public class Grupo : IGrupo<Entidades.TipoServicioGrupo, Entidades.UsuariosGrupo, Entidades.CausaSolucion>
+    public class Grupo : IGrupo<Entidades.TipoServicioGrupo, Entidades.UsuariosGrupo, Entidades.CausaSolucion, Entidades.Grupos>
     {
        public Response<string> AsignaGrupoUsuario(int id_Area, int id_Usuario)
         {
@@ -229,6 +229,37 @@ namespace WCF.Servicios
             catch (Exception ex)
             {
                 ResponseError<Entidades.CausaSolucion> result = new ResponseError<Entidades.CausaSolucion>(ex);
+                return result;
+            }
+        }
+
+        public Response<Entidades.Grupos> ObtenerGrupos(string padre, string id)
+        {
+            try
+            {
+                var objFramewor = new Framework.Grupo();
+                List<Framework.Libreria.ResultGrupos> lista = objFramewor.ObtenerGrupos(padre, id);
+                if(objFramewor.Error == null)
+                {
+                    Response<Entidades.Grupos> result = new Response<Entidades.Grupos>();
+                    result.List = objFramewor.ObtenerGrupos(padre, id).Select(x => new Entidades.Grupos
+                    {
+                        idGrupo = x.idGrupo,
+                        descripcionGrupo = x.descripcionGrupo,
+                        claveGrupo = x.claveGrupo,
+                        idGrupoSuperior = x.idGrupoSuperior
+                    }).ToList();
+                    return result;
+                }
+                else
+                {
+                    ResponseError<Entidades.Grupos> result = new ResponseError<Entidades.Grupos>(objFramewor.Error);
+                    return result;
+                }
+            }
+            catch(Exception ex)
+            {
+                ResponseError<Entidades.Grupos> result = new ResponseError<Grupos>(ex);
                 return result;
             }
         }

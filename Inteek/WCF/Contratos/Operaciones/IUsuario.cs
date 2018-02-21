@@ -48,8 +48,11 @@ namespace WCF.Contratos.Operaciones
         [OperationContract, WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/VerificarCorreo/{correo}")]
         Response<T> VerificarCorreo(string correo);
 
-        [OperationContract, WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/VerificarCorreo/{correo}")]
+        [OperationContract, WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/CambiarEstatus/{correo}")]
         Response<string> CambiarEstatus(string correo);
+
+        [OperationContract, WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped, UriTemplate = "/CambiarContraseña/{email}{password}")]
+        Response<string> CambiarContraseña(string email, string contraseña);
 
 
 

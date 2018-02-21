@@ -26,3 +26,10 @@ C:\Users\fredy\Desktop\Nextbind2\Inteek\Framework\bin\Debug\Entity.dll
 C:\Users\fredy\Desktop\Nextbind2\Inteek\Framework\bin\Debug\Entity.pdb
 C:\Users\fredy\Desktop\Nextbind2\Inteek\Framework\obj\Debug\Framework.dll
 C:\Users\fredy\Desktop\Nextbind2\Inteek\Framework\obj\Debug\Framework.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\bin\Debug\Framework.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\bin\Debug\Framework.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\bin\Debug\Entity.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\bin\Debug\Entity.pdb
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\obj\Debug\Framework.csprojResolveAssemblyReference.cache
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\obj\Debug\Framework.dll
+C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\obj\Debug\Framework.pdb

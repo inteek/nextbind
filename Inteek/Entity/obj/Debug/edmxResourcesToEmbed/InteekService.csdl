@@ -65,9 +65,6 @@
     </FunctionImport>
     <FunctionImport Name="ConsultaCausaSolucion" ReturnType="Collection(InteekServiceModel.ConsultaCausaSolucion_Result)" />
     <FunctionImport Name="ConsultaTickets" ReturnType="Collection(InteekServiceModel.ConsultaTickets_Result)" />
-    <FunctionImport Name="ConsultaTicketsSupervisor" ReturnType="Collection(InteekServiceModel.ConsultaTicketsSupervisor_Result)">
-      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="ConsultaTipoServicioGrupo" ReturnType="Collection(InteekServiceModel.ConsultaTipoServicioGrupo_Result)">
       <Parameter Name="id_Grupo" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -210,10 +207,6 @@
       <Parameter Name="estatus" Mode="In" Type="Int32" />
       <Parameter Name="id_ticket" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="ValidaLogin" ReturnType="Collection(InteekServiceModel.ValidaLogin_Result)">
-      <Parameter Name="usuario" Mode="In" Type="String" />
-      <Parameter Name="password" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="ActualizaDatosUsuario">
       <Parameter Name="nombre" Mode="In" Type="String" />
       <Parameter Name="apellidop" Mode="In" Type="String" />
@@ -233,6 +226,13 @@
       <Parameter Name="domiciliodir" Mode="In" Type="String" />
       <Parameter Name="domiciliocord" Mode="In" Type="String" />
       <Parameter Name="perfil" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ValidaLogin" ReturnType="Collection(InteekServiceModel.ValidaLogin_Result)">
+      <Parameter Name="usuario" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsultaTicketsSupervisor" ReturnType="Collection(InteekServiceModel.ConsultaTicketsSupervisor_Result)">
+      <Parameter Name="id_usuario" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="ExceptionLog">
@@ -314,16 +314,6 @@
     <Property Type="String" Name="Descripcion_CausaSol" Nullable="true" MaxLength="300" />
   </ComplexType>
   <ComplexType Name="ConsultaTickets_Result">
-    <Property Type="Int32" Name="id_Ticket" Nullable="false" />
-    <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
-    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="51" />
-    <Property Type="String" Name="Tipo_de_servicio" Nullable="true" MaxLength="60" />
-    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
-    <Property Type="String" Name="Usuario_Asignado" Nullable="true" MaxLength="51" />
-    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
-  </ComplexType>
-  <ComplexType Name="ConsultaTicketsSupervisor_Result">
     <Property Type="Int32" Name="id_Ticket" Nullable="false" />
     <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
     <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
@@ -853,5 +843,17 @@
     <Property Type="String" Name="Correo" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="DomicilioDir" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="DomicilioCor" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="descripcion" Nullable="true" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="ConsultaTicketsSupervisor_Result">
+    <Property Type="Int32" Name="id_Ticket" Nullable="false" />
+    <Property Type="String" Name="Titulo_ticket" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="Descripcion_ticket" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Tipo_de_servicio" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Usuario_Asignado" Nullable="true" MaxLength="51" />
+    <Property Type="String" Name="Estatus" Nullable="true" MaxLength="60" />
+    <Property Type="DateTime" Name="Fecha" Nullable="true" />
   </ComplexType>
 </Schema>

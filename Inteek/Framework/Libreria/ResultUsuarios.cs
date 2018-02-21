@@ -26,6 +26,8 @@ namespace Framework.Libreria
         public string DomicilioDir { get; set; }
 
         public string DomicilioCor { get; set; }
+
+        public string DescripcionPeril { get; set; }
         
 
     }

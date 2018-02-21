@@ -224,5 +224,45 @@ namespace Framework
             }
             return resultado;
         }
+
+        public List<Libreria.ResultGrupos> ObtenerGrupos(string padre, string id)
+        {
+            List<Libreria.ResultGrupos> resultado = null;
+            try
+            {
+                using (var db = new InteekServiceEntities())
+                {
+                    if(padre=="")
+                    {
+                        resultado = db.tb_Grupo.Select(x => new Libreria.ResultGrupos
+                        {
+                            idGrupo = x.id_Grupo,
+                            descripcionGrupo = x.Descripcion_grupo,
+                            claveGrupo = x.Clave_Grupo,
+                            idGrupoSuperior = x.id_GrupoSuperior
+                        }).Where(x=>x.idGrupoSuperior==null).ToList();
+                    }
+                    else
+                    {
+                        var obj = db.tb_Grupo.Where(x => x.Descripcion_grupo == id).FirstOrDefault();
+
+                        resultado = db.tb_Grupo.Select(x => new Libreria.ResultGrupos
+                        {
+                            idGrupo = x.id_Grupo,
+                            descripcionGrupo = x.Descripcion_grupo,
+                            claveGrupo = x.Clave_Grupo,
+                            idGrupoSuperior = x.id_GrupoSuperior
+                        }).Where(x => x.idGrupoSuperior == obj.id_Grupo).ToList();
+
+                    }
+                }
+                return resultado;
+            }
+            catch(Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
+        }
     }
 }

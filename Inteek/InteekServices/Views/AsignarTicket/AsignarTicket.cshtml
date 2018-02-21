@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "AsignarTicket";
+}
+
+<div id="Contenedor" style="position:relative">
+    <script>
+            var ruta = "@Url.Action("ObtenerTickets","AsignarTicket")";
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    @Scripts.Render("~/scripts/plugins/jquery.easypiechart.min.js")
+    @Styles.Render("~/styles/plugins/style.css")
+    @Styles.Render("~/styles/AsignarTicket.css?v=2")
+    @Scripts.Render("~/Scripts/view/AsignarTicket.js")
+
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+ 
+
+
+    <div class="col-md-12" style="padding-top:5%">
+
+
+        <!--CSS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+
+        <!--JS-->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+        <section id="ContenedorInterno"  class="box">
+            <header class="panel_header">
+                <h2 class="title pull-left" id="Asignacion">ASIGNACION DE TICKET</h2>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <form id="commentForm">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputState">Grupo</label>
+                                    <select id="SelectGrupo" class="form-control">
+                                        <option>Administracion</option>
+                                        <option>Sopoorte</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputState">Estatus</label>
+                                    <select id="SelectEstatus" class="form-control">
+                                        <option>Nuevo</option>
+                                        <option>Asignado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <table class="table table-hover table-bordered" id="tblTickets">
+                                </table>
+                                <br />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="plegado">
+        <div>
+            @* FORMULARIO CON DETALLE *@
+            @Html.Partial("FormularioDetalle")
+        </div>
+    </div>
+</div>

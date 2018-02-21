@@ -48,9 +48,10 @@
     @Styles.Render("~/styles/bootstrap.min.css")
     @Styles.Render("~/styles/main.min.css")
 
-
-
-
+    <!-- Estilos para Registro Ticket-->
+    @Styles.Render("~/styles/plugins/animate.css")
+    @Styles.Render("~/styles/plugins/pace-theme-flash.css")
+    @Styles.Render("~/styles/plugins/responsive.css")
 
     <style type="text/css">
         .pace {
@@ -180,6 +181,7 @@
 
     @Scripts.Render("~/scripts/app.js")
     @Scripts.Render("~/scripts/index.init.js")
+    @Scripts.Render("~/Scripts/view/Menu.init.js")
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh0Nllw6DKLOzvBGdDJsJqgl7XuKQ03rs&signed_in=false"></script>
@@ -194,6 +196,22 @@
     Pace.on('hide', function () {
         console.log('done');
     });
+     
+    conectarAsy("VerificarPerfil", null, function (result) {
+        debugger
+        if (result.error == false) {
+            if (result.perfil != 1)
+            {
+                $("#VerTickets").hide();
+                alert("lo oculto");
+            }
+            else
+                alert("no pasa na")
+        }
+        else {
+            alert("error");
+        }
+    })
 
 
     </script>

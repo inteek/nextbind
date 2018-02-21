@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "ContenedorRegistroTicket";
+}
+
+<div class="col-md-12" style="padding-top:5%">
+
+    @Styles.Render("~/styles/plugins/style.css")
+    @Styles.Render("~/styles/plugins/animate.min.css")
+    @Scripts.Render("~/scripts/jquery.validate.min.js")
+    @Scripts.Render("~/scripts/jquery.bootstrap.wizard.min.js")
+    @Scripts.Render("~/scripts/form-validation.js")
+    @Scripts.Render("~/Scripts/jstree/jstree.min.js")
+    @Scripts.Render("~/scripts/app.js")
+    @Scripts.Render("~/scripts/index.init.js")
+    @Styles.Render("~/fonts/ionicons/css/ionicons.min.css")
+    <script>
+        var urlPrueba = '@Url.Action("ObtenerTipoTicket", "RegistroTicket")';
+        var urlGrupos = '@Url.Action("ObtenerGrupos", "RegistroTicket")';
+        var urlTicket = '@Url.Action("ConsultaNoTicketMayor", "RegistroTicket")';
+        var urlRegistro = '@Url.Action("RegistrarTicket", "RegistroTicket")'
+    </script>
+    @Scripts.Render("~/scripts/view/ContenedorRegistro.init.js")
+
+
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+
+    <!--JS-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+    <section class="box">
+        <header class="panel_header">
+            <h2 class="title pull-left">REGISTRO DE TICKET</h2>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <form id="commentForm">
+
+                        <div id="pills" class='wizardpills'>
+                            <ul class="form-wizard">
+                                <li><a href="#pills-tab1" data-toggle="tab"><span>GRUPO</span></a></li>
+                                <li><a href="#pills-tab2" data-toggle="tab"><span>SERVICIO</span></a></li>
+                                <li><a href="#pills-tab3" data-toggle="tab"><span>REGISTRO</span></a></li>
+                                <li><a href="#pills-tab4" data-toggle="tab"><span>TICKET</span></a></li>
+                            </ul>
+                            <div id="bar" class="progress active">
+                                <div class="progress-bar progress-bar-primary " role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane" id="pills-tab1">
+                                    @Html.Partial("Paso1")
+                                </div>
+                                <div class="tab-pane" id="pills-tab2">
+                                    @Html.Partial("Paso2")
+                                </div>
+                                <div class="tab-pane" id="pills-tab3">
+                                    @Html.Partial("Paso3")
+                                </div>
+                                <div class="tab-pane" id="pills-tab4">
+                                    @Html.Partial("Paso4") 
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+

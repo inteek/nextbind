@@ -2,6 +2,10 @@
 
 
 <aside class="nav-wrap" id="site-nav" data-perfect-scrollbar  itemid="@Url.Content("~/scripts")" >
+
+    @*@Scripts.Render("~/Scripts/connectAsy.js")
+    @Scripts.Render("~/Scripts/view/Menu.init.js")*@
+
     <div class="nav-head">
         <!-- site logo -->
         <a href="@Url.Action("Index", "Home")" class="site-logo text-uppercase">
@@ -40,19 +44,19 @@
             </li>
 
 
-            <li class="active">
-                <a onclick="Javascript:menu(this)" itemid="@Url.Action("Dashboard", "Home")">
-                    <i class="ion ion-monitor"></i>
-                    <span class="text">Dashboard</span>
+            <li class="active" id="GenerarTicket">
+                <a onclick="Javascript:menu(this)" itemid="@Url.Action("ContenedorRegistro", "RegistroTicket")">
+                    <i class="ion ion-clipboard"></i>
+                    <span class="text">Generar Ticket</span>
                 </a>
             </li>
      
-            <li>
-                <a onclick="Javascript:menu(this)" itemid="@Url.Action("Index", "Email")">
-                    <i class="ion ion-email"></i>
-                    <span class="text">Email</span>
+            <li id="VerTickets">
+                <a onclick="Javascript:menu(this)" itemid="@Url.Action("AsignarTicket", "AsignarTicket")">
+                    <i class="ion ion-clipboard"></i>
+                    <span class="text">Ver Tickets</span>
                     </a>
-</li>
+            </li>
 
             <li>
                 <a onclick="Javascript:menu(this)" itemid="@Url.Action("Index", "Calendar")">

@@ -47,6 +47,7 @@
     <Compile Include="Grupo.cs" />
     <Compile Include="Libreria\ResultAreasPorUsuario.cs" />
     <Compile Include="Libreria\ResultCausaSolucion.cs" />
+    <Compile Include="Libreria\ResultGrupos.cs" />
     <Compile Include="Libreria\ResultTickets.cs" />
     <Compile Include="Libreria\ResultTicketsPorAgente.cs" />
     <Compile Include="Libreria\ResultBitacora.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Libreria\ResultTicketsPorCliente.cs" />
     <Compile Include="Libreria\ResultTicketsSupervisor.cs" />
     <Compile Include="Libreria\ResultTipoServicioGrupo.cs" />
+    <Compile Include="Libreria\ResultTipoTicket.cs" />
     <Compile Include="Libreria\ResultUsuarioGrupo.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="Usuarios.cs" />

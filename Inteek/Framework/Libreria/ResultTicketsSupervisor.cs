@@ -16,5 +16,6 @@ namespace Framework.Libreria
         public string Grupo { get; set; }
         public string Usuario_Asignado { get; set; }
         public string Estatus { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }

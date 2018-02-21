@@ -26,5 +26,7 @@ namespace WCF.Entidades
 
         public string DomicilioCor { get; set; }
 
+        public string DescripcionPefil { get; set; }
+
     }
 }

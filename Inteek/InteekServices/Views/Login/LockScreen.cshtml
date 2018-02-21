@@ -60,18 +60,18 @@
                     <div class="form-container">
                         <div class="profile clearfix mb30" style="border: 1px solid transparent">
                             <img src="@Url.Content("~/images/admin.jpg")" alt="admin">
-                            <h4 class="name">Robert Smith</h4>
-                            <p>Administrator</p>
+                            <h4 class="name">@Request.Cookies["UserInfo"]["Name"]</h4>
+                            <p>@Request.Cookies["UserInfo"]["Perfil"]</p>
                         </div>
-                        <form class="form-horizontal" action="@Url.Action("Index", "Home")">
+                        <form class="form-horizontal">
                             <div class="md-input-container md-float-label">
-                                <input type="password" class="md-input">
+                                <input id ="txtPass" type="password" class="md-input">
                                 <label>Password</label>
                             </div>
-                            <button class="btn btn-success btn-block">Unlock</button>
+                            <button id="btnSignIn" class="btn btn-success btn-block">Unlock</button>
                         </form>
                         <div class="clearfix mb15" style="padding-top:5px;">
-                            <a class ="text-success small" href="@Url.Action("SignIn", "Login")">Iniciar sesion con una cuenta diferente</a>
+                            <a class ="text-success small" href= "@Url.Action("SignIn","Login")?exit=1">Iniciar sesion con una cuenta diferente</a>
                         </div>
                     </div>
 
@@ -86,8 +86,9 @@
     </div> <!-- #end main-container -->
     <!-- Dev only -->
     <!-- Vendors -->
+    @Scripts.Render("~/scripts/connectAsy.js")
     @Scripts.Render("~/scripts/vendors.js")
-
+    @Scripts.Render("~/scripts/view/LockScreen.init.js")
 
 
 </body>

@@ -33,6 +33,8 @@ public partial class ConsultaTicketsSupervisor_Result
 
     public string Estatus { get; set; }
 
+    public Nullable<System.DateTime> Fecha { get; set; }
+
 }
 
 }

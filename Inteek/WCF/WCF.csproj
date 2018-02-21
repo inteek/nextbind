@@ -115,6 +115,7 @@
     <Compile Include="Contratos\Datos\Response.cs" />
     <Compile Include="Contratos\Datos\ResponseError.cs" />
     <Compile Include="Entidades\Bitacoras.cs" />
+    <Compile Include="Entidades\Grupos.cs" />
     <Compile Include="Entidades\Ticket.cs" />
     <Compile Include="Entidades\TicketsNoAsignados.cs" />
     <Compile Include="Entidades\TicketsPorAgente.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Entidades\TicketsPorCliente.cs" />
     <Compile Include="Entidades\TicketsSupervisor.cs" />
     <Compile Include="Entidades\TipoServicioGrupo.cs" />
+    <Compile Include="Entidades\TipoTicket.cs" />
     <Compile Include="Entidades\UsuarioGrupo.cs" />
     <Compile Include="Entidades\Usuarios.cs" />
     <Compile Include="Contratos\Operaciones\ITicket.cs" />

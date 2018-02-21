@@ -1,0 +1,25 @@
+﻿<h4>Registro de Ticket</h4><br>
+    <div class="form-group">
+        <label class="form-label">Asunto</label>
+        <div class="controls">
+            <input type="text" placeholder="Asunto" class="form-control" name="txtAsunto" id="txtAsunto">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Descripcion</label>
+        <div class="controls">
+            <textarea id="txtDescripcion" class="form-control" name="txtDescripcion" placeholder="Descripcion" rows="4"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Documentos</label>
+        <div class="controls">
+            <input type="file" id="archivos" placeholder="Seleccionar Archivos" name="image_uploads" accept=".jpg, .jpeg, .png" multiple>
+        </div>
+    </div>
+    <ul class="pager wizard">
+        <li class="previous" id="Anterior"><a href="javascript:">Anterior</a></li>
+        <li class="next" id="Siguiente"><a href="javascript:Agregar()" disabled>Siguiente</a></li>
+    </ul>

@@ -23,7 +23,7 @@ namespace Framework
                 var objEntity = new Entity.Entity();
                 using (var db = new InteekServiceEntities())
                 {
-                    resultado = db.ValidaLogin(usuario, password).Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = (int)x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor }).ToList();
+                    resultado = db.ValidaLogin(usuario, password).Select(x => new ResultUsuarios { id_Usuario = x.id_Usuario, id_Perfil = (int)x.id_Perfil, Nombre = x.Nombre, ApellidoPaterno = x.ApellidoPaterno, ApellidoMaterno = x.ApellidoMaterno, Correo = x.Correo, DomicilioDir = x.DomicilioDir, DomicilioCor = x.DomicilioCor, DescripcionPeril = x.descripcion }).ToList();
                 }
 
                 if (objEntity.Error != null)
@@ -202,6 +202,29 @@ namespace Framework
                 }
             }
             catch(Exception ex)
+            {
+                _Error = ex;
+                return false;
+            }
+        }
+
+        public bool CambiarContraseña(string email, string password)
+        {
+            try
+            {
+                using (var db = new InteekServiceEntities())
+                {
+                    var user = db.tb_Usuario.Where(x => x.Correo == email).FirstOrDefault();
+                    if (user != null)
+                    {
+                        user.Password = password;
+                        db.SaveChanges();
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
             {
                 _Error = ex;
                 return false;

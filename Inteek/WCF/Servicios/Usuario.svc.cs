@@ -37,7 +37,8 @@ namespace WCF.Servicios
                             ApellidoMaterno = x.ApellidoMaterno,
                             Correo = x.Correo,
                             DomicilioDir = x.DomicilioDir,
-                            DomicilioCor = x.DomicilioCor
+                            DomicilioCor = x.DomicilioCor,
+                            DescripcionPefil = x.DescripcionPeril
                         }).ToList();
 
                     return result;
@@ -284,6 +285,30 @@ namespace WCF.Servicios
                 }
             }
             catch(Exception ex)
+            {
+                ResponseError<String> result = new ResponseError<String>(ex);
+                return result;
+            }
+        }
+
+        public Response<string> CambiarContraseña(string email, string password)
+        {
+            try
+            {
+                var objFramework = new Framework.Usuarios();
+                objFramework.CambiarContraseña(email, password);
+                if (objFramework.Error == null)
+                {
+                    Response<String> result = new Response<String>();
+                    return result;
+                }
+                else
+                {
+                    ResponseError<String> result = new ResponseError<String>(objFramework.Error);
+                    return result;
+                }
+            }
+            catch (Exception ex)
             {
                 ResponseError<String> result = new ResponseError<String>(ex);
                 return result;

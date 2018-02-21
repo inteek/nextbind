@@ -30,7 +30,7 @@ namespace Framework
                 //}
                 using (var db = new InteekServiceEntities())
                 {
-                    db.RegistraTicket(cliente, titulo, desc, tipo_Servicio, id_Area, ruta, idEstatus);
+                    db.RegistraTicket(cliente, titulo, desc, tipo_Servicio, id_Area, ruta, 1);
                 }
                 return true;
             }
@@ -309,6 +309,7 @@ namespace Framework
                             Grupo = x.Grupo,
                             Usuario_Asignado = x.Usuario_Asignado,
                             Estatus = x.Estatus,
+                            Fecha = (DateTime)x.Fecha
                         }).ToList();
                 }
                 //if (objEntity.Error != null)
@@ -317,6 +318,69 @@ namespace Framework
                 //}
             }
             catch (Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
+        }
+
+        public List<ResultTipoTicket> ConsultaTipoTickets(string descripcion,bool padre)
+        {
+            List<ResultTipoTicket> resultado = null;
+            try
+            {
+                using (var db = new InteekServiceEntities())
+                {
+                    if(padre)
+                    {
+                        resultado = db.tb_TipoServicio.Join(db.tb_TipoServicioGrupo.Join(db.tb_Grupo, tsg => tsg.id_Grupo, tg => tg.id_Grupo, (tsg, tg) => new { tsg, tg }), ts => ts.id_Servicio, aux => aux.tsg.id_TipoServicio, (ts, aux) => new { ts, aux }).
+                                    Select(x => new ResultTipoTicket
+                                    {
+                                        idServicio = x.ts.id_Servicio,
+                                        descripcionServicio = x.ts.Descripcion_servicio,
+                                        claveServicio = x.ts.clave_servicio,
+                                        idServicioSuperior = x.aux.tg.id_Grupo,
+                                        servicioSuperior = x.aux.tg.Descripcion_grupo
+                                    }).Where(x => x.servicioSuperior == descripcion).ToList();
+                    }
+                    else
+                    {
+                        var obj = db.tb_TipoServicio.Where(x => x.Descripcion_servicio == descripcion).FirstOrDefault();
+
+                        resultado = db.tb_TipoServicio.Select(x => new ResultTipoTicket
+                        {
+                            idServicio = x.id_Servicio,
+                            descripcionServicio = x.Descripcion_servicio,
+                            claveServicio = x.clave_servicio,
+                            idServicioSuperior = x.id_ServicioSuperior,
+                            servicioSuperior = obj.Descripcion_servicio
+                        }).Where(x => x.idServicioSuperior == obj.id_Servicio).ToList();
+
+                    }
+
+                    return resultado;
+                }
+            }
+            catch(Exception ex)
+            {
+                _Error = ex;
+            }
+            return resultado;
+        }
+
+        public List<int> ConsultaNoTicketMayor()
+        {
+            List<int> resultado = new List<int>();
+            try
+            {
+                using (var db = new InteekServiceEntities())
+                {
+                    int aux = db.tb_Ticket.Max(x => x.id_Ticket);
+                    resultado.Add(aux);
+                    return resultado;
+                }
+            }
+            catch(Exception ex)
             {
                 _Error = ex;
             }

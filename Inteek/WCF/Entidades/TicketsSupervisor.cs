@@ -15,5 +15,6 @@ namespace WCF.Entidades
         public string Grupo { get; set; }
         public string Usuario_Asignado { get; set; }
         public string Estatus { get; set; }
+        public string Fecha { get; set; }
     }
 }

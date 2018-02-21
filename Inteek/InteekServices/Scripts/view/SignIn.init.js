@@ -11,27 +11,19 @@
             initSignIn();
         }
 
-
-        $(document).ready(function () {
+        window.onload = function () {
             debugger
             var variable = getUrlVar()["exit"];
-            var data;
-            if (typeof variable == "undefined")
-                data = { exit: 0 };
-            else
-                data = { exit: 1 };
-            conectarAsy("Login/AutenticacionAutomatica", data, function (result) {
-                debugger
-                if (result != null)
-                    if (result.error == false) {
-                        if (result.noError == 1)
+            if(typeof variable == "undefined"){
+                conectarAsy("Login/AutenticacionAutomatica", null, function (result) {
+                    debugger
+                    if (result != null)
+                        if (result.error == false) {
                             location.href = result.page;
-                        else {
-                            $("#txtUser").val(result.userName);
                         }
-                    }
-            });
-        });
+                });
+            }
+        }
 
         function getUrlVar() {
             var vars = [], hash;
@@ -53,9 +45,9 @@
 
 
             var data = {
-                    user: user,
-                    password: pass,
-                    remmemberPassword: remember
+                user: user,
+                password: pass,
+                remmemberPassword: remember
             };
 
 
@@ -72,11 +64,6 @@
         })
 
     });
-
-
-   
-    
-
 
 }
 

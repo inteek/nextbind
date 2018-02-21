@@ -356,18 +356,6 @@ public partial class InteekServiceEntities : DbContext
     }
 
 
-    public virtual ObjectResult<ConsultaTicketsSupervisor_Result> ConsultaTicketsSupervisor(Nullable<int> id_usuario)
-    {
-
-        var id_usuarioParameter = id_usuario.HasValue ?
-            new ObjectParameter("id_usuario", id_usuario) :
-            new ObjectParameter("id_usuario", typeof(int));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTicketsSupervisor_Result>("ConsultaTicketsSupervisor", id_usuarioParameter);
-    }
-
-
     public virtual ObjectResult<ConsultaTipoServicioGrupo_Result> ConsultaTipoServicioGrupo(Nullable<int> id_Grupo)
     {
 
@@ -490,23 +478,6 @@ public partial class InteekServiceEntities : DbContext
     }
 
 
-    public virtual ObjectResult<ValidaLogin_Result> ValidaLogin(string usuario, string password)
-    {
-
-        var usuarioParameter = usuario != null ?
-            new ObjectParameter("usuario", usuario) :
-            new ObjectParameter("usuario", typeof(string));
-
-
-        var passwordParameter = password != null ?
-            new ObjectParameter("password", password) :
-            new ObjectParameter("password", typeof(string));
-
-
-        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidaLogin_Result>("ValidaLogin", usuarioParameter, passwordParameter);
-    }
-
-
     public virtual int ActualizaDatosUsuario(string nombre, string apellidop, string apellidom, string domiciliodir, string domiciliocord, Nullable<int> perfil, string correo, Nullable<int> id_usuario)
     {
 
@@ -598,6 +569,35 @@ public partial class InteekServiceEntities : DbContext
 
 
         return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RegistraDatosUsuario", nombreParameter, apellidopParameter, apellidomParameter, correoParameter, passwordParameter, domiciliodirParameter, domiciliocordParameter, perfilParameter);
+    }
+
+
+    public virtual ObjectResult<ValidaLogin_Result> ValidaLogin(string usuario, string password)
+    {
+
+        var usuarioParameter = usuario != null ?
+            new ObjectParameter("usuario", usuario) :
+            new ObjectParameter("usuario", typeof(string));
+
+
+        var passwordParameter = password != null ?
+            new ObjectParameter("password", password) :
+            new ObjectParameter("password", typeof(string));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ValidaLogin_Result>("ValidaLogin", usuarioParameter, passwordParameter);
+    }
+
+
+    public virtual ObjectResult<ConsultaTicketsSupervisor_Result> ConsultaTicketsSupervisor(Nullable<int> id_usuario)
+    {
+
+        var id_usuarioParameter = id_usuario.HasValue ?
+            new ObjectParameter("id_usuario", id_usuario) :
+            new ObjectParameter("id_usuario", typeof(int));
+
+
+        return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultaTicketsSupervisor_Result>("ConsultaTicketsSupervisor", id_usuarioParameter);
     }
 
 }

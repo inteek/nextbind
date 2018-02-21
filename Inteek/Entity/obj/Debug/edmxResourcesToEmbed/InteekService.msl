@@ -133,20 +133,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ConsultaTicketsSupervisor" FunctionName="InteekServiceModel.Store.ConsultaTicketsSupervisor">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="InteekServiceModel.ConsultaTicketsSupervisor_Result">
-          <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
-          <ScalarProperty Name="Titulo_ticket" ColumnName="Titulo_ticket" />
-          <ScalarProperty Name="Descripcion_ticket" ColumnName="Descripcion_ticket" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Tipo_de_servicio" ColumnName="Tipo de servicio" />
-          <ScalarProperty Name="Grupo" ColumnName="Grupo" />
-          <ScalarProperty Name="Usuario_Asignado" ColumnName="Usuario Asignado" />
-          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ConsultaTipoServicioGrupo" FunctionName="InteekServiceModel.Store.ConsultaTipoServicioGrupo">
       <ResultMapping>
         <ComplexTypeMapping TypeName="InteekServiceModel.ConsultaTipoServicioGrupo_Result">
@@ -352,6 +338,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="RegistraBitacora" FunctionName="InteekServiceModel.Store.RegistraBitacora" />
+    <FunctionImportMapping FunctionImportName="ActualizaDatosUsuario" FunctionName="InteekServiceModel.Store.ActualizaDatosUsuario" />
+    <FunctionImportMapping FunctionImportName="RegistraDatosUsuario" FunctionName="InteekServiceModel.Store.RegistraDatosUsuario" />
     <FunctionImportMapping FunctionImportName="ValidaLogin" FunctionName="InteekServiceModel.Store.ValidaLogin">
       <ResultMapping>
         <ComplexTypeMapping TypeName="InteekServiceModel.ValidaLogin_Result">
@@ -363,10 +351,24 @@
           <ScalarProperty Name="Correo" ColumnName="Correo" />
           <ScalarProperty Name="DomicilioDir" ColumnName="DomicilioDir" />
           <ScalarProperty Name="DomicilioCor" ColumnName="DomicilioCor" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ActualizaDatosUsuario" FunctionName="InteekServiceModel.Store.ActualizaDatosUsuario" />
-    <FunctionImportMapping FunctionImportName="RegistraDatosUsuario" FunctionName="InteekServiceModel.Store.RegistraDatosUsuario" />
+    <FunctionImportMapping FunctionImportName="ConsultaTicketsSupervisor" FunctionName="InteekServiceModel.Store.ConsultaTicketsSupervisor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InteekServiceModel.ConsultaTicketsSupervisor_Result">
+          <ScalarProperty Name="id_Ticket" ColumnName="id_Ticket" />
+          <ScalarProperty Name="Titulo_ticket" ColumnName="Titulo_ticket" />
+          <ScalarProperty Name="Descripcion_ticket" ColumnName="Descripcion_ticket" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Tipo_de_servicio" ColumnName="Tipo de servicio" />
+          <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+          <ScalarProperty Name="Usuario_Asignado" ColumnName="Usuario Asignado" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

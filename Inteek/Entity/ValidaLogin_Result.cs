@@ -33,6 +33,8 @@ public partial class ValidaLogin_Result
 
     public string DomicilioCor { get; set; }
 
+    public string descripcion { get; set; }
+
 }
 
 }
