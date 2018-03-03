@@ -33,3 +33,10 @@ C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\bin\Debug\Ent
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\obj\Debug\Framework.csprojResolveAssemblyReference.cache
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\obj\Debug\Framework.dll
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Framework\obj\Debug\Framework.pdb
+C:\TFS\ServiceNext\Framework\bin\Debug\Framework.dll
+C:\TFS\ServiceNext\Framework\bin\Debug\Framework.pdb
+C:\TFS\ServiceNext\Framework\bin\Debug\Entity.dll
+C:\TFS\ServiceNext\Framework\bin\Debug\Entity.pdb
+C:\TFS\ServiceNext\Framework\obj\Debug\Framework.csprojResolveAssemblyReference.cache
+C:\TFS\ServiceNext\Framework\obj\Debug\Framework.dll
+C:\TFS\ServiceNext\Framework\obj\Debug\Framework.pdb

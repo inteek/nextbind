@@ -57,3 +57,15 @@ C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Entity\bin\Debug\es\Ent
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Entity\obj\Debug\Entity.dll
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\Entity\obj\Debug\Entity.pdb
+C:\TFS\ServiceNext\Entity\bin\Debug\Entity.dll.config
+C:\TFS\ServiceNext\Entity\bin\Debug\Entity.dll
+C:\TFS\ServiceNext\Entity\bin\Debug\Entity.pdb
+C:\TFS\ServiceNext\Entity\bin\Debug\EntityFramework.dll
+C:\TFS\ServiceNext\Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\TFS\ServiceNext\Entity\bin\Debug\EntityFramework.xml
+C:\TFS\ServiceNext\Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\TFS\ServiceNext\Entity\bin\Debug\es\EntityFramework.resources.dll
+C:\TFS\ServiceNext\Entity\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\TFS\ServiceNext\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+C:\TFS\ServiceNext\Entity\obj\Debug\Entity.dll
+C:\TFS\ServiceNext\Entity\obj\Debug\Entity.pdb

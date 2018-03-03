@@ -133,3 +133,30 @@ C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\WCF\bin\Entity.pdb
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\WCF\obj\Debug\WCF.csprojResolveAssemblyReference.cache
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\WCF\obj\Debug\WCF.dll
 C:\Users\fredy\Desktop\PROYECTOS INTEEK\Nextbind2\Inteek\WCF\obj\Debug\WCF.pdb
+C:\TFS\ServiceNext\WCF\bin\ApplicationInsights.config
+C:\TFS\ServiceNext\WCF\bin\WCF.dll.config
+C:\TFS\ServiceNext\WCF\bin\WCF.dll
+C:\TFS\ServiceNext\WCF\bin\WCF.pdb
+C:\TFS\ServiceNext\WCF\bin\EntityFramework.dll
+C:\TFS\ServiceNext\WCF\bin\EntityFramework.SqlServer.dll
+C:\TFS\ServiceNext\WCF\bin\Framework.dll
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.Agent.Intercept.dll
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.DependencyCollector.dll
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.Web.dll
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.WindowsServer.dll
+C:\TFS\ServiceNext\WCF\bin\Microsoft.ApplicationInsights.dll
+C:\TFS\ServiceNext\WCF\bin\Entity.dll
+C:\TFS\ServiceNext\WCF\bin\Framework.pdb
+C:\TFS\ServiceNext\WCF\bin\EntityFramework.xml
+C:\TFS\ServiceNext\WCF\bin\EntityFramework.SqlServer.xml
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.DependencyCollector.xml
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.Web.xml
+C:\TFS\ServiceNext\WCF\bin\Microsoft.AI.WindowsServer.xml
+C:\TFS\ServiceNext\WCF\bin\Microsoft.ApplicationInsights.xml
+C:\TFS\ServiceNext\WCF\bin\Entity.pdb
+C:\TFS\ServiceNext\WCF\obj\Debug\WCF.csprojResolveAssemblyReference.cache
+C:\TFS\ServiceNext\WCF\obj\Debug\WCF.dll
+C:\TFS\ServiceNext\WCF\obj\Debug\WCF.pdb
